@@ -1,7 +1,7 @@
 <?php
   require_once('../config/connection.php');
   session_start();
-  echo $_SESSION['info'];
+  // echo $_SESSION['info'];
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,25 +66,46 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name" name="firstName">
+                                            placeholder="First Name" name="firstName" method="post" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name" name="lastName">
+                                            placeholder="Last Name" name="lastName" required>
+                                            <?php
+                                              if (empty($_POST[''])) {
+                                                echo "Nie podałeś Nazwiska";
+                                            } else {
+                                              echo "Podaj nazwisko";
+                                            }
+                                            ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" name="emailAddress">
+                                        placeholder="Email Address" name="emailAddress" required>
+                                        <?php
+                                          if (empty($_POST[''])) {
+                                            echo "Nie podałeś adresu e-mail";
+                                        } else {
+                                          echo "Podaj adres e-mail";
+                                        }
+                                        ?>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" name="password">
+                                            id="exampleInputPassword" placeholder="Password" name="password" required>
+                                            <?php
+                                              if (empty($_POST[''])) {
+                                                echo "Nie podałeś hasła";
+                                            } else {
+                                              echo "Podaj hasło";
+                                            }
+                                            ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                            id="exampleRepeatPassword" placeholder="Repeat Password" name="repeatPassword" required>
                                     </div>
                                 </div>
                                 <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block">
@@ -102,7 +123,7 @@
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="login.php">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
