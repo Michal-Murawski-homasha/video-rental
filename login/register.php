@@ -71,37 +71,16 @@
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
                                             placeholder="Last Name" name="lastName" required>
-                                            <?php
-                                              if (empty($_POST[''])) {
-                                                echo "Nie podałeś Nazwiska";
-                                            } else {
-                                              echo "Podaj nazwisko";
-                                            }
-                                            ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address" name="emailAddress" required>
-                                        <?php
-                                          if (empty($_POST[''])) {
-                                            echo "Nie podałeś adresu e-mail";
-                                        } else {
-                                          echo "Podaj adres e-mail";
-                                        }
-                                        ?>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Password" name="password" required>
-                                            <?php
-                                              if (empty($_POST[''])) {
-                                                echo "Nie podałeś hasła";
-                                            } else {
-                                              echo "Podaj hasło";
-                                            }
-                                            ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"

@@ -8,7 +8,7 @@
   //$passw = $_POST['password'];
   //$passw = new passwordHash();
   $passw = md5($_POST['password']);
-  $rPassw = $_POST['repeatPassword'];
+  $rPassw = md5($_POST['repeatPassword']);
 
   echo '<p>Imię: '.$fName.'</p>';
   echo '<p>Nazwisko: '.$lName.'</p>';
@@ -33,15 +33,52 @@
     }
   }
 
+    // Walidacja danych rejestracji
+    $fNameErr = $lNameErr = $eAddressErr = $passwErr = $rPasswErr;
     $fName = $lName = $eAddress = $passw = $rPassw;
 
-    $fName = $_POST["firstName"];
+    if ($_SESSION['info'] == "POST") {
+      if (empty($_POST["firstName"])) {
+        $fNameErr = "Name is required";
+      } else {
+        $name = test_input($_POST["firstName"]);
+      }
+
+    if ($_SESSION['info'] == "POST") {
+      if (empty($_POST["lastName"])) {
+        $lNameErr = "Name is required";
+      } else {
+        $name = test_input($_POST["lastName"]);
+      }
+
+    if ($_SESSION['info'] == "POST") {
+      if (empty($_POST["emailAddress"])) {
+        $eAddressErr = "Name is required";
+      } else {
+        $name = test_input($_POST["emailAddress"]);
+      }
+
+    if ($_SESSION['info'] == "POST") {
+      if (empty($_POST["password"])) {
+        $passwErr = "Name is required";
+      } else {
+        $name = test_input($_POST["password"]);
+      }
+
+    if ($_SESSION['info'] == "POST") {
+      if (empty($_POST["repeatPassword"])) {
+        $rPasswErr = "Name is required";
+      } else {
+        $name = test_input($_POST["repeatPassword"]);
+      }
+
+    /* $fName = $_POST["firstName"];
     $lName = $_POST["lastName"];
     $eAddress = $_POST["emailAddress"];
     $passw = $_POST["password"];
     $rPassw = $_POST["repeatPassword"];
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SESSION['info'] == "POST") {
       $fName = test_input($_POST["firstName"]);
       $lName = test_input($_POST["lastName"]);
       $eAddress = test_input($_POST["emailAddress"]);
@@ -50,10 +87,10 @@
     }
 
     function test_input($data) {
-      //$data = trim($data);
-      //$data = stripslashes($data);
-      //$data = htmlspecialchars($data);
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
       return $data;
-    }
+    } */
 
 ?>
