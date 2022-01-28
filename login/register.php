@@ -1,6 +1,7 @@
 <?php
   require_once('../config/connection.php');
   session_start();
+  echo $_SESSION['info'];
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +47,7 @@
                               <?php
                                   $_SESSION['info']; // = 0;
                                 // } else {
-                                //  $_SESSION['info']++;
+                                // $_SESSION['info']++;
                               ?>
                               <?php
                                 }

@@ -1,6 +1,6 @@
 <?php
-
   require_once('../config/connection.php');
+  session_start();
 
   $fName = $_POST['firstName'];
   $lName = $_POST['lastName'];
