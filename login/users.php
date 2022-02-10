@@ -43,35 +43,35 @@
       } else {
         $name = test_input($_POST["firstName"]);
       }
-
+}
     if ($_SESSION['info'] == "POST") {
       if (empty($_POST["lastName"])) {
         $lNameErr = "Name is required";
       } else {
         $name = test_input($_POST["lastName"]);
       }
-
+}
     if ($_SESSION['info'] == "POST") {
       if (empty($_POST["emailAddress"])) {
         $eAddressErr = "Name is required";
       } else {
         $name = test_input($_POST["emailAddress"]);
       }
-
+}
     if ($_SESSION['info'] == "POST") {
       if (empty($_POST["password"])) {
         $passwErr = "Name is required";
       } else {
         $name = test_input($_POST["password"]);
       }
-
+}
     if ($_SESSION['info'] == "POST") {
       if (empty($_POST["repeatPassword"])) {
         $rPasswErr = "Name is required";
       } else {
         $name = test_input($_POST["repeatPassword"]);
       }
-
+}
     /* $fName = $_POST["firstName"];
     $lName = $_POST["lastName"];
     $eAddress = $_POST["emailAddress"];

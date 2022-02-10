@@ -42,7 +42,8 @@
                                 if(isset($_SESSION['info'])) {
                               ?>
                               <div class="alert alert-danger" role="alert">
-                              A simple danger alert—check it out!
+                              Już istnieje konto o takim adresie e-mail.
+                              Przejdź do panelu logowania i spróbuj się zalogować.
 
                               <?php
                                   $_SESSION['info']; // = 0;
