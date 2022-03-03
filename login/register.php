@@ -42,11 +42,11 @@
                                 if(isset($_SESSION['info'])) {
                               ?>
                               <div class="alert alert-danger" role="alert">
-                              Już istnieje konto o takim adresie e-mail.
+                              Już istnieje konto o takim adresie e-mail.<br>
                               Przejdź do panelu logowania i spróbuj się zalogować.
 
                               <?php
-                                  $_SESSION['info']; // = 0;
+                                  //$_SESSION['info']; // = 0;
                                 // } else {
                                 // $_SESSION['info']++;
                               ?>
@@ -63,11 +63,12 @@
                                   unset($_SESSION['info']);
                                 ?><br>
                             </div>
-                            <form class="user" action="users.php" method="post">
+                            <form class="user" action="sprawdz.php" method="post">
+
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name" name="firstName" method="post" required>
+                                            placeholder="First Name" name="firstName" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
@@ -76,7 +77,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" name="emailAddress" required>
+                                        placeholder="E-mail" name="emailAddress" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -88,7 +89,7 @@
                                             id="exampleRepeatPassword" placeholder="Repeat Password" name="repeatPassword" required>
                                     </div>
                                 </div>
-                                <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="Zarejestruj" class="btn btn-primary btn-user btn-block">
 
                                 <hr>
                                 <!--<a href="index.html" class="btn btn-google btn-user btn-block">

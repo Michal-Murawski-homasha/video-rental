@@ -33,45 +33,66 @@
     }
   }
 
+  // Sprawdza czy pole jest puste
+  if (empty($fName)) {
+    echo "Proszę podać imię";
+  } else (strlen(trim($fName)) > 2);
+
+  if (empty($lName)) {
+    echo "Proszę podać nazwisko";
+  } else (strlen(trim($lName)) > 2);
+
+  if (empty($eAddress)) {
+    echo "Proszę podać e-mial";
+  } else (strlen(trim($eAddress)) > 5);
+
+  if (empty($passw)) {
+    echo "Proszę podać hasło";
+  } else (strlen(trim($passw)) > 3);
+
+  if (empty($rPassw)) {
+    echo "Proszę powtórzyć hasło";
+  } else (strlen(trim($rPassw)) === $passw);
+
     // Walidacja danych rejestracji
-    $fNameErr = $lNameErr = $eAddressErr = $passwErr = $rPasswErr;
+    /* $fNameErr = $lNameErr = $eAddressErr = $passwErr = $rPasswErr;
     $fName = $lName = $eAddress = $passw = $rPassw;
 
-    if ($_SESSION['info'] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (empty($_POST["firstName"])) {
         $fNameErr = "Name is required";
       } else {
         $name = test_input($_POST["firstName"]);
       }
 }
-    if ($_SESSION['info'] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (empty($_POST["lastName"])) {
         $lNameErr = "Name is required";
       } else {
         $name = test_input($_POST["lastName"]);
       }
 }
-    if ($_SESSION['info'] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (empty($_POST["emailAddress"])) {
         $eAddressErr = "Name is required";
       } else {
         $name = test_input($_POST["emailAddress"]);
       }
 }
-    if ($_SESSION['info'] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (empty($_POST["password"])) {
         $passwErr = "Name is required";
       } else {
         $name = test_input($_POST["password"]);
       }
 }
-    if ($_SESSION['info'] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (empty($_POST["repeatPassword"])) {
         $rPasswErr = "Name is required";
       } else {
         $name = test_input($_POST["repeatPassword"]);
       }
-}
+} */
     /* $fName = $_POST["firstName"];
     $lName = $_POST["lastName"];
     $eAddress = $_POST["emailAddress"];
@@ -94,3 +115,14 @@
     } */
 
 ?>
+
+<?php
+  /* echo $_POST['firstName'];
+
+  if (isset($_POST['firstName'])) {
+    echo 'JEST';
+  } else {
+    echo 'NIE MA';
+  } */
+
+ ?>
