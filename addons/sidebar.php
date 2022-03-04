@@ -21,7 +21,7 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Strony</span>
+                <span>Konto użytkownika</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
@@ -30,9 +30,6 @@
                     <a class="collapse-item" href="login/register.php">Rejestracja</a>
                     <a class="collapse-item" href="forgot-password.html">Zapomniałem hasła</a>
                     <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Pozostałe strony:</h6>
-                    <a class="collapse-item" href="404.html">Strona 404</a>
-                    <a class="collapse-item" href="blank.html">Pusta strona</a>
                 </div>
             </div>
         </li>

@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Wypożyczalnia wideo - Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -59,11 +59,11 @@
                                 <?php
                                   echo $connectionInfo;
 
-                                  session_destroy();
-                                  unset($_SESSION['info']);
+                                  // session_destroy();
+                                  // unset($_SESSION['info']);
                                 ?><br>
                             </div>
-                            <form class="user" action="sprawdz.php" method="post">
+                            <form class="user" action="users.php" method="post">
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

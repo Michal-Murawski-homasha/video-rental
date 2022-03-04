@@ -2,7 +2,7 @@
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Moja strona w Bootsrap 2021</span>
+                <span>Copyright &copy; Wideo wypożyczaklnia in Bootsrap 2022</span>
             </div>
         </div>
     </footer>
