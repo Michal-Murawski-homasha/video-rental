@@ -1,10 +1,10 @@
 <?php
   require_once('../config/connection.php');
   session_start();
-  // echo $_SESSION['info'];
+  //echo $_SESSION['info'];
  ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
 
@@ -38,66 +38,55 @@
                     <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                     <div class="col-lg-7">
                       <div class="p-5">
-                              <?php
-                                if(isset($_SESSION['info'])) {
-                              ?>
-                              <div class="alert alert-danger" role="alert">
-                              Już istnieje konto o takim adresie e-mail.<br>
-                              Przejdź do panelu logowania i spróbuj się zalogować.
-
-                              <?php
-                                  //$_SESSION['info']; // = 0;
-                                // } else {
-                                // $_SESSION['info']++;
-                              ?>
-                              <?php
-                                }
-                              ?>
+                            <?php
+                              if(isset($_SESSION['info'])) {
+                            ?>
+                            <div class="alert alert-danger" role="alert">
+                            Już istnieje konto o takim adresie e-mail.<br>
+                            Przejdź do panelu logowania i spróbuj się zalogować.
+                            <?php
+                          }
+                            ?>
                             </div>
                             <div class="text-center">
                               <h1 class="h4 text-gray-900 mb-4">Nowe Konto</h1>
                                 <?php
                                   echo $connectionInfo;
-
-                                  // session_destroy();
-                                  // unset($_SESSION['info']);
                                 ?><br>
                             </div>
-                            <form class="user" action="users.php" method="post">
-
+                            <form class="user" action="../validation/validation_registration.php" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name" name="firstName" required>
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" name="firstName">
                                     </div>
+                                    <?php
+                                      echo $exampleFirstName;
+                                      // echo 'Wpisz poprawnie imię';
+                                    ?>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name" name="lastName" required>
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" name="lastName">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="E-mail" name="emailAddress" required>
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="E-mail" name="emailAddress">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" name="password" required>
+                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password" name="repeatPassword" required>
+                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" name="repeatPassword">
                                     </div>
                                 </div>
                                 <input type="submit" value="Zarejestruj" class="btn btn-primary btn-user btn-block">
 
-                                <hr>
-                                <!--<a href="index.html" class="btn btn-google btn-user btn-block">
+                                <!-- <hr>
+                                <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
                                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>-->
+                                </a> -->
                             </form>
                             <hr>
                             <div class="text-center">

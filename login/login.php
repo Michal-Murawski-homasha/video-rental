@@ -1,10 +1,10 @@
 <?php
   require_once('../config/connection.php');
   session_start();
-  echo $_SERVER['DOCUMENT_ROOT'];
+  //echo $_SERVER['DOCUMENT_ROOT'];
  ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
 

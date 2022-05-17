@@ -15,7 +15,7 @@
   echo '<p>e-mail: '.$eAddress.'</p>';
   echo '<p>Hasło: '.$passw.'</p>';
 
-  // $queryUsers = mysqli_query($connection, "SELECT COUNT(1) AS ilosc FROM users WHERE emailUsers = '$eAddress'");
+  // $queryUsers = mysqli_query($connection, "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'");
   $query = "SELECT count(1) AS ilosc From users WHERE emailUser = '$eAddress'";
   $select = $connection->query($query);
 
@@ -33,96 +33,93 @@
     }
   }
 
-  // Sprawdza czy pole jest puste
-  if (empty($fName)) {
-    echo "Proszę podać imię";
-  } else (strlen(trim($fName)) > 2);
-
-  if (empty($lName)) {
-    echo "Proszę podać nazwisko";
-  } else (strlen(trim($lName)) > 2);
-
-  if (empty($eAddress)) {
-    echo "Proszę podać e-mial";
-  } else (strlen(trim($eAddress)) > 5);
-
-  if (empty($passw)) {
-    echo "Proszę podać hasło";
-  } else (strlen(trim($passw)) > 3);
-
-  if (empty($rPassw)) {
-    echo "Proszę powtórzyć hasło";
-  } else (strlen(trim($rPassw)) === $passw);
-
-    // Walidacja danych rejestracji
-    /* $fNameErr = $lNameErr = $eAddressErr = $passwErr = $rPasswErr;
-    $fName = $lName = $eAddress = $passw = $rPassw;
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if (empty($_POST["firstName"])) {
-        $fNameErr = "Name is required";
-      } else {
-        $name = test_input($_POST["firstName"]);
-      }
-}
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if (empty($_POST["lastName"])) {
-        $lNameErr = "Name is required";
-      } else {
-        $name = test_input($_POST["lastName"]);
-      }
-}
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if (empty($_POST["emailAddress"])) {
-        $eAddressErr = "Name is required";
-      } else {
-        $name = test_input($_POST["emailAddress"]);
-      }
-}
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if (empty($_POST["password"])) {
-        $passwErr = "Name is required";
-      } else {
-        $name = test_input($_POST["password"]);
-      }
-}
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if (empty($_POST["repeatPassword"])) {
-        $rPasswErr = "Name is required";
-      } else {
-        $name = test_input($_POST["repeatPassword"]);
-      }
-} */
-    /* $fName = $_POST["firstName"];
-    $lName = $_POST["lastName"];
-    $eAddress = $_POST["emailAddress"];
-    $passw = $_POST["password"];
-    $rPassw = $_POST["repeatPassword"];
-
-    if ($_SESSION['info'] == "POST") {
-      $fName = test_input($_POST["firstName"]);
-      $lName = test_input($_POST["lastName"]);
-      $eAddress = test_input($_POST["emailAddress"]);
-      $passw = test_input($_POST["password"]);
-      $rPassw = test_input($_POST["repeatPassword"]);
-    }
-
-    function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    } */
-
+//   // Sprawdza czy pole jest puste
+//   if (empty($fName)) {
+//     echo "Proszę podać imię";
+//   } else (strlen(trim($fName)) > 2);
+//
+//   if (empty($lName)) {
+//     echo "Proszę podać nazwisko";
+//   } else (strlen(trim($lName)) > 2);
+//
+//   if (empty($eAddress)) {
+//     echo "Proszę podać e-mial";
+//   } else (strlen(trim($eAddress)) > 5);
+//
+//   if (empty($passw)) {
+//     echo "Proszę podać hasło";
+//   } else (strlen(trim($passw)) > 3);
+//
+//   if (empty($rPassw)) {
+//     echo "Proszę powtórzyć hasło";
+//   } else (strlen(trim($rPassw)) === $passw);
+//
+//     // Walidacja danych rejestracji
+//     /* $fNameErr = $lNameErr = $eAddressErr = $passwErr = $rPasswErr;
+//     $fName = $lName = $eAddress = $passw = $rPassw;
+//
+//     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//       if (empty($_POST["firstName"])) {
+//         $fNameErr = "Name is required";
+//       } else {
+//         $name = test_input($_POST["firstName"]);
+//       }
+// }
+//     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//       if (empty($_POST["lastName"])) {
+//         $lNameErr = "Name is required";
+//       } else {
+//         $name = test_input($_POST["lastName"]);
+//       }
+// }
+//     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//       if (empty($_POST["emailAddress"])) {
+//         $eAddressErr = "Name is required";
+//       } else {
+//         $name = test_input($_POST["emailAddress"]);
+//       }
+// }
+//     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//       if (empty($_POST["password"])) {
+//         $passwErr = "Name is required";
+//       } else {
+//         $name = test_input($_POST["password"]);
+//       }
+// }
+//     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//       if (empty($_POST["repeatPassword"])) {
+//         $rPasswErr = "Name is required";
+//       } else {
+//         $name = test_input($_POST["repeatPassword"]);
+//       }
+// } */
+//     /* $fName = $_POST["firstName"];
+//     $lName = $_POST["lastName"];
+//     $eAddress = $_POST["emailAddress"];
+//     $passw = $_POST["password"];
+//     $rPassw = $_POST["repeatPassword"];
+//
+//     if ($_SESSION['info'] == "POST") {
+//       $fName = test_input($_POST["firstName"]);
+//       $lName = test_input($_POST["lastName"]);
+//       $eAddress = test_input($_POST["emailAddress"]);
+//       $passw = test_input($_POST["password"]);
+//       $rPassw = test_input($_POST["repeatPassword"]);
+//     }
+//
+//     function test_input($data) {
+//       $data = trim($data);
+//       $data = stripslashes($data);
+//       $data = htmlspecialchars($data);
+//       return $data;
+//     } */
+//
+//   /* echo $_POST['firstName'];
+//
+//   if (isset($_POST['firstName'])) {
+//     echo 'JEST';
+//   } else {
+//     echo 'NIE MA';
+//   } */
+//
 ?>
-
-<?php
-  /* echo $_POST['firstName'];
-
-  if (isset($_POST['firstName'])) {
-    echo 'JEST';
-  } else {
-    echo 'NIE MA';
-  } */
-
- ?>
