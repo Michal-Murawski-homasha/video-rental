@@ -59,12 +59,9 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" name="firstName">
                                     </div>
-                                    <?php
-                                      echo $exampleFirstName;
-                                      // echo 'Wpisz poprawnie imię';
-                                    ?>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" name="lastName">
+                                        <?php if(isset($_COOKIE['error'])) ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
