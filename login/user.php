@@ -1,6 +1,6 @@
 <?php
-  require_once('../config/connection.php');
   session_start();
+  require_once('../config/connection.php');
 
   $fName = $_POST['firstName'];
   $lName = $_POST['lastName'];
@@ -10,13 +10,14 @@
   $passw = md5($_POST['password']);
   $rPassw = md5($_POST['repeatPassword']);
 
-  echo '<p>Imię: '.$fName.'</p>';
-  echo '<p>Nazwisko: '.$lName.'</p>';
-  echo '<p>e-mail: '.$eAddress.'</p>';
-  echo '<p>Hasło: '.$passw.'</p>';
+  // echo '<p>Imię: '.$fName.'</p>';
+  // echo '<p>Nazwisko: '.$lName.'</p>';
+  // echo '<p>e-mail: '.$eAddress.'</p>';
+  // echo '<p>Hasło: '.$passw.'</p>';
 
+  // Register new user
   // $queryUsers = mysqli_query($connection, "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'");
-  $query = "SELECT count(1) AS ilosc From users WHERE emailUser = '$eAddress'";
+  $query = "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'";
   $select = $connection->query($query);
 
   while ($row = mysqli_fetch_array($select)) {
@@ -32,6 +33,64 @@
       header('Location:login.php');
     }
   }
+
+  if(preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['firstName'])) {
+    $_SESSION['info'];
+  } else {
+    $_SESSION['errorFirstName'] = "Wpisz poprawnie imię";
+    // $errorFirstName = "Wpisz poprawnie imię";
+    header('Location:register.php');
+  }
+
+  if(preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['lastName'])) {
+    $_SESSION['info'];
+  } else {
+    $_SESSION['errorLastName'] = "Wpisz poprawnie nazwisko";
+    // $errorLastName = "Wpisz poprawnie nazwisko";
+    header('Location:register.php');
+  }
+
+  if(preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{0,1}[a-z]{0,5}$@', $_POST['emailAddress'])) {
+    $_SESSION['info'];
+  } else {
+    $_SESSION['errorEmailAddress'] = "Wpisz poprawnie e-mail";
+    // $errorEmailAddress = "Wpisz poprawnie e-mail";
+    header('Location:register.php');
+  }
+
+  if(preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['password'])) {
+    $_SESSION['info'];
+  } else {
+    $_SESSION['errorPassword'] = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
+    // $errorPassword = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
+    header('Location:register.php');
+  }
+
+  if(preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['repeatPassword'])) {
+    $_SESSION['info'];
+  } else {
+    $_SESSION['errorRepeatPassword'] = "Powtórz hasło";
+    // $errorRepeatPassword = "Powtórz hasło";
+    header('Location:register.php');
+  }
+
+  // // Login user
+  // $emailLogin = trim($_POST['emailLogin']);
+  // $passwordLogin = $_POST['passwordLogin'];
+  //
+  // $queryLogin = "SELECT emailUser FROM users WHERE emailUser = '$emailLogin'";
+  // // $selectLogin = $connection->query($selectLogin);
+  //
+  // $records = mysql_query($queryLogin);
+  // if(mysql_num_rows($records) == 0) {
+  //   $_SESSION['infoLogin'] = "Błędny email!";
+  //   header('Location:login.php');
+  //   exit();
+  // }
+  // else {
+  //   $_SESSION['infoLogin'] = "";
+  //   header('Location:index.php');
+  // }
 
 //   // Sprawdza czy pole jest puste
 //   if (empty($fName)) {

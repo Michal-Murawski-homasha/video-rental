@@ -1,7 +1,11 @@
-<!DOCTYPE html>
+<?php session_get_cookie_params(); ?>
+
 <html lang="pl">
 
-<?php include('addons/head.php'); ?>
+<?php
+  include('addons/head.php');
+  // phpinfo();
+?>
 
 <body id="page-top">
 
@@ -44,7 +48,19 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class = "col-md-4">
-
+                                          <?php
+                                            $linkName = $_SESSION['action'] ?? NULL;
+                                            var_dump($linkName);
+                                            if ($linkName === 'films.php') {
+                                              include('~films.php');
+                                              echo $_SESSION['filmsInfo'];
+                                            } elseif ($linkName === 'users.php') {
+                                              include('~users.php');
+                                              echo $_SESSION['userInfo'];
+                                            } else {
+                                              echo 'Brak danych';
+                                            }
+                                          ?>
                                         </div>
                                         </div>
                                 </div>

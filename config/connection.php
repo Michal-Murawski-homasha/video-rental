@@ -1,9 +1,10 @@
 <?php
+  session_start(['cookie_lifetime' => 86400, 'read_and_close'  => true]);
   $config = [$host = 'localhost', $user = 'root', $password = '', $dbname = 'teb'];
 
   $connection = new mysqli('localhost', 'root', '', 'teb');
 
-  mysqli_set_charset($connection, "utf8");
+  $connection->set_charset("utf8mb4");
 
   if($connection->connect_error)
   {
@@ -12,5 +13,5 @@
     $connectionInfo = 'Połączono z bazą danych '.$dbname.' !!! :)<br>';
   }
 
-  mysqli_close($connection);
+  //mysqli_close($connection);
 ?>

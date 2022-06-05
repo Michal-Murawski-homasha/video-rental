@@ -48,16 +48,25 @@
                                         <?php
                                         echo $connectionInfo;
                                         ?><br>
-                                    </div>
-                                    <form class="user" action="users.php" method="post">
+                                        <?php
+                                        if(isset($_SESSION['info'])) {
+                                          ?>
+                                          <div class="alert alert-danger" role="alert">
+                                            Błąd logowania!<br>
+                                            Podałeś błędny login lub hasło!
+                                          </div>
+                                          <?php
+                                          }
+                                          ?>
+                                    <form class="user" action="userlogin.php" method="post">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                placeholder="Enter Email Address..." name="emailLogin" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Password" name="passwordLogin" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -66,9 +75,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="../index.php" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                            <input type="submit" class="btn btn-primary btn-user btn-block" name="" value="Login">
                                         <hr>
                                         <!--<a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
