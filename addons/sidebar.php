@@ -28,7 +28,8 @@
                     <h6 class="collapse-header">Ekrany logowania:</h6>
                     <a class="collapse-item" href="login/login.php">Login</a>
                     <a class="collapse-item" href="login/register.php">Rejestracja</a>
-                    <a class="collapse-item" href="forgot-password.html">Zapomniałem hasła</a>
+                    <a class="collapse-item" href="forgot-password.php">Zapomniałem hasła</a>
+                    <a class="collapse-item" href="login/logout.php">Wyloguj</a>
                     <div class="collapse-divider"></div>
                 </div>
             </div>
