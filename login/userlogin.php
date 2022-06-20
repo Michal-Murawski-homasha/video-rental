@@ -1,20 +1,23 @@
 <?php
   session_start();
+?>
+
+<?php
   require_once('../config/connection.php');
 
   $emailLogin = $_POST['emailLogin'];
   $passwordLogin = md5($_POST['passwordLogin']);
 
-  $resultLogin = mysqli_query($connection, "SELECT * FROM users WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
+  $resultLogin = mysqli_query($connection, "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
 
     if(mysqli_num_rows($resultLogin) == 0) {
-      $_SESSION['info'] = "Błąd logowania";
       $_SESSION['login'] = 0;
+      $_SESSION['info'] = "Błąd logowania";
       header('Location:login.php');
       exit();
     } else {
-      $_SESSION['info'] = "Poprawne logowanie!";
       $_SESSION['login'] = 1;
+      $_SESSION['info'] = "Jesteś zalogowany";
       $_SESSION['transactionId'] = md5(time() + rand(1000,9999));
       header('Location:../index.php');
       exit();

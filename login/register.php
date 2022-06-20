@@ -54,7 +54,7 @@
                                   echo $connectionInfo;
                                 ?><br>
                             </div>
-                            <form class="user" action="user.php" method="post">
+                            <form class="user" action="employee.php" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" name="firstName" value="<?php if(isset($_SESSION['errorFirstName'])) {
@@ -111,10 +111,10 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <a class="small" href="../index.php">Strona główna</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.php">Already have an account? Login!</a>
+                                <a class="small" href="login.php">Masz już konto? Zaloguj się!</a>
                             </div>
                         </div>
                     </div>

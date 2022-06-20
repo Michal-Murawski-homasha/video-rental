@@ -1,6 +1,6 @@
 <?php
+  // session_start();
   require_once('../config/connection.php');
-  session_start();
   //echo $_SERVER['DOCUMENT_ROOT'];
  ?>
 <!DOCTYPE html>
@@ -49,14 +49,23 @@
                                         echo $connectionInfo;
                                         ?><br>
                                         <?php
-                                        if(isset($_SESSION['info'])) {
-                                          ?>
-                                          <div class="alert alert-danger" role="alert">
-                                            Błąd logowania!<br>
-                                            Podałeś błędny login lub hasło!
-                                          </div>
-                                          <?php
+                                        if(isset($_SESSION['login'])) {
+                                          if ($_SESSION['login'] == 1) {
+                                            ?>
+                                            <div class="alert alert-success" role="alert">
+                                              <?php echo $_SESSION['info']; ?>
+                                            </div>
+                                            <?php
+                                          } else {
+                                            ?>
+                                            <div class="alert alert-danger" role="alert">
+                                              <?php echo $_SESSION['info']; ?>
+                                            </div>
+                                            <?php
                                           }
+                                        } else {
+                                          echo 'Proszę się zalogować';
+                                        }
                                           ?>
                                     <form class="user" action="userlogin.php" method="post">
                                         <div class="form-group">
@@ -86,10 +95,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="../index.php">Strona główna</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="register.php">Utwórz konto</a>
                                     </div>
                                 </div>
                             </div>

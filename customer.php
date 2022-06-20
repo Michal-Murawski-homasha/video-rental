@@ -1,5 +1,8 @@
 <?php
-// session_start();
+  // if (session_status() == PHP_SESSION_NONE) {
+  //   session_start();
+  // }
+  require_once('config/connection.php');
 ?>
 
 <html lang="pl">
@@ -27,7 +30,7 @@
 
                       <!-- Page Heading -->
                       <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                          <h1 class="h3 mb-0 text-gray-800">Panel główny</h1>
+                          <h1 class="h3 mb-0 text-gray-800">Klienci</h1>
                       </div>
 
                       <div class="row">
@@ -45,26 +48,29 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              // echo '<table class="table">';
-                                              // if (isset($_SESSION['filmConnect']))
-                                              // {
-                                              //   echo $_SESSION['filmsInfo2'];
-                                              //   echo $_SESSION['filmsInfo3'];
-                                              // }
-                                              // elseif (isset($_SESSION['userConnect']))
-                                              // {
-                                              //   echo $_SESSION['userInfo'];
-                                              // }
-                                              // elseif (isset($_SESSION['rentalConnect']))
-                                              // {
-                                              // //   echo $_SESSION['rentalInfo1'];
-                                              //   echo $_SESSION['rentalInfo2'];
-                                              //   echo $_SESSION['rentalInfo3'];
-                                              // //   echo $_SESSION['rentalInfo4'];
-                                              // }
-                                              // // } else {
-                                              // //   echo 'Brak danych';
-                                              // echo '</table>';
+                                              $query = 'SELECT * FROM customer';
+                                              $result = $connection->query($query);
+                                              if (mysqli_num_rows($result) == 0) {
+                                                echo 'NIE';
+                                              } else {
+                                                echo  '<table class="table">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>Imię</th>
+                                                            <th>Nazwisko</th>
+                                                            <th>Adres e-mail</th>
+                                                          </tr>
+                                                        </thead>';
+                                                while ($row = $result->fetch_assoc())
+                                                {
+                                                  echo '<tbody>
+                                                  <td>'.$row['first_name'].'</td>
+                                                  <td>'.$row['last_name'].'</td>
+                                                  <td>'.$row['email'].'</td>
+                                                  </tbody>';
+                                                }
+                                                echo  '</table>';
+                                              }
                                             ?>
                                           </div>
                                         </div>

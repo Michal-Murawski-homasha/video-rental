@@ -1,5 +1,8 @@
 <?php
   session_start();
+?>
+
+<?php
   require_once('../config/connection.php');
 
   $fName = $_POST['firstName'];
