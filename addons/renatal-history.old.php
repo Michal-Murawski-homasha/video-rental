@@ -1,5 +1,6 @@
 <?php
-  if (session_status() == PHP_SESSION_NONE) {
+  if (session_status() == PHP_SESSION_NONE)
+  {
     session_start();
   }
 ?>
@@ -10,12 +11,15 @@
   $query = 'SELECT * FROM rental';
   $result = $connection->query($query);
 
-  if (mysqli_num_rows($result) == 0) {
+  if (mysqli_num_rows($result) == 0)
+  {
     $_SESSION['rentalConnect'] = 0;
     $_SESSION['rentalInfo'] = '';
     header('Location:../index.php');
     exit();
-  } else {
+  }
+  else
+  {
     $_SESSION['rentalConnect'] = 1;
     // $_SESSION['rentalInfo1'] = '<table class="table">';
     $_SESSION['rentalInfo2'] = '<tr><th>ID wypożyczenia</th><th> ID wykazu</th><th> Data wypożyczenia</th><th> Data oddania</th></tr>';

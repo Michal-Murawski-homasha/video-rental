@@ -1,5 +1,6 @@
 <?php
-  if (session_status() == PHP_SESSION_NONE) {
+  if (session_status() == PHP_SESSION_NONE)
+  {
     session_start();
   }
 ?>
@@ -11,13 +12,16 @@
   $result = $connection->query($query);
   // $numberRows = $result->numRows;
 
-  if (mysqli_num_rows($result) == 0) {
+  if (mysqli_num_rows($result) == 0)
+  {
   // if ($numRows == 0) {
     $_SESSION['filmsConnect'] = 0;
     $_SESSION['filmsInfo'] = '';
     header('Location:../index.php');
     exit();
-  } else {
+  }
+  else
+  {
     $_SESSION['filmsConnect'] = 1;
     // $_SESSION['filmsInfo1'] = '<table class="table">';
     $_SESSION['filmsInfo2'] = '<thead><tr><th> Tytuł</th><th> Opis</th><th> Data produkcji</th></tr></thead>';

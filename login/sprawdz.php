@@ -1,9 +1,12 @@
 <?php
   echo $_POST['firstName'];
 
-  if (isset($_POST['firstName'])) {
+  if (isset($_POST['firstName']))
+  {
     echo 'JEST';
-  } else {
+  }
+  else
+  {
     echo 'NIE MA';
   }
 

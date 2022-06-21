@@ -9,10 +9,12 @@
 
   // $connection->set_charset("utf8mb4");
 
-  if($connection->connect_error)
+  if ($connection->connect_error)
   {
     die("Błąd: ".$connection->connect_error);
-  } else {
+  }
+  else
+  {
     $connectionInfo = 'Połączono z bazą danych '.$dbname.' !!! :)<br>';
   }
 

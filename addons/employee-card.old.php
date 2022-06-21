@@ -1,5 +1,6 @@
 <?php
-  if (session_status() == PHP_SESSION_NONE) {
+  if (session_status() == PHP_SESSION_NONE)
+  {
     session_start();
   }
 ?>
@@ -11,13 +12,16 @@
   $result = $connection->query($query);
   // $numberRows = $result->numRows;
 
-  if (mysqli_num_rows($result) == 0) {
+  if (mysqli_num_rows($result) == 0)
+  {
   // if ($numRows == 0) {
     $_SESSION['usersConnect'] = 0;
     $_SESSION['usersInfo'] = '';
     // header('Location:../index.php');
     exit();
-  } else {
+  }
+  else
+  {
     $_SESSION['usersConnect'] = 1;
     // $_SESSION['usersInfo1'] = '<table class="table">';
     $_SESSION['usersInfo2'] = '<thead><tr><th> Imię</th><th> Nazwisko</th><th> Adres e-mail</th></tr></thead>';

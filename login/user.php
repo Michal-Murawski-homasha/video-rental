@@ -23,13 +23,17 @@
   $query = "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'";
   $select = $connection->query($query);
 
-  while ($row = mysqli_fetch_array($select)) {
+  while ($row = mysqli_fetch_array($select))
+  {
     $ilosc = $row['ilosc'];
-    if($ilosc>0) {
+    if ($ilosc>0)
+    {
       $_SESSION['info'] = "Konto z takim emialem już istnieje!";
       header('Location:register.php');
       exit();
-    } else {
+    }
+    else
+    {
       $insert = "INSERT INTO users (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
       $add = $connection->query($insert);
       $_SESSION['info'] = "Utworzono nowe konto";
@@ -37,41 +41,56 @@
     }
   }
 
-  if(preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['firstName'])) {
+  if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['firstName']))
+  {
     $_SESSION['info'];
-  } else {
+  }
+  else
+  {
     $_SESSION['errorFirstName'] = "Wpisz poprawnie imię";
     // $errorFirstName = "Wpisz poprawnie imię";
     header('Location:register.php');
   }
 
-  if(preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['lastName'])) {
+  if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['lastName']))
+  {
     $_SESSION['info'];
-  } else {
+  }
+  else
+  {
     $_SESSION['errorLastName'] = "Wpisz poprawnie nazwisko";
     // $errorLastName = "Wpisz poprawnie nazwisko";
     header('Location:register.php');
   }
 
-  if(preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{0,1}[a-z]{0,5}$@', $_POST['emailAddress'])) {
+  if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{0,1}[a-z]{0,5}$@', $_POST['emailAddress']))
+  {
     $_SESSION['info'];
-  } else {
+  }
+  else
+  {
     $_SESSION['errorEmailAddress'] = "Wpisz poprawnie e-mail";
     // $errorEmailAddress = "Wpisz poprawnie e-mail";
     header('Location:register.php');
   }
 
-  if(preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['password'])) {
+  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['password']))
+  {
     $_SESSION['info'];
-  } else {
+  }
+  else
+  {
     $_SESSION['errorPassword'] = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
     // $errorPassword = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
     header('Location:register.php');
   }
 
-  if(preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['repeatPassword'])) {
+  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['repeatPassword']))
+  {
     $_SESSION['info'];
-  } else {
+  }
+  else
+  {
     $_SESSION['errorRepeatPassword'] = "Powtórz hasło";
     // $errorRepeatPassword = "Powtórz hasło";
     header('Location:register.php');

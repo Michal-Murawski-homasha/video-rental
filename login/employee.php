@@ -19,13 +19,17 @@
   $query = "SELECT count(1) AS ilosc From employee WHERE emailUser = '$eAddress'";
   $select = $connection->query($query);
 
-  while ($row = mysqli_fetch_array($select)) {
+  while ($row = mysqli_fetch_array($select))
+  {
     $ilosc = $row['ilosc'];
-    if($ilosc>0) {
+    if ($ilosc>0)
+    {
       $_SESSION['info'] = "Konto z takim emialem już istnieje!";
       header('Location:register.php');
       exit();
-    } else {
+    }
+    else
+    {
       $insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
       $add = $connection->query($insert);
       $_SESSION['info'] = "Utworzono nowe konto";

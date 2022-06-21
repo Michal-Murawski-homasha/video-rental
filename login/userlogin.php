@@ -10,12 +10,15 @@
 
   $resultLogin = mysqli_query($connection, "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
 
-    if(mysqli_num_rows($resultLogin) == 0) {
+    if (mysqli_num_rows($resultLogin) == 0)
+    {
       $_SESSION['login'] = 0;
       $_SESSION['info'] = "Błąd logowania";
       header('Location:login.php');
       exit();
-    } else {
+    }
+    else
+    {
       $_SESSION['login'] = 1;
       $_SESSION['info'] = "Jesteś zalogowany";
       $_SESSION['transactionId'] = md5(time() + rand(1000,9999));

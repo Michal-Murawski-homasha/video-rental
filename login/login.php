@@ -49,21 +49,27 @@
                                         echo $connectionInfo;
                                         ?><br>
                                         <?php
-                                        if(isset($_SESSION['login'])) {
-                                          if ($_SESSION['login'] == 1) {
+                                        if (isset($_SESSION['login']))
+                                        {
+                                          if ($_SESSION['login'] == 1)
+                                          {
                                             ?>
                                             <div class="alert alert-success" role="alert">
                                               <?php echo $_SESSION['info']; ?>
                                             </div>
                                             <?php
-                                          } else {
+                                          }
+                                          else
+                                          {
                                             ?>
                                             <div class="alert alert-danger" role="alert">
                                               <?php echo $_SESSION['info']; ?>
                                             </div>
                                             <?php
                                           }
-                                        } else {
+                                        }
+                                        else
+                                        {
                                           echo 'Proszę się zalogować';
                                         }
                                           ?>

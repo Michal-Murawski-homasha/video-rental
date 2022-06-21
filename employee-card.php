@@ -50,9 +50,12 @@
                                             <?php
                                               $query = 'SELECT * FROM employee';
                                               $result = $connection->query($query);
-                                              if (mysqli_num_rows($result) == 0) {
+                                              if (mysqli_num_rows($result) == 0)
+                                              {
                                                 echo 'NIE';
-                                              } else {
+                                              }
+                                              else
+                                              {
                                                 echo  '<table class="table">
                                                         <thead>
                                                           <tr>
