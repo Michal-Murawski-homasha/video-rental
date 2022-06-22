@@ -1,8 +1,4 @@
 <?php
-  session_start();
-?>
-
-<?php
   require_once('../config/connection.php');
 
   $emailLogin = $_POST['emailLogin'];

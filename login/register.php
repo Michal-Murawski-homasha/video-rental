@@ -1,7 +1,5 @@
 <?php
-  // session_get_cookie_params('session.cookie_lifetime');
   require_once('../config/connection.php');
-  echo $_SESSION['info'];
  ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -42,9 +40,16 @@
                               if (isset($_SESSION['info']))
                               {
                             ?>
-                            <div class="alert alert-danger" role="alert">
-                            Już istnieje konto o takim adresie e-mail.<br>
-                            Przejdź do panelu logowania i spróbuj się zalogować.
+                            <div class="alert alert-success" role="alert">
+                            <?php echo $_SESSION['info']; ?>
+                            </div>
+                            <?php
+                              }
+                              else
+                              {
+                            ?>
+                            <div class="alet alert-danger" role="alert">
+                            <?php echo $_SESSION['info']; ?>
                             </div>
                             <?php
                               }
@@ -58,7 +63,7 @@
                             <form class="user" action="employee.php" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" name="firstName" value="">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" name="firstName" value="" required>
                                         <?php
                                           if (isset($_SESSION['errorFirstName']))
                                           {
@@ -72,7 +77,7 @@
 
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" name="lastName" value="">
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" name="lastName" value="" required>
                                         <?php
                                           if (isset($_SESSION['errorLastName']))
                                           {
@@ -87,7 +92,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="E-mail" name="emailAddress" value="">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="E-mail" name="emailAddress" value="" required>
                                     <?php
                                       if (isset($_SESSION['errorEmailAddress']))
                                       {
@@ -102,7 +107,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" value="">
+                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" value="" required>
                                         <?php
                                           if (isset($_SESSION['errorPassword']))
                                           {
@@ -113,7 +118,7 @@
                                         ?>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" name="repeatPassword" value="">
+                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" name="repeatPassword" value="" required>
                                         <?php
                                           if (isset($_SESSION['errorRepeatPassword']))
                                           {

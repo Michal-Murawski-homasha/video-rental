@@ -49,7 +49,11 @@
                                         echo $connectionInfo;
                                         ?><br>
                                         <?php
-                                        if (isset($_SESSION['login']))
+                                        if (!isset($_SESSION['login']))
+                                        {
+                                          echo 'Proszę się zalogować';
+                                        }
+                                        else
                                         {
                                           if ($_SESSION['login'] == 1)
                                           {
@@ -59,7 +63,7 @@
                                             </div>
                                             <?php
                                           }
-                                          else
+                                          elseif ($_SESSION['login'] == 0)
                                           {
                                             ?>
                                             <div class="alert alert-danger" role="alert">
@@ -67,10 +71,6 @@
                                             </div>
                                             <?php
                                           }
-                                        }
-                                        else
-                                        {
-                                          echo 'Proszę się zalogować';
                                         }
                                           ?>
                                     <form class="user" action="userlogin.php" method="post">

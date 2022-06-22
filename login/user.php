@@ -1,5 +1,8 @@
 <?php
-  session_start();
+  if (session_status() == PHP_SESSION_NONE)
+  {
+    session_start();
+  }
 ?>
 
 <?php
@@ -67,7 +70,7 @@
   {
     $_SESSION['info'];
   }
-  else
+  elseif (preg_match('@^[^ ]+$@', $_POST['emailAddress']))
   {
     $_SESSION['errorEmailAddress'] = "Wpisz poprawnie e-mail";
     // $errorEmailAddress = "Wpisz poprawnie e-mail";
@@ -80,7 +83,7 @@
   }
   else
   {
-    $_SESSION['errorPassword'] = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
+    $_SESSION['errorPassword'] = '<abbr title="Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr">Wpisz hasło zawierające...</abbr>';
     // $errorPassword = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
     header('Location:register.php');
   }
