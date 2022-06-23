@@ -1,7 +1,7 @@
 <?php
-  // if (session_status() == PHP_SESSION_NONE) {
-  //   session_start();
-  // }
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
   require_once('config/connection.php');
 ?>
 
@@ -48,22 +48,28 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
+                                            if (!isset($_SESSION['info']))
+                                            {
+                                              echo 'Zaloguj się';
+                                            }
+                                            else
+                                            {
                                               $query = 'SELECT * FROM customer';
                                               $result = $connection->query($query);
                                               if (mysqli_num_rows($result) == 0)
                                               {
-                                                echo 'NIE';
+                                                echo 'Brak danych';
                                               }
                                               else
                                               {
                                                 echo  '<table class="table">
-                                                        <thead>
-                                                          <tr>
-                                                            <th>Imię</th>
-                                                            <th>Nazwisko</th>
-                                                            <th>Adres e-mail</th>
-                                                          </tr>
-                                                        </thead>';
+                                                <thead>
+                                                <tr>
+                                                <th>Imię</th>
+                                                <th>Nazwisko</th>
+                                                <th>Adres e-mail</th>
+                                                </tr>
+                                                </thead>';
                                                 while ($row = $result->fetch_assoc())
                                                 {
                                                   echo '<tbody>
@@ -74,6 +80,8 @@
                                                 }
                                                 echo  '</table>';
                                               }
+                                            }
+
                                             ?>
                                           </div>
                                         </div>

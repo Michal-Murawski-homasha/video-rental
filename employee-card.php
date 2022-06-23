@@ -1,7 +1,8 @@
 <?php
-  // if (session_status() == PHP_SESSION_NONE) {
-  //   session_start();
-  // }
+  if (session_status() == PHP_SESSION_NONE)
+  {
+    session_start();
+  }
   require_once('config/connection.php');
 ?>
 
@@ -48,31 +49,38 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              $query = 'SELECT * FROM employee';
-                                              $result = $connection->query($query);
-                                              if (mysqli_num_rows($result) == 0)
+                                              if (!isset($_SESSION['info']))
                                               {
-                                                echo 'NIE';
+                                                echo 'Zaloguj się';
                                               }
                                               else
                                               {
-                                                echo  '<table class="table">
-                                                        <thead>
-                                                          <tr>
-                                                            <th>Imię</th>
-                                                            <th>Nazwisko</th>
-                                                            <th>Adres e-mail</th>
-                                                          </tr>
-                                                        </thead>';
-                                                while ($row = $result->fetch_assoc())
+                                                $query = 'SELECT * FROM employee';
+                                                $result = $connection->query($query);
+                                                if (mysqli_num_rows($result) == 0)
                                                 {
-                                                  echo '<tbody>
-                                                  <td>'.$row['firstNameUser'].'</td>
-                                                  <td>'.$row['lastNameUser'].'</td>
-                                                  <td>'.$row['emailUser'].'</td>
-                                                  </tbody>';
+                                                  echo 'NIE';
                                                 }
-                                                echo  '</table>';
+                                                else
+                                                {
+                                                  echo  '<table class="table">
+                                                  <thead>
+                                                  <tr>
+                                                  <th>Imię</th>
+                                                  <th>Nazwisko</th>
+                                                  <th>Adres e-mail</th>
+                                                  </tr>
+                                                  </thead>';
+                                                  while ($row = $result->fetch_assoc())
+                                                  {
+                                                    echo '<tbody>
+                                                    <td>'.$row['firstNameUser'].'</td>
+                                                    <td>'.$row['lastNameUser'].'</td>
+                                                    <td>'.$row['emailUser'].'</td>
+                                                    </tbody>';
+                                                  }
+                                                  echo  '</table>';
+                                                }
                                               }
                                             ?>
                                           </div>

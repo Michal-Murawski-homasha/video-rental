@@ -1,8 +1,8 @@
 <?php
-  // if (session_status() == PHP_SESSION_NONE)
-  // {
-  //   session_start();
-  // }
+  if (session_status() == PHP_SESSION_NONE)
+  {
+    session_start();
+  }
   require_once('config/connection.php');
 ?>
 
@@ -49,45 +49,52 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                            $query = 'SELECT
-                                                          rental_date,
-                                                          return_date,
-                                                          inventory_id,
-                                                          first_name,
-                                                          last_name
-                                                      FROM
-                                                          rental AS F
-                                                      JOIN customer AS L ON F.customer_id = L.customer_id
-                                                      ORDER BY rental_date DESC
-                                                      LIMIT 10';
-                                              $result = $connection->query($query);
-                                              if (mysqli_num_rows($result) == 0)
+                                              if (!isset($_SESSION['info']))
                                               {
-                                                echo '';
+                                                echo 'Zaloguj się';
                                               }
                                               else
                                               {
-                                                echo
-                                                '<table class="table">
-                                                  <thead>
-                                                    <tr>
-                                                      <th>Data wypożyczenia</th>
-                                                      <th>Imię</th>
-                                                      <th>Nazwisko</th>
-                                                      <th>Data zwrotu</th>
-                                                    </tr>
-                                                  </thead>';
-                                                while ($row = $result->fetch_assoc())
+                                                $query = 'SELECT
+                                                rental_date,
+                                                return_date,
+                                                inventory_id,
+                                                first_name,
+                                                last_name
+                                                FROM
+                                                rental AS F
+                                                JOIN customer AS L ON F.customer_id = L.customer_id
+                                                ORDER BY rental_date DESC
+                                                LIMIT 10';
+                                                $result = $connection->query($query);
+                                                if (mysqli_num_rows($result) == 0)
+                                                {
+                                                  echo '';
+                                                }
+                                                else
                                                 {
                                                   echo
-                                                  '<tbody>
+                                                  '<table class="table">
+                                                  <thead>
+                                                  <tr>
+                                                  <th>Data wypożyczenia</th>
+                                                  <th>Imię</th>
+                                                  <th>Nazwisko</th>
+                                                  <th>Data zwrotu</th>
+                                                  </tr>
+                                                  </thead>';
+                                                  while ($row = $result->fetch_assoc())
+                                                  {
+                                                    echo
+                                                    '<tbody>
                                                     <td>'.$row['rental_date'].'</td>
                                                     <td>'.$row['first_name'].'</td>
                                                     <td>'.$row['last_name'].'</td>
                                                     <td>'.$row['return_date'].'</td>
-                                                  </tbody>';
+                                                    </tbody>';
+                                                  }
+                                                  echo  '</table>';
                                                 }
-                                                echo  '</table>';
                                               }
                                             ?>
                                           </div>

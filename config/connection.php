@@ -1,8 +1,8 @@
 <?php
-  if (session_status() == PHP_SESSION_NONE)
-  {
-    session_start(['cookie_lifetime' => 86400, 'read_and_close'  => true]);
-  }
+  // if (session_status() == PHP_SESSION_NONE)
+  // {
+  //   session_start(['cookie_lifetime' => 86400, 'read_and_close'  => true]);
+  // }
 ?>
 
 <?php

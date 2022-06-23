@@ -1,7 +1,7 @@
 <?php
-  // if (session_status() == PHP_SESSION_NONE) {
-  //   session_start();
-  // }
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
   require_once('config/connection.php');
 ?>
 
@@ -48,46 +48,53 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              $query = 'SELECT
-                                                            film_id,
-                                                            title,
-                                                            release_year,
-                                                            name,
-                                                            length,
-                                                            rental_rate
-                                                        FROM
-                                                            film AS F
-                                                        JOIN language AS L ON F.language_id = L.language_id';
-                                              $result = $connection->query($query);
-                                              if (mysqli_num_rows($result) == 0)
+                                              if (!isset($_SESSION['info']))
                                               {
-                                                echo 'NIE';
+                                                echo 'Zaloguj się';
                                               }
                                               else
                                               {
-                                                echo  '<table class="table">
-                                                        <thead>
-                                                          <tr>
-                                                            <th>ID</th>
-                                                            <th>Tytuł</th>
-                                                            <th>Data produkcji</th>
-                                                            <th>Jęyk</th>
-                                                            <th>Czas</th>
-                                                            <th>Cena</th>
-                                                          </tr>
-                                                        </thead>';
-                                                while ($row = $result->fetch_assoc())
+                                                $query = 'SELECT
+                                                film_id,
+                                                title,
+                                                release_year,
+                                                name,
+                                                length,
+                                                rental_rate
+                                                FROM
+                                                film AS F
+                                                JOIN language AS L ON F.language_id = L.language_id';
+                                                $result = $connection->query($query);
+                                                if (mysqli_num_rows($result) == 0)
                                                 {
-                                                  echo '<tbody>
-                                                  <td>'.$row['film_id'].'</td>
-                                                  <td>'.$row['title'].'</td>
-                                                  <td>'.$row['release_year'].'</td>
-                                                  <td>'.$row['name'].'</td>
-                                                  <td>'.$row['length'].'</td>
-                                                  <td>'.$row['rental_rate'].'</td>
-                                                  </tbody>';
+                                                  echo 'NIE';
                                                 }
-                                                echo  '</table>';
+                                                else
+                                                {
+                                                  echo  '<table class="table">
+                                                  <thead>
+                                                  <tr>
+                                                  <th>ID</th>
+                                                  <th>Tytuł</th>
+                                                  <th>Data produkcji</th>
+                                                  <th>Jęyk</th>
+                                                  <th>Czas</th>
+                                                  <th>Cena</th>
+                                                  </tr>
+                                                  </thead>';
+                                                  while ($row = $result->fetch_assoc())
+                                                  {
+                                                    echo '<tbody>
+                                                    <td>'.$row['film_id'].'</td>
+                                                    <td>'.$row['title'].'</td>
+                                                    <td>'.$row['release_year'].'</td>
+                                                    <td>'.$row['name'].'</td>
+                                                    <td>'.$row['length'].'</td>
+                                                    <td>'.$row['rental_rate'].'</td>
+                                                    </tbody>';
+                                                  }
+                                                  echo  '</table>';
+                                                }
                                               }
                                             ?>
                                           </div>
