@@ -23,11 +23,11 @@
 
   // $queryUsers = mysqli_query($connection, "SELECT COUNT(1) AS ilosc FROM users WHERE emailUsers = '$eAddress'");
 
-//////////////////////////////////////////////////////////////////////////////////
-// Validation
+  //////////////////////////////////////////////////////////////////////////////////
+  // Validation
   if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['firstName']))
   {
-    $_SESSION['info'];
+    $_SESSION['info'] = 1;
   }
   else
   {
@@ -38,7 +38,7 @@
 
   if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['lastName']))
   {
-    $_SESSION['info'];
+    $_SESSION['info'] = 1;
   }
   else
   {
@@ -49,7 +49,7 @@
 
   if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', $_POST['emailAddress']))
   {
-    $_SESSION['info'];
+    $_SESSION['info'] = 1;
   }
   elseif (preg_match('@^[^ ]+$@', $_POST['emailAddress']))
   {
@@ -60,18 +60,18 @@
 
   if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['password']))
   {
-    $_SESSION['info'];
+    $_SESSION['info'] = 1;
   }
   else
   {
-    $_SESSION['errorPassword'] = '<abbr title="Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr">Wpisz hasło zawierające...</abbr>';
+    $_SESSION['errorPassword'] = '<abbr class="registerAbbr" title="Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr">&#63</abbr>';
     // $errorPassword = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
     header('Location:register.php');
   }
 
   if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['repeatPassword']))
   {
-    $_SESSION['info'];
+    $_SESSION['info'] = 1;
   }
   else
   {
@@ -79,7 +79,7 @@
     // $errorRepeatPassword = "Powtórz hasło";
     header('Location:register.php');
   }
-
+  
 ///////////////////////////////////////////////////////////////////////////////////
 // Checking if an account exists
   $query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$eAddress'";
@@ -90,15 +90,15 @@
     $ilosc = $row['ilosc'];
     if ($ilosc>0)
     {
-      $_SESSION['info'] = "Konto z takim emialem już istnieje!";
+      $_SESSION['accountExists'] = "Konto z takim emialem już istnieje!";
       header('Location:register.php');
       exit();
     }
-    else
+    elseif ($_SESSION['info'] == 1)
     {
       $insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
       $add = $connection->query($insert);
-      $_SESSION['info'] = "Utworzono nowe konto";
+      $_SESSION['accountNotExists'];
       header('Location:login.php');
     }
   }

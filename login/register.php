@@ -26,6 +26,7 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- <link href="/css/style.css" rel="stylesheet"> -->
 
 </head>
 
@@ -41,19 +42,15 @@
                     <div class="col-lg-7">
                       <div class="p-5">
                             <?php
-                              if (isset($_SESSION['info']))
+                              if (isset($_SESSION['accountNotExists']))
                               {
-                            ?>
-                            <div class="alert alert-success" role="alert">
-                            <?php echo $_SESSION['info']; ?>
-                            </div>
-                            <?php
+                                echo '';
                               }
                               else
                               {
                             ?>
                             <div class="alet alert-danger" role="alert">
-                            <?php echo $_SESSION['info']; ?>
+                            <?php echo $_SESSION['accountExists']; ?>
                             </div>
                             <?php
                               }

@@ -53,19 +53,18 @@
                                         echo $connectionInfo;
                                         ?><br>
                                         <?php
-                                        if (!isset($_SESSION['login']))
+                                        if (!isset($_SESSION['info']))
                                         {
-                                          echo 'Proszę się zalogować';
+                                          echo '';
                                         }
                                         else
                                         {
-                                          if ($_SESSION['login'] == 1)
-                                          {
-                                            ?>
-                                            <div class="alert alert-success" role="alert">
-                                              <?php echo $_SESSION['info']; ?>
-                                            </div>
-                                            <?php
+                                          if ($_SESSION['login'] == 1) {
+                                        ?>
+                                        <div class="alert alert-success" role="alert">
+                                        <?php echo $_SESSION['info']; ?>
+                                        </div>
+                                        <?php
                                           }
                                           elseif ($_SESSION['login'] == 0)
                                           {
