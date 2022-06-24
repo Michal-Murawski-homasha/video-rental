@@ -48,7 +48,7 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              if (!isset($_SESSION['info']))
+                                              if (!isset($_SESSION['loginStatus']))
                                               {
                                                 echo 'Zaloguj się';
                                               }

@@ -27,7 +27,8 @@
   // Validation
   if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['firstName']))
   {
-    $_SESSION['info'] = 1;
+    $_SESSION['infoValidation'] = 1;
+    // $_SESSION['errorFirstName'] = "";
   }
   else
   {
@@ -38,7 +39,8 @@
 
   if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['lastName']))
   {
-    $_SESSION['info'] = 1;
+    $_SESSION['infoValidation'] = 1;
+    // $_SESSION['errorLastName'] = "";
   }
   else
   {
@@ -49,7 +51,8 @@
 
   if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', $_POST['emailAddress']))
   {
-    $_SESSION['info'] = 1;
+    $_SESSION['infoValidation'] = 1;
+    // $_SESSION['errorEmailAddress'] = "";
   }
   elseif (preg_match('@^[^ ]+$@', $_POST['emailAddress']))
   {
@@ -60,7 +63,8 @@
 
   if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['password']))
   {
-    $_SESSION['info'] = 1;
+    $_SESSION['infoValidation'] = 1;
+    // $_SESSION['errorPassword'] = "";
   }
   else
   {
@@ -71,7 +75,8 @@
 
   if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['repeatPassword']))
   {
-    $_SESSION['info'] = 1;
+    $_SESSION['infoValidation'] = 1;
+    // $_SESSION['errorRepeatPassword'] = "";
   }
   else
   {
@@ -79,7 +84,7 @@
     // $errorRepeatPassword = "Powtórz hasło";
     header('Location:register.php');
   }
-  
+
 ///////////////////////////////////////////////////////////////////////////////////
 // Checking if an account exists
   $query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$eAddress'";
@@ -94,7 +99,7 @@
       header('Location:register.php');
       exit();
     }
-    elseif ($_SESSION['info'] == 1)
+    elseif ($_SESSION['infoValidation'] == 1)
     {
       $insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
       $add = $connection->query($insert);
@@ -103,8 +108,8 @@
     }
   }
 
-
-  // // Login user
+/////////////////////////////////////////////////////////////////////////////////
+// Login user
   // $emailLogin = trim($_POST['emailLogin']);
   // $passwordLogin = $_POST['passwordLogin'];
   //

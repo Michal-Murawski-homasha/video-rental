@@ -42,7 +42,7 @@
                     <div class="col-lg-7">
                       <div class="p-5">
                             <?php
-                              if (isset($_SESSION['accountNotExists']))
+                              if (isset($_SESSION['accountExists']))
                               {
                                 echo '';
                               }
@@ -66,13 +66,13 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" name="firstName" value="" required>
                                         <?php
-                                          if (isset($_SESSION['errorFirstName']))
+                                          if (!isset($_SESSION['errorFirstName']))
                                           {
-                                            echo $_SESSION['errorFirstName'];
+                                            echo '';
                                           }
                                           else
                                           {
-                                            echo '';
+                                            echo $_SESSION['errorFirstName'];
                                           }
                                         ?>
 
@@ -80,13 +80,13 @@
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" name="lastName" value="" required>
                                         <?php
-                                          if (isset($_SESSION['errorLastName']))
+                                          if (!isset($_SESSION['errorLastName']))
                                           {
-                                            echo $_SESSION['errorLastName'];
+                                            echo '';
                                           }
                                           else
                                           {
-                                            echo '';
+                                            echo $_SESSION['errorLastName'];
                                           }
                                         ?>
 
@@ -95,13 +95,13 @@
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="E-mail" name="emailAddress" value="" required>
                                     <?php
-                                      if (isset($_SESSION['errorEmailAddress']))
+                                      if (!isset($_SESSION['errorEmailAddress']))
                                       {
-                                        echo $_SESSION['errorEmailAddress'];
+                                        echo '';
                                       }
                                       else
                                       {
-                                        echo '';
+                                        echo $_SESSION['errorEmailAddress'];
                                       }
                                     ?>
 
@@ -110,22 +110,26 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" value="" required>
                                         <?php
-                                          if (isset($_SESSION['errorPassword']))
+                                          if (!isset($_SESSION['errorPassword']))
+                                          {
+                                            echo '';
+                                          }
+                                          else
                                           {
                                             echo $_SESSION['errorPassword'];
-                                          } else {
-                                            echo '';
                                           }
                                         ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" name="repeatPassword" value="" required>
                                         <?php
-                                          if (isset($_SESSION['errorRepeatPassword']))
+                                          if (!isset($_SESSION['errorRepeatPassword']))
+                                          {
+                                            echo '';
+                                          }
+                                          else
                                           {
                                             echo $_SESSION['errorRepeatPassword'];
-                                          } else {
-                                            echo '';
                                           }
                                         ?>
                                     </div>
