@@ -12,15 +12,15 @@
 
     if (mysqli_num_rows($resultLogin) == 0)
     {
-      $_SESSION['login'] = 0;
-      $_SESSION['info'] = "Błąd logowania";
+      $_SESSION['loginStatus'] = 0;
+      $_SESSION['loginInfo'] = "Błąd logowania";
       header('Location:login.php');
       exit();
     }
     else
     {
-      $_SESSION['login'] = 1;
-      $_SESSION['info'] = "Jesteś zalogowany";
+      $_SESSION['loginStatus'] = 1;
+      $_SESSION['loginInfo'] = "Jesteś zalogowany";
       $_SESSION['transactionId'] = md5(time() + rand(1000,9999));
       header('Location:../index.php');
       exit();

@@ -53,24 +53,24 @@
                                         echo $connectionInfo;
                                         ?><br>
                                         <?php
-                                        if (!isset($_SESSION['info']))
+                                        if (!isset($_SESSION['loginStatus']))
                                         {
                                           echo '';
                                         }
                                         else
                                         {
-                                          if ($_SESSION['login'] == 1) {
+                                          if ($_SESSION['loginStatus'] == 1) {
                                         ?>
                                         <div class="alert alert-success" role="alert">
-                                        <?php echo $_SESSION['info']; ?>
+                                        <?php echo $_SESSION['loginInfo']; ?>
                                         </div>
                                         <?php
                                           }
-                                          elseif ($_SESSION['login'] == 0)
+                                          elseif ($_SESSION['loginStatus'] == 0)
                                           {
                                             ?>
                                             <div class="alert alert-danger" role="alert">
-                                              <?php echo $_SESSION['info']; ?>
+                                              <?php echo $_SESSION['loginInfo']; ?>
                                             </div>
                                             <?php
                                           }
