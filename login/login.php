@@ -62,7 +62,7 @@
                                           if ($_SESSION['loginStatus'] == 1) {
                                         ?>
                                         <div class="alert alert-success" role="alert">
-                                        <?php echo $_SESSION['loginInfo']; ?>
+                                        <?php echo $_SESSION['loginInfo']." jako ".$_SESSION['infoUser']; ?>
                                         </div>
                                         <?php
                                           }
