@@ -1,3 +1,11 @@
+<?php
+  if (session_status() == PHP_SESSION_NONE)
+  {
+    session_start();
+  }
+  require_once('config/connection.php');
+?>
+
     <!-- Topbar -->
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -170,7 +178,21 @@
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Michał Murawsk</span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                      <?php
+                        if (isset($_SESSION['loginStatus']))
+                        {
+                          if ($_SESSION['loginStatus'] == 0)
+                          {
+                            echo '';
+                          }
+                          else
+                          {
+                            echo $_SESSION['infoUser'];
+                          }
+                        }
+                      ?>
+                    </span>
                     <img class="img-profile rounded-circle"
                         src="img/michal_murawski_autoportret.jpg">
                 </a>
