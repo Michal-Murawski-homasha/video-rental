@@ -5,7 +5,13 @@
   }
   // session_start();
   require_once('../config/connection.php');
-  //echo $_SERVER['DOCUMENT_ROOT'];
+
+  unset($_SESSION['accountExists']);
+  unset($_SESSION['errorFirstName']);
+  unset($_SESSION['errorLastName']);
+  unset($_SESSION['errorEmailAddress']);
+  unset($_SESSION['errorPassword']);
+  unset($_SESSION['errorRepeatPassword']);
  ?>
 <!DOCTYPE html>
 <html lang="pl">

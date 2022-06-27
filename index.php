@@ -4,6 +4,13 @@
     session_start();
   }
   require_once('config/connection.php');
+
+  unset($_SESSION['accountExists']);
+  unset($_SESSION['errorFirstName']);
+  unset($_SESSION['errorLastName']);
+  unset($_SESSION['errorEmailAddress']);
+  unset($_SESSION['errorPassword']);
+  unset($_SESSION['errorRepeatPassword']);
 ?>
 
 <html lang="pl">

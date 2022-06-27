@@ -3,10 +3,15 @@
   {
     session_start();
   }
-?>
 
-<?php
   require_once('../config/connection.php');
+
+  unset($_SESSION['accountExists']);
+  unset($_SESSION['errorFirstName']);
+  unset($_SESSION['errorLastName']);
+  unset($_SESSION['errorEmailAddress']);
+  unset($_SESSION['errorPassword']);
+  unset($_SESSION['errorRepeatPassword']);
 
   $fName = $_POST['firstName'];
   $lName = $_POST['lastName'];
@@ -25,7 +30,7 @@
 
   //////////////////////////////////////////////////////////////////////////////////
   // Validation
-  if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['firstName']))
+  if (preg_match('@^[A-Z][a-z]{2,10}$@', $fName))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorFirstName'] = "";
@@ -38,7 +43,7 @@
     header('Location:register.php');
   }
 
-  if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['lastName']))
+  if (preg_match('@^[A-Z][a-z]{2,10}$@', $lName))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorLastName'] = "";
@@ -51,12 +56,12 @@
     header('Location:register.php');
   }
 
-  if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', $_POST['emailAddress']))
+  if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', $eAddress))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorEmailAddress'] = "";
   }
-  elseif (preg_match('@^[^ ]+$@', $_POST['emailAddress']))
+  else
   {
     $_SESSION['infoValidation'] = 1;
     $_SESSION['errorEmailAddress'] = "Wpisz poprawnie e-mail";
@@ -64,7 +69,7 @@
     header('Location:register.php');
   }
 
-  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['password']))
+  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $passw))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorPassword'] = "";
@@ -72,12 +77,12 @@
   else
   {
     $_SESSION['infoValidation'] = 1;
-    $_SESSION['errorPassword'] = '<abbr class="registerAbbr" title="Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr">&#63</abbr>';
+    $_SESSION['errorPassword'] = '<abbr class="registerAbbr" title="Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr">Wpisz hasło zawierające...</abbr>';
     // $errorPassword = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
     header('Location:register.php');
   }
 
-  if ($_POST['repeatPassword'] === $_POST['password'])
+  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $rPassw))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorRepeatPassword'] = "";
@@ -92,6 +97,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Checking if an account exists
+
   $query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$eAddress'";
   $select = $connection->query($query);
 
