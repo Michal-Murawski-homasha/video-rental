@@ -77,7 +77,7 @@
     header('Location:register.php');
   }
 
-  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['repeatPassword']))
+  if ($_POST['repeatPassword'] === $_POST['password'])
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorRepeatPassword'] = "";
@@ -85,7 +85,7 @@
   else
   {
     $_SESSION['infoValidation'] = 1;
-    $_SESSION['errorRepeatPassword'] = "Powtórz hasło";
+    $_SESSION['errorRepeatPassword'] = "Powtórzone hasło się różni";
     // $errorRepeatPassword = "Powtórz hasło";
     header('Location:register.php');
   }
