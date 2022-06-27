@@ -27,11 +27,12 @@
   // Validation
   if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['firstName']))
   {
-    $_SESSION['infoValidation'] = 1;
+    $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorFirstName'] = "";
   }
   else
   {
+    $_SESSION['infoValidation'] = 1;
     $_SESSION['errorFirstName'] = "Wpisz poprawnie imię";
     // $errorFirstName = "Wpisz poprawnie imię";
     header('Location:register.php');
@@ -39,11 +40,12 @@
 
   if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['lastName']))
   {
-    $_SESSION['infoValidation'] = 1;
+    $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorLastName'] = "";
   }
   else
   {
+    $_SESSION['infoValidation'] = 1;
     $_SESSION['errorLastName'] = "Wpisz poprawnie nazwisko";
     // $errorLastName = "Wpisz poprawnie nazwisko";
     header('Location:register.php');
@@ -51,11 +53,12 @@
 
   if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', $_POST['emailAddress']))
   {
-    $_SESSION['infoValidation'] = 1;
+    $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorEmailAddress'] = "";
   }
   elseif (preg_match('@^[^ ]+$@', $_POST['emailAddress']))
   {
+    $_SESSION['infoValidation'] = 1;
     $_SESSION['errorEmailAddress'] = "Wpisz poprawnie e-mail";
     // $errorEmailAddress = "Wpisz poprawnie e-mail";
     header('Location:register.php');
@@ -63,11 +66,12 @@
 
   if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['password']))
   {
-    $_SESSION['infoValidation'] = 1;
+    $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorPassword'] = "";
   }
   else
   {
+    $_SESSION['infoValidation'] = 1;
     $_SESSION['errorPassword'] = '<abbr class="registerAbbr" title="Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr">&#63</abbr>';
     // $errorPassword = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
     header('Location:register.php');
@@ -75,11 +79,12 @@
 
   if (preg_match('@^[A-Za-z0-9]{8,16}$@', $_POST['repeatPassword']))
   {
-    $_SESSION['infoValidation'] = 1;
+    $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorRepeatPassword'] = "";
   }
   else
   {
+    $_SESSION['infoValidation'] = 1;
     $_SESSION['errorRepeatPassword'] = "Powtórz hasło";
     // $errorRepeatPassword = "Powtórz hasło";
     header('Location:register.php');
@@ -95,16 +100,29 @@
     $ilosc = $row['ilosc'];
     if ($ilosc>0)
     {
-      $_SESSION['accountExists'] = "Konto z takim emialem już istnieje!";
+      $_SESSION['accountExists'] = "Konto z takim emailem już istnieje!";
       header('Location:register.php');
       exit();
     }
-    elseif ($_SESSION['infoValidation'] == 1)
+    else
     {
-      $insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
-      $add = $connection->query($insert);
-      $_SESSION['accountNotExists'];
-      header('Location:login.php');
+      if ($_SESSION['infoValidation'] == 0)
+      {
+        $insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
+        $add = $connection->query($insert);
+        $_SESSION['accountNotExists'];
+        unset($_SESSION['accountExists']);
+        unset($_SESSION['errorFirstName']);
+        unset($_SESSION['errorLastName']);
+        unset($_SESSION['errorEmailAddress']);
+        unset($_SESSION['errorPassword']);
+        unset($_SESSION['errorRepeatPassword']);
+        header('Location:login.php');
+      }
+      else
+      {
+        header('Location:register.php');
+      }
     }
   }
 

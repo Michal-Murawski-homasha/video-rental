@@ -42,7 +42,7 @@
                     <div class="col-lg-7">
                       <div class="p-5">
                             <?php
-                              if (isset($_SESSION['accountExists']))
+                              if (!isset($_SESSION['accountExists']))
                               {
                                 echo '';
                               }
