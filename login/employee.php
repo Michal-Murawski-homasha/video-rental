@@ -13,24 +13,23 @@
   unset($_SESSION['errorPassword']);
   unset($_SESSION['errorRepeatPassword']);
 
-  $fName = $_POST['firstName'];
-  $lName = $_POST['lastName'];
-  $eAddress = $_POST['emailAddress'];
+  $firstName = $_POST['firstName'];
+  $lastName = $_POST['lastName'];
+  $emailAddress = $_POST['emailAddress'];
   //$passw = $_POST['password'];
   //$passw = new passwordHash();
-  $passw = md5($_POST['password']);
-  $rPassw = md5($_POST['repeatPassword']);
+  $password = md5($_POST['password']);
+  $repeatPassword = md5($_POST['repeatPassword']);
 
   // echo '<p>Imię: '.$fName.'</p>';
   // echo '<p>Nazwisko: '.$lName.'</p>';
   // echo '<p>e-mail: '.$eAddress.'</p>';
   // echo '<p>Hasło: '.$passw.'</p>';
 
-  // $queryUsers = mysqli_query($connection, "SELECT COUNT(1) AS ilosc FROM users WHERE emailUsers = '$eAddress'");
 
   //////////////////////////////////////////////////////////////////////////////////
   // Validation
-  if (preg_match('@^[A-Z][a-z]{2,10}$@', $fName))
+  if (preg_match('@^[A-Z][a-z]{2,10}$@', $firstName))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorFirstName'] = "";
@@ -43,7 +42,7 @@
     header('Location:register.php');
   }
 
-  if (preg_match('@^[A-Z][a-z]{2,10}$@', $lName))
+  if (preg_match('@^[A-Z][a-z]{2,10}$@', $lastName))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorLastName'] = "";
@@ -56,7 +55,7 @@
     header('Location:register.php');
   }
 
-  if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', $eAddress))
+  if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', $emailAddress))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorEmailAddress'] = "";
@@ -69,7 +68,7 @@
     header('Location:register.php');
   }
 
-  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $passw))
+  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $password))
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorPassword'] = "";
@@ -82,7 +81,7 @@
     header('Location:register.php');
   }
 
-  if (preg_match('@^[A-Za-z0-9]{8,16}$@', $rPassw))
+  if ($repeatPassword == $password)
   {
     $_SESSION['infoValidation'] = 0;
     // $_SESSION['errorRepeatPassword'] = "";
@@ -97,24 +96,24 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Checking if an account exists
-
-  $query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$eAddress'";
-  $select = $connection->query($query);
-
-  while ($row = mysqli_fetch_array($select))
+  // $queryUsers = mysqli_query($connection, "SELECT COUNT(1) AS ilosc FROM users WHERE emailUsers = '$eAddress'");
+  if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['errorEmailAddress'] && !$_SESSION['errorRepeatPassword'])
   {
-    $ilosc = $row['ilosc'];
-    if ($ilosc>0)
+    $query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$emailAddress'";
+    $select = $connection->query($query);
+
+    while ($row = mysqli_fetch_array($select))
     {
-      $_SESSION['accountExists'] = "Konto z takim emailem już istnieje!";
-      header('Location:register.php');
-      exit();
-    }
-    else
-    {
-      if ($_SESSION['infoValidation'] == 0)
+      $ilosc = $row['ilosc'];
+      if ($ilosc>0)
       {
-        $insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
+        $_SESSION['accountExists'] = "Konto z takim emailem już istnieje!";
+        header('Location:register.php');
+        exit();
+      }
+      else
+      {
+        $insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$firstName', '$lastName', '$emailAddress', '$password')";
         $add = $connection->query($insert);
         $_SESSION['accountNotExists'];
         unset($_SESSION['accountExists']);
@@ -125,11 +124,11 @@
         unset($_SESSION['errorRepeatPassword']);
         header('Location:login.php');
       }
-      else
-      {
-        header('Location:register.php');
-      }
     }
+  }
+  else
+  {
+    header('Location:register.php');
   }
 
 /////////////////////////////////////////////////////////////////////////////////
