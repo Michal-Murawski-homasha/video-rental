@@ -31,7 +31,7 @@
 
                       <!-- Page Heading -->
                       <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                          <h1 class="h3 mb-0 text-gray-800">Karta pracowników</h1>
+                          <h1 class="h3 mb-0 text-gray-800">Wyszukiwarka</h1>
                       </div>
 
                       <div class="row">
@@ -53,7 +53,7 @@
                                               }
                                               else
                                               {
-                                                $query = "SELECT * FROM customer WHERE first_name LIKE '%".$search."%'";
+                                                $query = "SELECT * FROM customer WHERE first_name OR last_name OR email LIKE '%".$search."%'";
                                                 $result = $connection->query($query);
                                                 if (mysqli_num_rows($result) == 0)
                                                 {
@@ -71,6 +71,8 @@
                                                   {
                                                     echo '<tbody>
                                                     <td>'.$row['first_name'].'</td>
+                                                    <td>'.$row['last_name'].'</td>
+                                                    <td>'.$row['email'].'</td>
                                                     </tbody>';
                                                   }
                                                   echo  '</table>';
