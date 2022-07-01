@@ -2,6 +2,7 @@
   if (session_status() == PHP_SESSION_NONE)
   {
     session_start();
+    // isset($_SESSION['emlpoyee-card']);
   }
   require_once('config/connection.php');
 ?>

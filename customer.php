@@ -1,6 +1,7 @@
 <?php
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    $_SESSION['customer'] = 1;
   }
   require_once('config/connection.php');
 ?>

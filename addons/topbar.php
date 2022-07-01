@@ -16,17 +16,43 @@
 
         <!-- Topbar Search -->
         <form
-            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search btn-group"
             action="search.php" method="post">
             <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Szukaj ..."
+                <input class="form-control bg-light border-0 small" type="text" placeholder="Szukaj ..."
                     aria-label="Search" aria-describedby="basic-addon2" name="search">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">
-                        <i class="fas fa-search fa-sm"></i>
+                    <button class="btn btn-primary" type="submit" role="submit">
+                      <i class="fas fa-search fa-sm"></i>
+                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+                        <ul class="dropdown-menu dropdown-menu-end" role="menu">
+                          <li><input class="dropdown-item" placeholder="Filmy" name="films"></li>
+                          <li><input class="dropdown-item" placeholder="Klienci" name="customer"></li>
+                          <li><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental"></li>
+                          <li><input class="dropdown-item" placeholder="Karta pracowników" name="employee"></li>
+                        </ul>
+                        <!-- <span class="caret"></span> -->
                     </button>
+
                 </div>
             </div>
+
+            <!-- <div class = "btn-group">
+             <button type = "button" class = "btn btn-primary dropdown-toggle" data-toggle = "dropdown">
+                Primary
+                <span class = "caret"></span>
+             </button>
+
+             <ul class = "dropdown-menu" role = "menu">
+                <li><a href = "#">Action</a></li>
+                <li><a href = "#">Another action</a></li>
+                <li><a href = "#">Something else here</a></li>
+
+                <li class = "divider"></li>
+                <li><a href = "#">Separated link</a></li>
+             </ul>
+
+          </div> -->
         </form>
 
         <!-- Topbar Navbar -->
@@ -41,7 +67,7 @@
                 <!-- Dropdown - Messages -->
                 <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                     aria-labelledby="searchDropdown">
-                    <form class="form-inline mr-auto w-100 navbar-search">
+                    <form class="form-inline mr-auto w-100 navbar-search" >
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small"
                                 placeholder="Search for..." aria-label="Search"
