@@ -49,15 +49,16 @@
                                           <div class = "col-md-12">
                                             <?php
                                               $search = $_POST['search'];
-                                              $_SESSION['films'] = $_POST['films'];
-                                              $_SESSION['customer'] = $_POST['customer'];
-                                              $_SESSION['rental'] = $_POST['rental'];
-                                              $_SESSION['employee'] = $_POST['employee'];
+                                              // $_SESSION['films'] = $_POST['films'];
+                                              // $_SESSION['customer'] = $_POST['customer'];
+                                              // $_SESSION['rental'] = $_POST['rental'];
+                                              // $_SESSION['employee'] = $_POST['employee'];
                                               // $_SESSION['films'] = $films;
                                               // $_SESSION['customer'] = $customer;
                                               // $_SESSION['rental'] = $rental;
                                               // $_SESSION['employee'] = $employee;
-                                              echo $search;
+                                              echo $search.'<br>';
+                                              var_dump($_POST);
 
                                               if (!isset($_SESSION['loginStatus']))
                                               {
@@ -67,7 +68,7 @@
                                               {
                                                 if (isset($_POST['films']))
                                                 {
-                                                  $_SESSION['films'] = 1;
+                                                  // $_SESSION['films'] = 1;
                                                   echo $_POST['films'];
                                                   $query = "SELECT
                                                   film_id,
@@ -113,7 +114,7 @@
                                                 }
                                                 elseif (isset($_POST['customer']))
                                                 {
-                                                  $_SESSION['customer'] = 1;
+                                                  // $_SESSION['customer'] = 1;
                                                   echo $_POST['customer'];
                                                   $query = "SELECT * FROM customer WHERE first_name OR last_name OR email LIKE '%".$search."%'";
                                                   $result = $connection->query($query);
@@ -144,7 +145,7 @@
                                                 }
                                                 elseif (isset($_POST['rental']))
                                                 {
-                                                  $_SESSION['rental'] = 1;
+                                                  // $_SESSION['rental'] = 1;
                                                   echo $_POST['rental'];
                                                   $query = 'SELECT
                                                   rental_date,
@@ -189,7 +190,7 @@
                                                 }
                                                 elseif (isset($_POST['employee']))
                                                 {
-                                                  $_SESSION['employee'] = 1;
+                                                  // $_SESSION['employee'] = 1;
                                                   $query = 'SELECT * FROM employee';
                                                   $result = $connection->query($query);
                                                   if (mysqli_num_rows($result) == 0)

@@ -76,7 +76,7 @@
   else
   {
     $_SESSION['infoValidation'] = 1;
-    $_SESSION['errorPassword'] = '<abbr class="registerAbbr" title="Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr">Wpisz hasło zawierające...</abbr>';
+    $_SESSION['errorPassword'] = '<abbr class="" title="... zawierające od 8 do 16 dużych i małych liter oraz cyfr"><i class="fas fa-question fa-sm"></i></abbr>';
     // $errorPassword = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
     header('Location:register.php');
   }

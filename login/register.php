@@ -64,74 +64,77 @@
                             <form class="user" action="employee.php" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" name="firstName" value="" required>
-                                        <?php
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="<?php
                                           if (!isset($_SESSION['errorFirstName']))
                                           {
-                                            echo '';
+                                            echo 'Podaj imię';
                                           }
                                           else
                                           {
                                             echo $_SESSION['errorFirstName'];
                                           }
-                                        ?>
+                                        ?>" name="firstName" value="" required>
+
 
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" name="lastName" value="" required>
-                                        <?php
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="<?php
                                           if (!isset($_SESSION['errorLastName']))
                                           {
-                                            echo '';
+                                            echo 'Podaj nazwisko';
                                           }
                                           else
                                           {
                                             echo $_SESSION['errorLastName'];
                                           }
-                                        ?>
+                                        ?>" name="lastName" value="" required>
 
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="E-mail" name="emailAddress" value="" required>
-                                    <?php
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="<?php
                                       if (!isset($_SESSION['errorEmailAddress']))
                                       {
-                                        echo '';
+                                        echo 'Podaj e-mail';
                                       }
                                       else
                                       {
                                         echo $_SESSION['errorEmailAddress'];
                                       }
-                                    ?>
+                                    ?>" name="emailAddress" value="" required>
 
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" value="" required>
-                                        <?php
+                                    <div class="inline-block col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="<?php
                                           if (!isset($_SESSION['errorPassword']))
                                           {
-                                            echo '';
+                                            echo 'Podaj hasło';
                                           }
-                                          else
+                                          if (isset($_SESSION['errorPassword']))
+                                          {
+                                            echo 'Wpisz hasło ...';
+                                          }
+                                        ?>" name="password" value="" required>
+                                        <?php
+                                          if (isset($_SESSION['errorPassword']))
                                           {
                                             echo $_SESSION['errorPassword'];
                                           }
                                         ?>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" name="repeatPassword" value="" required>
-                                        <?php
+                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="<?php
                                           if (!isset($_SESSION['errorRepeatPassword']))
                                           {
-                                            echo '';
+                                            echo 'Powtórz hasło';
                                           }
                                           else
                                           {
                                             echo $_SESSION['errorRepeatPassword'];
                                           }
-                                        ?>
+                                        ?>" name="repeatPassword" value="" required>
+
                                     </div>
                                 </div>
                                 <input type="submit" value="Zarejestruj" class="btn btn-primary btn-user btn-block">

@@ -4,10 +4,10 @@
     session_start();
   }
   require_once('config/connection.php');
-  unset($_SESSION['films']);
-  unset($_SESSION['customer']);
-  unset($_SESSION['rental']);
-  unset($_SESSION['employee']);
+  // unset($_SESSION['films']);
+  // unset($_SESSION['customer']);
+  // unset($_SESSION['rental']);
+  // unset($_SESSION['employee']);
 ?>
 
     <!-- Topbar -->
@@ -26,7 +26,7 @@
                 <input class="form-control bg-light border-0 small" type="text" placeholder="Szukaj ..."
                     aria-label="Search" aria-describedby="basic-addon2" name="search">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit" role="submit">
+                    <button class="btn btn-primary" type="submit" role="submit" name="submit">
                       <i class="fas fa-search fa-sm"></i>
                     <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
                         <ul class="dropdown-menu dropdown-menu-end" role="menu">
