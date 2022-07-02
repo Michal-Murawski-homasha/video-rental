@@ -49,10 +49,10 @@
                                           <div class = "col-md-12">
                                             <?php
                                               $search = $_POST['search'];
-                                              // $films = $_POST['films'];
-                                              // $customer = $_POST['customer'];
-                                              // $rental = $_POST['rental'];
-                                              // $employee = $_POST['employee'];
+                                              $_SESSION['films'] = $_POST['films'];
+                                              $_SESSION['customer'] = $_POST['customer'];
+                                              $_SESSION['rental'] = $_POST['rental'];
+                                              $_SESSION['employee'] = $_POST['employee'];
                                               // $_SESSION['films'] = $films;
                                               // $_SESSION['customer'] = $customer;
                                               // $_SESSION['rental'] = $rental;
@@ -68,6 +68,7 @@
                                                 if (isset($_POST['films']))
                                                 {
                                                   $_SESSION['films'] = 1;
+                                                  echo $_POST['films'];
                                                   $query = "SELECT
                                                   film_id,
                                                   title,
@@ -113,6 +114,7 @@
                                                 elseif (isset($_POST['customer']))
                                                 {
                                                   $_SESSION['customer'] = 1;
+                                                  echo $_POST['customer'];
                                                   $query = "SELECT * FROM customer WHERE first_name OR last_name OR email LIKE '%".$search."%'";
                                                   $result = $connection->query($query);
                                                   if (mysqli_num_rows($result) == 0)
@@ -143,6 +145,7 @@
                                                 elseif (isset($_POST['rental']))
                                                 {
                                                   $_SESSION['rental'] = 1;
+                                                  echo $_POST['rental'];
                                                   $query = 'SELECT
                                                   rental_date,
                                                   return_date,

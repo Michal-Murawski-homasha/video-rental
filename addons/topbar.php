@@ -4,6 +4,10 @@
     session_start();
   }
   require_once('config/connection.php');
+  unset($_SESSION['films']);
+  unset($_SESSION['customer']);
+  unset($_SESSION['rental']);
+  unset($_SESSION['employee']);
 ?>
 
     <!-- Topbar -->
