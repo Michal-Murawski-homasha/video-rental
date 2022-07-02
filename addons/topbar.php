@@ -30,10 +30,10 @@
                       <i class="fas fa-search fa-sm"></i>
                     <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
                         <ul class="dropdown-menu dropdown-menu-end" role="menu">
-                          <li><input class="dropdown-item" placeholder="Filmy" name="films"></li>
-                          <li><input class="dropdown-item" placeholder="Klienci" name="customer"></li>
-                          <li><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental"></li>
-                          <li><input class="dropdown-item" placeholder="Karta pracowników" name="employee"></li>
+                          <li><input class="dropdown-item" placeholder="Filmy" name="films" value=""></li>
+                          <li><input class="dropdown-item" placeholder="Klienci" name="customer" value=""></li>
+                          <li><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental" value=""></li>
+                          <li><input class="dropdown-item" placeholder="Karta pracowników" name="employee" value=""></li>
                         </ul>
                         <!-- <span class="caret"></span> -->
                     </button>

@@ -49,10 +49,10 @@
                                           <div class = "col-md-12">
                                             <?php
                                               $search = $_POST['search'];
-                                              // $_SESSION['films'] = $_POST['films'];
-                                              // $_SESSION['customer'] = $_POST['customer'];
-                                              // $_SESSION['rental'] = $_POST['rental'];
-                                              // $_SESSION['employee'] = $_POST['employee'];
+                                              $films = $_POST['films'];
+                                              $customer = $_POST['customer'];
+                                              $rental = $_POST['rental'];
+                                              $employee = $_POST['employee'];
                                               // $_SESSION['films'] = $films;
                                               // $_SESSION['customer'] = $customer;
                                               // $_SESSION['rental'] = $rental;
@@ -66,10 +66,11 @@
                                               }
                                               else
                                               {
-                                                if (isset($_POST['films']))
+                                                switch (isset($_POST['category']))
                                                 {
+                                                  case $films:
                                                   // $_SESSION['films'] = 1;
-                                                  echo $_POST['films'];
+                                                  // echo $_POST['films'];
                                                   $query = "SELECT
                                                   film_id,
                                                   title,
@@ -111,112 +112,110 @@
                                                     }
                                                     echo  '</table>';
                                                   }
-                                                }
-                                                elseif (isset($_POST['customer']))
+                                                    break;
+
+                                                 case $customer:
+                                                 echo $_POST['customer'];
+                                                 $query = "SELECT * FROM customer WHERE first_name OR last_name OR email LIKE '%".$search."%'";
+                                                 $result = $connection->query($query);
+                                                 if (mysqli_num_rows($result) == 0)
+                                                 {
+                                                   echo 'Brak danych';
+                                                 }
+                                                 else
+                                                 {
+                                                   echo  '<table class="table">
+                                                   <thead class="table-dark">
+                                                   <tr>
+                                                   <th>Wyniki wyszuliwań</th>
+                                                   <th></th>
+                                                   <th></th>
+                                                   </tr>
+                                                   </thead>';
+                                                   while ($row = $result->fetch_assoc())
+                                                   {
+                                                     echo '<tbody>
+                                                     <td>'.$row['first_name'].'</td>
+                                                     <td>'.$row['last_name'].'</td>
+                                                     <td>'.$row['email'].'</td>
+                                                     </tbody>';
+                                                   }
+                                                   echo  '</table>';
+                                                 }
+                                                  break;
+
+                                                 case $rental:
+                                                 echo $_POST['rental'];
+                                                 $query = 'SELECT
+                                                 rental_date,
+                                                 return_date,
+                                                 inventory_id,
+                                                 first_name,
+                                                 last_name
+                                                 FROM
+                                                 rental AS F
+                                                 JOIN customer AS L ON F.customer_id = L.customer_id
+                                                 ORDER BY rental_date DESC
+                                                 LIMIT 10';
+                                                 $result = $connection->query($query);
+                                                 if (mysqli_num_rows($result) == 0)
+                                                 {
+                                                   echo 'Brak danych';
+                                                 }
+                                                 else
+                                                 {
+                                                   echo
+                                                   '<table class="table">
+                                                   <thead class="table-dark">
+                                                   <tr>
+                                                   <th>Data wypożyczenia</th>
+                                                   <th>Imię</th>
+                                                   <th>Nazwisko</th>
+                                                   <th>Data zwrotu</th>
+                                                   </tr>
+                                                   </thead>';
+                                                   while ($row = $result->fetch_assoc())
+                                                   {
+                                                     echo
+                                                     '<tbody>
+                                                     <td>'.$row['rental_date'].'</td>
+                                                     <td>'.$row['first_name'].'</td>
+                                                     <td>'.$row['last_name'].'</td>
+                                                     <td>'.$row['return_date'].'</td>
+                                                     </tbody>';
+                                                   }
+                                                   echo  '</table>';
+                                                 }
+                                                   break;
+
+                                                case $employee:
+                                                $query = 'SELECT * FROM employee';
+                                                $result = $connection->query($query);
+                                                if (mysqli_num_rows($result) == 0)
                                                 {
-                                                  // $_SESSION['customer'] = 1;
-                                                  echo $_POST['customer'];
-                                                  $query = "SELECT * FROM customer WHERE first_name OR last_name OR email LIKE '%".$search."%'";
-                                                  $result = $connection->query($query);
-                                                  if (mysqli_num_rows($result) == 0)
-                                                  {
-                                                    echo 'Brak danych';
-                                                  }
-                                                  else
-                                                  {
-                                                    echo  '<table class="table">
-                                                    <thead class="table-dark">
-                                                    <tr>
-                                                    <th>Wyniki wyszuliwań</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc())
-                                                    {
-                                                      echo '<tbody>
-                                                      <td>'.$row['first_name'].'</td>
-                                                      <td>'.$row['last_name'].'</td>
-                                                      <td>'.$row['email'].'</td>
-                                                      </tbody>';
-                                                    }
-                                                    echo  '</table>';
-                                                  }
+                                                  echo 'Brak danych';
                                                 }
-                                                elseif (isset($_POST['rental']))
+                                                else
                                                 {
-                                                  // $_SESSION['rental'] = 1;
-                                                  echo $_POST['rental'];
-                                                  $query = 'SELECT
-                                                  rental_date,
-                                                  return_date,
-                                                  inventory_id,
-                                                  first_name,
-                                                  last_name
-                                                  FROM
-                                                  rental AS F
-                                                  JOIN customer AS L ON F.customer_id = L.customer_id
-                                                  ORDER BY rental_date DESC
-                                                  LIMIT 10';
-                                                  $result = $connection->query($query);
-                                                  if (mysqli_num_rows($result) == 0)
+                                                  echo  '<table class="table">
+                                                  <thead class="table-dark">
+                                                  <tr>
+                                                  <th>Imię</th>
+                                                  <th>Nazwisko</th>
+                                                  <th>Adres e-mail</th>
+                                                  </tr>
+                                                  </thead>';
+                                                  while ($row = $result->fetch_assoc())
                                                   {
-                                                    echo 'Brak danych';
+                                                    echo '<tbody>
+                                                    <td>'.$row['firstNameUser'].'</td>
+                                                    <td>'.$row['lastNameUser'].'</td>
+                                                    <td>'.$row['emailUser'].'</td>
+                                                    </tbody>';
                                                   }
-                                                  else
-                                                  {
-                                                    echo
-                                                    '<table class="table">
-                                                    <thead class="table-dark">
-                                                    <tr>
-                                                    <th>Data wypożyczenia</th>
-                                                    <th>Imię</th>
-                                                    <th>Nazwisko</th>
-                                                    <th>Data zwrotu</th>
-                                                    </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc())
-                                                    {
-                                                      echo
-                                                      '<tbody>
-                                                      <td>'.$row['rental_date'].'</td>
-                                                      <td>'.$row['first_name'].'</td>
-                                                      <td>'.$row['last_name'].'</td>
-                                                      <td>'.$row['return_date'].'</td>
-                                                      </tbody>';
-                                                    }
-                                                    echo  '</table>';
-                                                  }
+                                                  echo  '</table>';
                                                 }
-                                                elseif (isset($_POST['employee']))
-                                                {
-                                                  // $_SESSION['employee'] = 1;
-                                                  $query = 'SELECT * FROM employee';
-                                                  $result = $connection->query($query);
-                                                  if (mysqli_num_rows($result) == 0)
-                                                  {
-                                                    echo 'Brak danych';
-                                                  }
-                                                  else
-                                                  {
-                                                    echo  '<table class="table">
-                                                    <thead class="table-dark">
-                                                    <tr>
-                                                    <th>Imię</th>
-                                                    <th>Nazwisko</th>
-                                                    <th>Adres e-mail</th>
-                                                    </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc())
-                                                    {
-                                                      echo '<tbody>
-                                                      <td>'.$row['firstNameUser'].'</td>
-                                                      <td>'.$row['lastNameUser'].'</td>
-                                                      <td>'.$row['emailUser'].'</td>
-                                                      </tbody>';
-                                                    }
-                                                    echo  '</table>';
-                                                  }
+                                                  break;
                                                 }
                                               }
                                             ?>
