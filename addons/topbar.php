@@ -21,21 +21,26 @@
         <!-- Topbar Search -->
         <form
             class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search btn-group"
-            action="search.php" method="post">
+            action="search.php" method="get">
             <div class="input-group">
                 <input class="form-control bg-light border-0 small" type="text" placeholder="Szukaj ..."
                     aria-label="Search" aria-describedby="basic-addon2" name="search">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit" role="submit" name="submit">
+                    <button class="btn btn-primary" type="submit" role="submit">
                       <i class="fas fa-search fa-sm"></i>
                     <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+                      Kategoria
+                      <span class="caret"></span>
                         <ul class="dropdown-menu dropdown-menu-end" role="menu">
-                          <li><input class="dropdown-item" placeholder="Filmy" name="films" value=""></li>
-                          <li><input class="dropdown-item" placeholder="Klienci" name="customer" value=""></li>
-                          <li><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental" value=""></li>
-                          <li><input class="dropdown-item" placeholder="Karta pracowników" name="employee" value=""></li>
+                          <!-- <li><input class="dropdown-item" placeholder="Filmy" name="films"></li>
+                          <li><input class="dropdown-item" placeholder="Klienci" name="customer"></li>
+                          <li><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental"></li>
+                          <li><input class="dropdown-item" placeholder="Karta pracowników" name="employee"></li> -->
+                          <li><a href="search.php=films"><input class="dropdown-item" placeholder="Filmy" name="films"></a></li>
+                          <li><a href="search.php=customer"><input class="dropdown-item" placeholder="Klienci" name="customer"></a></li>
+                          <li><a href="search.php=rental"><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental"></a></li>
+                          <li><a href="search.php=employee"><input class="dropdown-item" placeholder="Karta pracowników" name="employee"></a></li>
                         </ul>
-                        <!-- <span class="caret"></span> -->
                     </button>
 
                 </div>
