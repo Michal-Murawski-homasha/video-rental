@@ -32,14 +32,14 @@
                       Kategoria
                       <span class="caret"></span>
                         <ul class="dropdown-menu dropdown-menu-end" role="menu">
-                          <!-- <li><input class="dropdown-item" placeholder="Filmy" name="films"></li>
-                          <li><input class="dropdown-item" placeholder="Klienci" name="customer"></li>
-                          <li><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental"></li>
-                          <li><input class="dropdown-item" placeholder="Karta pracowników" name="employee"></li> -->
-                          <li><a href="search.php=films"><input class="dropdown-item" placeholder="Filmy" name="films"></a></li>
-                          <li><a href="search.php=customer"><input class="dropdown-item" placeholder="Klienci" name="customer"></a></li>
-                          <li><a href="search.php=rental"><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental"></a></li>
-                          <li><a href="search.php=employee"><input class="dropdown-item" placeholder="Karta pracowników" name="employee"></a></li>
+                          <li><input class="dropdown-item" placeholder="Filmy" name="films" value="<?php $_GET['films']; ?>"></li>
+                          <li><input class="dropdown-item" placeholder="Klienci" name="customer" value="<?php $_GET['customer']; ?>"></li>
+                          <li><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental" value="<?php $_GET['rental']; ?>"></li>
+                          <li><input class="dropdown-item" placeholder="Karta pracowników" name="employee" value="<?php $_GET['employee']; ?>"></li>
+                          <!-- <li><a href="/action=films">Filmy</a></li>
+                          <li><a href="/action=customer">Klienci</a></li>
+                          <li><a href="/action=rental">Historia wyożyczeń</a></li>
+                          <li><a href="/action=employee">Karta pacowników</a></li> -->
                         </ul>
                     </button>
 
