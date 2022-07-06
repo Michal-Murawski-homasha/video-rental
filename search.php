@@ -49,21 +49,7 @@
                                           <div class = "col-md-12">
                                             <?php
                                               $search = $_POST['search'];
-                                              // $searchName = $_GET['action'] ?? NULL;
-                                              // $films = $_POST['films'];
-                                              // $customer = $_POST['customer'];
-                                              // $rental = $_POST['rental'];
-                                              // $employee = $_POST['employee'];
-                                              // $_SESSION['films'] = $films;
-                                              // $_SESSION['customer'] = $customer;
-                                              // $_SESSION['rental'] = $rental;
-                                              // $_SESSION['employee'] = $employee;
-                                              echo '<p>Wyniki dla frazy: "'.$search.'"</p><br>';
-                                              // var_dump($_POST['search']);
-                                              // var_dump($_POST['films']);
-                                              // var_dump($_POST['customer']);
-                                              // var_dump($_POST['rental']);
-                                              // var_dump($_POST['employee']);
+                                              echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$search.'"</h2><br>';
 
                                               if (!isset($_SESSION['loginStatus']))
                                               {
@@ -71,10 +57,8 @@
                                               }
                                               else
                                               {
-                                                if ($_POST['films'])
+                                                if (isset($_POST['films']))
                                                 {
-                                                  // $_SESSION['films'] = 1;
-                                                  // echo $_POST['films'];
                                                   $query = "SELECT
                                                   film_id,
                                                   title,
@@ -118,11 +102,9 @@
                                                     echo  '</table>';
                                                   }
                                                 }
-                                                elseif ($_POST['customer'])
+                                                elseif (isset($_POST['customer']))
                                                 {
-                                                  // $_SESSION['customer'] = 1;
-                                                  echo $_POST['customer'];
-                                                  $query = "SELECT * FROM customer WHERE first_name OR last_name OR email LIKE '%$search%'";
+                                                  $query = "SELECT * FROM customer WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR email LIKE '%$search%'";
                                                   $result = $connection->query($query);
                                                   if (mysqli_num_rows($result) == 0)
                                                   {
@@ -146,87 +128,84 @@
                                                       <td>'.$row['email'].'</td>
                                                       </tbody>';
                                                     }
-                                                    echo  '</table>';
+                                                      echo  '</table>';
+                                                    }
                                                   }
-                                                }
-                                                elseif ($_POST['rental'])
-                                                {
-                                                  // $_SESSION['rental'] = 1;
-                                                  // echo $_POST['rental'];
-                                                  $query = "SELECT
-                                                  rental_date,
-                                                  return_date,
-                                                  inventory_id,
-                                                  first_name,
-                                                  last_name
-                                                  FROM
-                                                  rental AS F
-                                                  JOIN customer AS L ON F.customer_id = L.customer_id
-                                                  WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%'
-                                                  ORDER BY rental_date DESC
-                                                  LIMIT 10";
-                                                  $result = $connection->query($query);
-                                                  if (mysqli_num_rows($result) == 0)
+                                                  elseif (isset($_POST['rental']))
                                                   {
-                                                    echo 'Brak danych';
-                                                  }
-                                                  else
-                                                  {
-                                                    echo
-                                                    '<table class="table">
-                                                    <thead class="table-dark">
-                                                    <tr>
-                                                    <th>Data wypożyczenia</th>
-                                                    <th>Imię</th>
-                                                    <th>Nazwisko</th>
-                                                    <th>Data zwrotu</th>
-                                                    </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc())
+                                                    $query = "SELECT
+                                                    rental_date,
+                                                    return_date,
+                                                    inventory_id,
+                                                    first_name,
+                                                    last_name
+                                                    FROM
+                                                    rental AS F
+                                                    JOIN customer AS L ON F.customer_id = L.customer_id
+                                                    WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%'
+                                                    ORDER BY rental_date DESC
+                                                    LIMIT 10";
+                                                    $result = $connection->query($query);
+                                                    if (mysqli_num_rows($result) == 0)
+                                                    {
+                                                      echo 'Brak danych';
+                                                    }
+                                                    else
                                                     {
                                                       echo
-                                                      '<tbody>
-                                                      <td>'.$row['rental_date'].'</td>
-                                                      <td>'.$row['first_name'].'</td>
-                                                      <td>'.$row['last_name'].'</td>
-                                                      <td>'.$row['return_date'].'</td>
-                                                      </tbody>';
+                                                      '<table class="table">
+                                                      <thead class="table-dark">
+                                                      <tr>
+                                                      <th>Data wypożyczenia</th>
+                                                      <th>Imię</th>
+                                                      <th>Nazwisko</th>
+                                                      <th>Data zwrotu</th>
+                                                      </tr>
+                                                      </thead>';
+                                                      while ($row = $result->fetch_assoc())
+                                                      {
+                                                        echo
+                                                        '<tbody>
+                                                        <td>'.$row['rental_date'].'</td>
+                                                        <td>'.$row['first_name'].'</td>
+                                                        <td>'.$row['last_name'].'</td>
+                                                        <td>'.$row['return_date'].'</td>
+                                                        </tbody>';
+                                                      }
+                                                        echo  '</table>';
+                                                      }
                                                     }
-                                                    echo  '</table>';
-                                                  }
-                                                }
-                                                elseif ($_POST['employee'])
-                                                {
-                                                  // $_SESSION['employee'] = 1;
-                                                  $query = "SELECT * FROM employee
-                                                  WHERE firstNameUser OR lastNameUser OR emailUser LIKE '%$search%'";
-                                                  $result = $connection->query($query);
-                                                  if (mysqli_num_rows($result) == 0)
+                                                  elseif (isset($_POST['employee']))
                                                   {
-                                                    echo 'Brak danych';
-                                                  }
-                                                  else
-                                                  {
-                                                    echo  '<table class="table">
-                                                    <thead class="table-dark">
-                                                    <tr>
-                                                    <th>Imię</th>
-                                                    <th>Nazwisko</th>
-                                                    <th>Adres e-mail</th>
-                                                    </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc())
+                                                    $query = "SELECT * FROM employee
+                                                    WHERE firstNameUser LIKE '%$search%' OR lastNameUser LIKE '%$search%' OR emailUser LIKE '%$search%'";
+                                                    $result = $connection->query($query);
+                                                    if (mysqli_num_rows($result) == 0)
                                                     {
-                                                      echo '<tbody>
-                                                      <td>'.$row['firstNameUser'].'</td>
-                                                      <td>'.$row['lastNameUser'].'</td>
-                                                      <td>'.$row['emailUser'].'</td>
-                                                      </tbody>';
+                                                      echo 'Brak danych';
                                                     }
-                                                    echo  '</table>';
+                                                    else
+                                                    {
+                                                      echo  '<table class="table">
+                                                      <thead class="table-dark">
+                                                      <tr>
+                                                      <th>Imię</th>
+                                                      <th>Nazwisko</th>
+                                                      <th>Adres e-mail</th>
+                                                      </tr>
+                                                      </thead>';
+                                                      while ($row = $result->fetch_assoc())
+                                                      {
+                                                        echo '<tbody>
+                                                        <td>'.$row['firstNameUser'].'</td>
+                                                        <td>'.$row['lastNameUser'].'</td>
+                                                        <td>'.$row['emailUser'].'</td>
+                                                        </tbody>';
+                                                      }
+                                                        echo  '</table>';
+                                                      }
+                                                    }
                                                   }
-                                                }
-                                              }
                                             ?>
                                           </div>
                                         </div>
