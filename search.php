@@ -4,10 +4,10 @@
     session_start();
   }
   require_once('config/connection.php');
-  unset($_SESSION['films']);
-  unset($_SESSION['customer']);
-  unset($_SESSION['rental']);
-  unset($_SESSION['employee']);
+  // unset($_SESSION['films']);
+  // unset($_SESSION['customer']);
+  // unset($_SESSION['rental']);
+  // unset($_SESSION['employee']);
 ?>
 
 <html lang="pl">
@@ -48,7 +48,7 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              $search = $_GET['search'];
+                                              $search = $_POST['search'];
                                               // $searchName = $_GET['action'] ?? NULL;
                                               // $films = $_POST['films'];
                                               // $customer = $_POST['customer'];
@@ -58,8 +58,12 @@
                                               // $_SESSION['customer'] = $customer;
                                               // $_SESSION['rental'] = $rental;
                                               // $_SESSION['employee'] = $employee;
-                                              echo $search.'<br>';
-                                              var_dump($_GET['search']);
+                                              echo '<p>Wyniki dla frazy: "'.$search.'"</p><br>';
+                                              // var_dump($_POST['search']);
+                                              // var_dump($_POST['films']);
+                                              // var_dump($_POST['customer']);
+                                              // var_dump($_POST['rental']);
+                                              // var_dump($_POST['employee']);
 
                                               if (!isset($_SESSION['loginStatus']))
                                               {
@@ -67,7 +71,7 @@
                                               }
                                               else
                                               {
-                                                if ($_GET['films'])
+                                                if ($_POST['films'])
                                                 {
                                                   // $_SESSION['films'] = 1;
                                                   // echo $_POST['films'];
@@ -81,7 +85,7 @@
                                                   FROM
                                                   film AS F
                                                   JOIN language AS L ON F.language_id = L.language_id
-                                                  WHERE title OR name LIKE '%$search%'";
+                                                  WHERE title LIKE '%$search%'";
                                                   $result = $connection->query($query);
                                                   if (mysqli_num_rows($result) == 0)
                                                   {
@@ -114,7 +118,7 @@
                                                     echo  '</table>';
                                                   }
                                                 }
-                                                elseif ($_GET['customer'])
+                                                elseif ($_POST['customer'])
                                                 {
                                                   // $_SESSION['customer'] = 1;
                                                   echo $_POST['customer'];
@@ -145,10 +149,10 @@
                                                     echo  '</table>';
                                                   }
                                                 }
-                                                elseif ($_GET['rental'])
+                                                elseif ($_POST['rental'])
                                                 {
                                                   // $_SESSION['rental'] = 1;
-                                                  echo $_POST['rental'];
+                                                  // echo $_POST['rental'];
                                                   $query = "SELECT
                                                   rental_date,
                                                   return_date,
@@ -158,7 +162,7 @@
                                                   FROM
                                                   rental AS F
                                                   JOIN customer AS L ON F.customer_id = L.customer_id
-                                                  WHERE first_name OR last_name LIKE '%$search%'
+                                                  WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%'
                                                   ORDER BY rental_date DESC
                                                   LIMIT 10";
                                                   $result = $connection->query($query);
@@ -191,7 +195,7 @@
                                                     echo  '</table>';
                                                   }
                                                 }
-                                                elseif ($_GET['employee'])
+                                                elseif ($_POST['employee'])
                                                 {
                                                   // $_SESSION['employee'] = 1;
                                                   $query = "SELECT * FROM employee

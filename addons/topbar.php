@@ -21,27 +21,23 @@
         <!-- Topbar Search -->
         <form
             class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search btn-group"
-            action="search.php" method="get">
+            action="search.php" method="post">
             <div class="input-group">
                 <input class="form-control bg-light border-0 small" type="text" placeholder="Szukaj ..."
                     aria-label="Search" aria-describedby="basic-addon2" name="search">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit" role="submit">
-                      <i class="fas fa-search fa-sm"></i>
-                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-                      Kategoria
-                      <span class="caret"></span>
+                    <!-- <button class="btn btn-primary" type="submit" role="submit"> -->
+                    <input type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" value="Kategoria">
+                      <!-- Kategoria
+                      <span class="caret"></span> -->
+                      <!-- <i class="fas fa-search fa-sm"></i> -->
                         <ul class="dropdown-menu dropdown-menu-end" role="menu">
-                          <li><input class="dropdown-item" placeholder="Filmy" name="films" value="<?php $_GET['films']; ?>"></li>
-                          <li><input class="dropdown-item" placeholder="Klienci" name="customer" value="<?php $_GET['customer']; ?>"></li>
-                          <li><input class="dropdown-item" placeholder="Historia wypożyczeń" name="rental" value="<?php $_GET['rental']; ?>"></li>
-                          <li><input class="dropdown-item" placeholder="Karta pracowników" name="employee" value="<?php $_GET['employee']; ?>"></li>
-                          <!-- <li><a href="/action=films">Filmy</a></li>
-                          <li><a href="/action=customer">Klienci</a></li>
-                          <li><a href="/action=rental">Historia wyożyczeń</a></li>
-                          <li><a href="/action=employee">Karta pacowników</a></li> -->
+                          <li><input type="submit" role="submit" class="dropdown-item" name="films" value="Filmy"></li>
+                          <li><input type="submit" role="submit" class="dropdown-item" name="customer" value="Klienci"></li>
+                          <li><input type="submit" role="submit" class="dropdown-item" name="rental" value="Historia wypożyczeń"></li>
+                          <li><input type="submit" role="submit" class="dropdown-item" name="employee" value="Karta pracowników"></li>
                         </ul>
-                    </button>
+                    <!-- </button> -->
 
                 </div>
             </div>
