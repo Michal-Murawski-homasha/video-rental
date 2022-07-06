@@ -32,15 +32,14 @@
                       <span class="caret"></span> -->
                       <!-- <i class="fas fa-search fa-sm"></i> -->
                         <ul class="dropdown-menu dropdown-menu-end" role="menu">
-                          <li><input type="submit" role="submit" class="dropdown-item" name="films" value="Filmy"></li>
-                          <li><input type="submit" role="submit" class="dropdown-item" name="customer" value="Klienci"></li>
-                          <li><input type="submit" role="submit" class="dropdown-item" name="rental" value="Historia wypożyczeń"></li>
-                          <li><input type="submit" role="submit" class="dropdown-item" name="employee" value="Karta pracowników"></li>
+                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="films" value="Filmy"></li>
+                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="customer" value="Klienci"></li>
+                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="rental" value="Historia wypożyczeń"></li>
+                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="employee" value="Karta pracowników"></li>
                         </ul>
                     <!-- </button> -->
-
+                  </div>
                 </div>
-            </div>
 
             <!-- <div class = "btn-group">
              <button type = "button" class = "btn btn-primary dropdown-toggle" data-toggle = "dropdown">
@@ -214,19 +213,33 @@
                       <?php
                         if (isset($_SESSION['loginStatus']))
                         {
-                          if ($_SESSION['loginStatus'] == 0)
-                          {
-                            echo '';
-                          }
-                          else
+                          if ($_SESSION['loginStatus'] == 1)
                           {
                             echo $_SESSION['infoUser'];
                           }
                         }
+                        else
+                        {
+                          echo 'Anonymous';
+                        }
                       ?>
                     </span>
-                    <img class="img-profile rounded-circle"
-                        src="img/michal_murawski_autoportret.jpg">
+                    <?php
+                      if (isset($_SESSION['loginStatus']))
+                      {
+                        if ($_SESSION['loginStatus'] == 1)
+                        {
+                          echo '<img class="img-profile rounded-circle"
+                              src="img/michal_murawski.jpg">';
+                        }
+                      }
+                      else
+                      {
+                        echo '<img class="img-profile rounded-circle"
+                            src="img/question-mark.jpg">';
+                      }
+                    ?>
+
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
