@@ -230,13 +230,13 @@
                         if ($_SESSION['loginStatus'] == 1)
                         {
                           echo '<img class="img-profile rounded-circle"
-                              src="img/michal_murawski.jpg">';
+                              src="img/'.$_SESSION['email'].'.jpg">';
                         }
                       }
                       else
                       {
                         echo '<img class="img-profile rounded-circle"
-                            src="img/question-mark.jpg">';
+                            src="img/question-mark.png">';
                       }
                     ?>
 

@@ -24,6 +24,7 @@
       $_SESSION['transactionId'] = md5(time() + rand(1000,9999));
       $row = mysqli_fetch_array($resultLogin);
       $_SESSION['infoUser'] = $row['firstNameUser']." ".$row['lastNameUser'];
+      $_SESSION['email'] = $row['emailUser'];
       header('Location:../index.php');
       exit();
     }
