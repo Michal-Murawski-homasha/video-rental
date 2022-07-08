@@ -70,12 +70,12 @@
                                                   echo  '<table class="table table-hover">
                                                   <thead class="table-dark">
                                                   <tr>
-                                                  <th><a href="#" class="text-light">ID</a></th>
-                                                  <th><a href="#" class="text-light">Tytuł</a></th>
-                                                  <th><a href="#" class="text-light">Data produkcji</a></th>
-                                                  <th><a href="#" class="text-light">Jęyk</a></th>
-                                                  <th><a href="#" class="text-light">Czas</a></th>
-                                                  <th><a href="#" class="text-light">Cena</a></th>
+                                                  <th><a href="/?action=sort-by-id" class="text-light">ID</a></th>
+                                                  <th><a href="/?action=sort-by-title" class="text-light">Tytuł</a></th>
+                                                  <th><a href="/?action=sort-by-year" class="text-light">Data produkcji</a></th>
+                                                  <th><a href="/?action=sort-by-name" class="text-light">Jęyk</a></th>
+                                                  <th><a href="/?action=sort-by-length" class="text-light">Czas</a></th>
+                                                  <th><a href="/?action=sort-by-rate" class="text-light">Cena</a></th>
                                                   </tr>
                                                   </thead>';
                                                   while ($row = $result->fetch_assoc())
