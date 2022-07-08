@@ -79,7 +79,7 @@
                                                 FROM
                                                 film AS F
                                                 JOIN language AS L ON F.language_id = L.language_id
-                                                ORDER BY '$order' '$sort'";
+                                                ORDER BY $order $sort";
                                                 $result = $connection->query($query);
                                                 if (mysqli_num_rows($result) == 0)
                                                 {
@@ -89,21 +89,20 @@
                                                 {
                                                   $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
 
-                                                  echo  '<table class="table table-hover">
-                                                  <thead class="table-dark">
+                                                  echo  "<table class='table table-hover'>
+                                                  <thead class='table-dark'>
                                                   <tr>
-                                                  <th><a href="?order=film_id&&sort=$sort" class="text-light">ID</a></th>
-                                                  <th><a href="?order=title&&sort=$sort" class="text-light">Tytuł</a></th>
-                                                  <th><a href="?order=release_year&&sort=$sort" class="text-light">Data produkcji</a></th>
-                                                  <th><a href="?order=name&&sort=$sort" class="text-light">Jęyk</a></th>
-                                                  <th><a href="?order=length&&sort=$sort" class="text-light">Czas</a></th>
-                                                  <th><a href="?order=rental_rate&&sort=$sort" class="text-light">Cena</a></th>
+                                                  <th><a href='?order=film_id&&sort=$sort' class='text-light'>ID</a></th>
+                                                  <th><a href='?order=title&&sort=$sort' class='text-light'>Tytuł</a></th>
+                                                  <th><a href='?order=release_year&&sort=$sort' class='text-light'>Data produkcji</a></th>
+                                                  <th><a href='?order=name&&sort=$sort' class='text-light'>Jęyk</a></th>
+                                                  <th><a href='?order=length&&sort=$sort' class='text-light'>Czas</a></th>
+                                                  <th><a href='?order=rental_rate&&sort=$sort' class='text-light'>Cena</a></th>
                                                   </tr>
-                                                  </thead>';
+                                                  </thead>";
 
                                                   while ($row = $result->fetch_assoc())
                                                   {
-                                                    // $asset_num = $row['asset_num'];
                                                     $filmId = $row['film_id'];
                                                     $title = $row['title'];
                                                     $releaseYear = $row['release_year'];
