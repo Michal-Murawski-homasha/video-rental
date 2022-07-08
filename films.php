@@ -50,29 +50,23 @@
                                               }
                                               else
                                               {
-                                                if (isset($_SESSION['film_id']))
+
+                                                if (isset($_GET['order']))
                                                 {
-                                                  $sort = 'film_id';
+                                                  $order = $_GET['order'];
                                                 }
-                                                elseif (isset($_SESSION['title']))
+                                                else
                                                 {
-                                                  $sort = 'title';
+                                                  $order = 'film_id';
                                                 }
-                                                elseif (isset($_SESSION['release_year']))
+
+                                                if (isset($_GET['sort']))
                                                 {
-                                                  $sort = 'release_year';
+                                                  $sort = $_GET['sort'];
                                                 }
-                                                elseif (isset($_SESSION['name']))
+                                                else
                                                 {
-                                                  $sort = 'name';
-                                                }
-                                                elseif (isset($_SESSION['length']))
-                                                {
-                                                  $sort = 'length';
-                                                }
-                                                elseif (isset($_SESSION['rental_rate']))
-                                                {
-                                                  $sort = 'rental_rate';
+                                                  $sort = 'ASC';
                                                 }
 
                                                 $query = "SELECT
@@ -85,7 +79,7 @@
                                                 FROM
                                                 film AS F
                                                 JOIN language AS L ON F.language_id = L.language_id
-                                                ORDER BY '$sort' DESC";
+                                                ORDER BY '$order' '$sort'";
                                                 $result = $connection->query($query);
                                                 if (mysqli_num_rows($result) == 0)
                                                 {
@@ -93,28 +87,37 @@
                                                 }
                                                 else
                                                 {
+                                                  $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
 
                                                   echo  '<table class="table table-hover">
                                                   <thead class="table-dark">
                                                   <tr>
-                                                  <th><a href="films.php" class="text-light" name="film_id">ID</a></th>
-                                                  <th><a href="films.php" class="text-light" name="title">Tytuł</a></th>
-                                                  <th><a href="films.php" class="text-light" name="release_year">Data produkcji</a></th>
-                                                  <th><a href="films.php" class="text-light" name="name">Jęyk</a></th>
-                                                  <th><a href="films.php" class="text-light" name="length">Czas</a></th>
-                                                  <th><a href="films.php" class="text-light" name="rental_rate">Cena</a></th>
+                                                  <th><a href="?order=film_id&&sort=$sort" class="text-light">ID</a></th>
+                                                  <th><a href="?order=title&&sort=$sort" class="text-light">Tytuł</a></th>
+                                                  <th><a href="?order=release_year&&sort=$sort" class="text-light">Data produkcji</a></th>
+                                                  <th><a href="?order=name&&sort=$sort" class="text-light">Jęyk</a></th>
+                                                  <th><a href="?order=length&&sort=$sort" class="text-light">Czas</a></th>
+                                                  <th><a href="?order=rental_rate&&sort=$sort" class="text-light">Cena</a></th>
                                                   </tr>
                                                   </thead>';
 
                                                   while ($row = $result->fetch_assoc())
                                                   {
+                                                    // $asset_num = $row['asset_num'];
+                                                    $filmId = $row['film_id'];
+                                                    $title = $row['title'];
+                                                    $releaseYear = $row['release_year'];
+                                                    $name = $row['name'];
+                                                    $length = $row['length'];
+                                                    $rentalRate = $row['rental_rate'];
+
                                                     echo '<tbody>
-                                                    <td>'.$row['film_id'].'</td>
-                                                    <td>'.$row['title'].'</td>
-                                                    <td>'.$row['release_year'].'</td>
-                                                    <td>'.$row['name'].'</td>
-                                                    <td>'.$row['length'].'</td>
-                                                    <td>'.$row['rental_rate'].'</td>
+                                                    <td>'.$filmId.'</td>
+                                                    <td>'.$title.'</td>
+                                                    <td>'.$releaseYear.'</td>
+                                                    <td>'.$name.'</td>
+                                                    <td>'.$length.'</td>
+                                                    <td>'.$rentalRate.'</td>
                                                     </tbody>';
                                                   }
                                                   echo  '</table>';
