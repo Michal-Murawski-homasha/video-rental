@@ -58,7 +58,8 @@
                                                 rental_rate
                                                 FROM
                                                 film AS F
-                                                JOIN language AS L ON F.language_id = L.language_id';
+                                                JOIN language AS L ON F.language_id = L.language_id
+                                                ORDER BY title ASC';
                                                 $result = $connection->query($query);
                                                 if (mysqli_num_rows($result) == 0)
                                                 {
@@ -69,12 +70,12 @@
                                                   echo  '<table class="table table-hover">
                                                   <thead class="table-dark">
                                                   <tr>
-                                                  <th>ID</th>
-                                                  <th>Tytuł</th>
-                                                  <th>Data produkcji</th>
-                                                  <th>Jęyk</th>
-                                                  <th>Czas</th>
-                                                  <th>Cena</th>
+                                                  <th><a href="#">ID</a></th>
+                                                  <th><a href="#">Tytuł</a></th>
+                                                  <th><a href="#">Data produkcji</a></th>
+                                                  <th><a href="#">Jęyk</a></th>
+                                                  <th><a href="#">Czas</a></th>
+                                                  <th><a href="#">Cena</a></th>
                                                   </tr>
                                                   </thead>';
                                                   while ($row = $result->fetch_assoc())
