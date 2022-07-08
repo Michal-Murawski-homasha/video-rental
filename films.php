@@ -43,37 +43,15 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
+                                              $sortName = $_GET['action'] ?? NULL;
+                                              var_dump($sortName);
+
                                               if (!isset($_SESSION['loginStatus']))
                                               {
                                                 echo 'Zaloguj się';
                                               }
                                               else
                                               {
-                                                if ($sortName === 'sort-by-id')
-                                                {
-                                                  $sort = 'film_id';
-                                                }
-                                                elseif ($sortName === 'sort-by-title')
-                                                {
-                                                  $sort = 'title';
-                                                }
-                                                elseif ($sortName === 'sort-by-year')
-                                                {
-                                                  $sort = 'release_year';
-                                                }
-                                                elseif ($sortName === 'sort-by-name')
-                                                {
-                                                  $sort = 'name';
-                                                }
-                                                elseif ($sortName === 'sort-by-length')
-                                                {
-                                                  $sort = 'length';
-                                                }
-                                                elseif ($sortName === 'sort-by-rate')
-                                                {
-                                                  $sort = 'rate';
-                                                }
-
                                                 $query = "SELECT
                                                 film_id,
                                                 title,
@@ -83,8 +61,7 @@
                                                 rental_rate
                                                 FROM
                                                 film AS F
-                                                JOIN language AS L ON F.language_id = L.language_id
-                                                ORDER BY '$sort' ASC";
+                                                JOIN language AS L ON F.language_id = L.language_id";
                                                 $result = $connection->query($query);
                                                 if (mysqli_num_rows($result) == 0)
                                                 {
@@ -103,6 +80,98 @@
                                                   <th><a href="/?action=sort-by-rate" class="text-light">Cena</a></th>
                                                   </tr>
                                                   </thead>';
+
+                                                  if ($sortName === 'sort-by-id')
+                                                  {
+                                                    // $sort = 'film_id';
+                                                    $query = "SELECT
+                                                    film_id,
+                                                    title,
+                                                    release_year,
+                                                    name,
+                                                    length,
+                                                    rental_rate
+                                                    FROM
+                                                    film AS F
+                                                    JOIN language AS L ON F.language_id = L.language_id
+                                                    ORDER BY film_id ASC";
+                                                  }
+                                                  elseif ($sortName === 'sort-by-title')
+                                                  {
+                                                    // $sort = 'title';
+                                                    $query = "SELECT
+                                                    film_id,
+                                                    title,
+                                                    release_year,
+                                                    name,
+                                                    length,
+                                                    rental_rate
+                                                    FROM
+                                                    film AS F
+                                                    JOIN language AS L ON F.language_id = L.language_id
+                                                    ORDER BY title ASC";
+                                                  }
+                                                  elseif ($sortName === 'sort-by-year')
+                                                  {
+                                                    // $sort = 'release_year';
+                                                    $query = "SELECT
+                                                    film_id,
+                                                    title,
+                                                    release_year,
+                                                    name,
+                                                    length,
+                                                    rental_rate
+                                                    FROM
+                                                    film AS F
+                                                    JOIN language AS L ON F.language_id = L.language_id
+                                                    ORDER BY release_year ASC";
+                                                  }
+                                                  elseif ($sortName === 'sort-by-name')
+                                                  {
+                                                    // $sort = 'name';
+                                                    $query = "SELECT
+                                                    film_id,
+                                                    title,
+                                                    release_year,
+                                                    name,
+                                                    length,
+                                                    rental_rate
+                                                    FROM
+                                                    film AS F
+                                                    JOIN language AS L ON F.language_id = L.language_id
+                                                    ORDER BY name ASC";
+                                                  }
+                                                  elseif ($sortName === 'sort-by-length')
+                                                  {
+                                                    // $sort = 'length';
+                                                    $query = "SELECT
+                                                    film_id,
+                                                    title,
+                                                    release_year,
+                                                    name,
+                                                    length,
+                                                    rental_rate
+                                                    FROM
+                                                    film AS F
+                                                    JOIN language AS L ON F.language_id = L.language_id
+                                                    ORDER BY length ASC";
+                                                  }
+                                                  elseif ($sortName === 'sort-by-rate')
+                                                  {
+                                                    // $sort = 'rate';
+                                                    $query = "SELECT
+                                                    film_id,
+                                                    title,
+                                                    release_year,
+                                                    name,
+                                                    length,
+                                                    rental_rate
+                                                    FROM
+                                                    film AS F
+                                                    JOIN language AS L ON F.language_id = L.language_id
+                                                    ORDER BY rental_rate ASC";
+                                                  }
+
                                                   while ($row = $result->fetch_assoc())
                                                   {
                                                     echo '<tbody>
