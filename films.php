@@ -67,7 +67,7 @@
                                                 }
                                                 else
                                                 {
-                                                  echo  '<table class="table table-hover"">
+                                                  echo  '<table class="table table-hover">
                                                   <thead class="table-dark">
                                                   <tr>
                                                   <th><a href="#" class="text-light">ID</a></th>
