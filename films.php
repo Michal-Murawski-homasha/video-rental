@@ -60,9 +60,9 @@
                                                   $order = 'film_id';
                                                 }
 
-                                                if (isset($_GET['sort']))
+                                                if (isset($_GET['sort']) && strlen(trim($_GET['sort'])) > 0)
                                                 {
-                                                  $sort = $_GET['sort'];
+                                                  $sort = addslashes(trim($_GET['sort']));
                                                 }
                                                 else
                                                 {
