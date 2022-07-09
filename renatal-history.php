@@ -50,7 +50,25 @@
                                               }
                                               else
                                               {
-                                                $query = 'SELECT
+                                                if (isset($_GET['order']))
+                                                {
+                                                  $order = $_GET['order'];
+                                                }
+                                                else
+                                                {
+                                                  $order = 'rental_date';
+                                                }
+
+                                                if (isset($_GET['sort']))
+                                                {
+                                                  $sort = $_GET['sort'];
+                                                }
+                                                else
+                                                {
+                                                  $sort = 'DESC';
+                                                }
+
+                                                $query = "SELECT
                                                 rental_date,
                                                 return_date,
                                                 inventory_id,
@@ -59,33 +77,40 @@
                                                 FROM
                                                 rental AS F
                                                 JOIN customer AS L ON F.customer_id = L.customer_id
-                                                ORDER BY rental_date DESC
-                                                LIMIT 10';
+                                                ORDER BY $order $sort
+                                                LIMIT 10";
                                                 $result = $connection->query($query);
                                                 if (mysqli_num_rows($result) == 0)
                                                 {
-                                                  echo '';
+                                                  echo 'Brak danych';
                                                 }
                                                 else
                                                 {
+                                                  $sort == 'ASC' ? $sort = 'DESC' : $sort = 'ASC';
+
                                                   echo
-                                                  '<table class="table">
-                                                  <thead class="table-dark">
+                                                  "<table class='table'>
+                                                  <thead class='table-dark'>
                                                   <tr>
-                                                  <th>Data wypożyczenia</th>
-                                                  <th>Imię</th>
-                                                  <th>Nazwisko</th>
-                                                  <th>Data zwrotu</th>
+                                                  <th><a href='?order=rental_date&&sort=$sort' class='text-light'>Data wypożyczenia</a></th>
+                                                  <th><a href='?order=first_name&&sort=$sort' class='text-light'>Imię</a></th>
+                                                  <th><a href='?order=last_name&&sort=$sort' class='text-light'>Nazwisko</a></th>
+                                                  <th><a href='?order=return_date&&sort=$sort' class='text-light'>Data zwrotu</a></th>
                                                   </tr>
-                                                  </thead>';
+                                                  </thead>";
                                                   while ($row = $result->fetch_assoc())
                                                   {
+                                                    $rentalDate = $row['rental_date'];
+                                                    $firstName = $row['first_name'];
+                                                    $lastName = $row['last_name'];
+                                                    $returnDate = $row['return_date'];
+
                                                     echo
                                                     '<tbody>
-                                                    <td>'.$row['rental_date'].'</td>
-                                                    <td>'.$row['first_name'].'</td>
-                                                    <td>'.$row['last_name'].'</td>
-                                                    <td>'.$row['return_date'].'</td>
+                                                    <td>'.$rentalDate.'</td>
+                                                    <td>'.$firstName.'</td>
+                                                    <td>'.$lastName.'</td>
+                                                    <td>'.$returnDate.'</td>
                                                     </tbody>';
                                                   }
                                                   echo  '</table>';
