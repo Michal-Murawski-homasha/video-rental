@@ -51,7 +51,24 @@
                                               }
                                               else
                                               {
-                                                $query = 'SELECT * FROM employee';
+                                                if (isset($_GET['order']))
+                                                {
+                                                  $order = $_GET['order'];
+                                                }
+                                                else {
+                                                  $order = 'firstNameUser';
+                                                }
+
+                                                if (isset($_GET['sort']))
+                                                {
+                                                  $sort = $_GET['sort'];
+                                                }
+                                                else {
+                                                  $sort = 'ASC';
+                                                }
+
+                                                $query = "SELECT * FROM employee
+                                                ORDER BY $order $sort";
                                                 $result = $connection->query($query);
                                                 if (mysqli_num_rows($result) == 0)
                                                 {
@@ -59,20 +76,26 @@
                                                 }
                                                 else
                                                 {
-                                                  echo  '<table class="table">
-                                                  <thead class="table-dark">
+                                                  $sort == 'DESC' ? $sort = 'ASC' : $sort = 'DESC';
+
+                                                  echo  "<table class='table'>
+                                                  <thead class='table-dark'>
                                                   <tr>
-                                                  <th>Imię</th>
-                                                  <th>Nazwisko</th>
-                                                  <th>Adres e-mail</th>
+                                                  <th><a href='?order=firstNameUser&&sort=$sort' class='text-light'>Imię</a></th>
+                                                  <th><a href='?order=lastNameUser&&sort=$sort' class='text-light'>Nazwisko</a></th>
+                                                  <th><a href='?order=emailUser&&sort=$sort' class='text-light'>Adres e-mail</a></th>
                                                   </tr>
-                                                  </thead>';
+                                                  </thead>";
                                                   while ($row = $result->fetch_assoc())
                                                   {
+                                                    $firstNameUser = $row['firstNameUser'];
+                                                    $lastNameUser = $row['lastNameUser'];
+                                                    $emailUser = $row['emailUser'];
+
                                                     echo '<tbody>
-                                                    <td>'.$row['firstNameUser'].'</td>
-                                                    <td>'.$row['lastNameUser'].'</td>
-                                                    <td>'.$row['emailUser'].'</td>
+                                                    <td>'.$firstNameUser.'</td>
+                                                    <td>'.$lastNameUser.'</td>
+                                                    <td>'.$emailUser.'</td>
                                                     </tbody>';
                                                   }
                                                   echo  '</table>';
