@@ -50,7 +50,24 @@
                                             }
                                             else
                                             {
-                                              $query = 'SELECT * FROM customer';
+                                              if (isset($_GET['order']))
+                                              {
+                                                $order = $_GET['order'];
+                                              }
+                                              else {
+                                                $order = 'first_name';
+                                              }
+
+                                              if (isset($_GET['sort']) && strlen(trim($_GET['sort'])) > 0)
+                                              {
+                                                $sort = addslashes(trim($_GET['sort']));
+                                              }
+                                              else {
+                                                $sort = 'ASC';
+                                              }
+
+                                              $query = "SELECT * FROM customer
+                                              ORDER BY $order $sort";
                                               $result = $connection->query($query);
                                               if (mysqli_num_rows($result) == 0)
                                               {
@@ -58,20 +75,26 @@
                                               }
                                               else
                                               {
-                                                echo  '<table class="table">
-                                                <thead class="table-dark">
+                                                $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
+
+                                                echo  "<table class='table'>
+                                                <thead class='table-dark'>
                                                 <tr>
-                                                <th>Imię</th>
-                                                <th>Nazwisko</th>
-                                                <th>Adres e-mail</th>
+                                                <th><a href='?order=first_name&&sort=$sort' class='text-light'>Imię</a></th>
+                                                <th><a href='?order=last_name&&sort=$sort' class='text-light'>Nazwisko</a></th>
+                                                <th><a href='?order=email&&sort=$sort' class='text-light'>Adres e-mail</a></th>
                                                 </tr>
-                                                </thead>';
+                                                </thead>";
                                                 while ($row = $result->fetch_assoc())
                                                 {
+                                                  $firstName = $row['first_name'];
+                                                  $lastName = $row['last_name'];
+                                                  $email = $row['email'];
+
                                                   echo '<tbody>
-                                                  <td>'.$row['first_name'].'</td>
-                                                  <td>'.$row['last_name'].'</td>
-                                                  <td>'.$row['email'].'</td>
+                                                  <td>'.$firstName.'</td>
+                                                  <td>'.$lastName.'</td>
+                                                  <td>'.$email.'</td>
                                                   </tbody>';
                                                 }
                                                 echo  '</table>';
