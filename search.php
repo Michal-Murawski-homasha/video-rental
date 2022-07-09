@@ -48,8 +48,8 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              $search = $_POST['search'];
-                                              echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$search.'"</h2><br>';
+                                              $_SESSION['search'] = $_POST['search'];
+                                              echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$_SESSION['search'].'"</h2><br>';
 
                                               if (!isset($_SESSION['loginStatus']))
                                               {
@@ -76,7 +76,7 @@
                                                     $sort = 'ASC';
                                                   }
 
-                                                  if (isset($search))
+                                                  if (isset($_SESSION['search']))
                                                   {
                                                     $query = "SELECT
                                                     film_id,
@@ -88,9 +88,9 @@
                                                     FROM
                                                     film AS F
                                                     JOIN language AS L ON F.language_id = L.language_id
-                                                    WHERE title LIKE '%$search%'
+                                                    WHERE title LIKE '%$_SESSION['search']%'
                                                     ORDER BY $order $sort";
-                                                    $_SESSION['search'] = $search;
+                                                    // $_SESSION['search'] = $search;
                                                   }
                                                   else {
                                                     if (isset($_SESSION['search']))
@@ -105,7 +105,7 @@
                                                       FROM
                                                       film AS F
                                                       JOIN language AS L ON F.language_id = L.language_id
-                                                      WHERE title LIKE '%$search%'
+                                                      WHERE title LIKE '%$_SESSION['search']%'
                                                       ORDER BY $order $sort";
                                                     }
                                                   }
