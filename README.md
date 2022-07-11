@@ -3,7 +3,7 @@
 
 ![video-rental - web app](./screenshots/video-rental.png)
 
-The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is created in PHP.
+The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is created in PHP 8.1.6.
 
 To add a table with employees to the standard Sakila database import the employee.sql file in the database/ folder. Two sample accounts are created in the table:
 Luke Skywalker skywalker@mail.com (password: Abcd1234)
