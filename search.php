@@ -76,7 +76,7 @@
                                                     $sort = 'ASC';
                                                   }
 
-                                                  if (isset($search))
+                                                  if (isset($_GET['films']))
                                                   {
                                                     $query = "SELECT
                                                     film_id,
