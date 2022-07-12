@@ -119,12 +119,12 @@
                                                     echo  "<table class='table'>
                                                     <thead class='table-dark'>
                                                     <tr>
-                                                    <th><a href='?order=&&sort=$sort' class='text-light'>ID</a></th>
-                                                    <th><a href='?order=&&sort=$sort' class='text-light'>Tytuł</a></th>
-                                                    <th><a href='?order=&&sort=$sort' class='text-light'>Data produkcji</a></th>
-                                                    <th><a href='?order=&&sort=$sort' class='text-light'>Jęyk</a></th>
-                                                    <th><a href='?order=&&sort=$sort' class='text-light'>Czas</a></th>
-                                                    <th><a href='?order=&&sort=$sort' class='text-light'>Cena</a></th>
+                                                    <th><a href='?order=film_id&&sort=$sort' class='text-light'>ID</a></th>
+                                                    <th><a href='?order=title&&sort=$sort' class='text-light'>Tytuł</a></th>
+                                                    <th><a href='?order=release_year&&sort=$sort' class='text-light'>Data produkcji</a></th>
+                                                    <th><a href='?order=name&&sort=$sort' class='text-light'>Jęyk</a></th>
+                                                    <th><a href='?order=length&&sort=$sort' class='text-light'>Czas</a></th>
+                                                    <th><a href='?order=rantal_rate&&sort=$sort' class='text-light'>Cena</a></th>
                                                     </tr>
                                                     </thead>";
                                                     while ($row = $result->fetch_assoc())
