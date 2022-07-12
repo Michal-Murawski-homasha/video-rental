@@ -48,7 +48,7 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              $search = $_POST['search'];
+                                              $search = $_GET['search'];
                                               echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$search.'"</h2><br>';
 
                                               if (!isset($_SESSION['loginStatus']))
@@ -58,7 +58,7 @@
                                               else
                                               {
 
-                                                if (isset($_POST['films']))
+                                                if (isset($_GET['films']))
                                                 {
                                                   if (isset($_GET['order']))
                                                   {
@@ -148,7 +148,7 @@
                                                     echo  '</table>';
                                                   }
                                                 }
-                                                elseif (isset($_POST['customer']))
+                                                elseif (isset($_GET['customer']))
                                                 {
                                                   $query = "SELECT * FROM customer WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR email LIKE '%$search%'";
                                                   $result = $connection->query($query);
@@ -177,7 +177,7 @@
                                                       echo  '</table>';
                                                     }
                                                   }
-                                                  elseif (isset($_POST['rental']))
+                                                  elseif (isset($_GET['rental']))
                                                   {
                                                     $query = "SELECT
                                                     rental_date,
@@ -221,7 +221,7 @@
                                                         echo  '</table>';
                                                       }
                                                     }
-                                                  elseif (isset($_POST['employee']))
+                                                  elseif (isset($_GET['employee']))
                                                   {
                                                     $query = "SELECT * FROM employee
                                                     WHERE firstNameUser LIKE '%$search%' OR lastNameUser LIKE '%$search%' OR emailUser LIKE '%$search%'";
