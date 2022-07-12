@@ -49,6 +49,7 @@
                                           <div class = "col-md-12">
                                             <?php
                                               $search = $_GET['search'];
+
                                               echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$search.'"</h2><br>';
 
                                               if (!isset($_SESSION['loginStatus']))
@@ -76,7 +77,7 @@
                                                     $sort = 'ASC';
                                                   }
 
-                                                  if (isset($_GET['films']))
+                                                  if (isset($search))
                                                   {
                                                     $query = "SELECT
                                                     film_id,
@@ -92,7 +93,7 @@
                                                     $_SESSION['search'] = $search;
                                                   }
 
-                                                  if (isset($_SESSION['search']))
+                                                  if ((isset($_SESSION['search'])) && (isset($_GET['films'])))
                                                   {
                                                     $query = "SELECT
                                                     film_id,
