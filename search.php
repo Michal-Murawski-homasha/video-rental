@@ -92,22 +92,21 @@
                                                     ORDER BY $order $sort";
                                                     $_SESSION['search'] = $search;
                                                   }
-                                                  else {
-                                                    if (isset($_SESSION['search']))
-                                                    {
-                                                      $query = "SELECT
-                                                      film_id,
-                                                      title,
-                                                      release_year,
-                                                      name,
-                                                      length,
-                                                      rental_rate
-                                                      FROM
-                                                      film AS F
-                                                      JOIN language AS L ON F.language_id = L.language_id
-                                                      WHERE title LIKE '%$search%'
-                                                      ORDER BY $order $sort";
-                                                    }
+
+                                                  if (isset($_SESSION['search']))
+                                                  {
+                                                    $query = "SELECT
+                                                    film_id,
+                                                    title,
+                                                    release_year,
+                                                    name,
+                                                    length,
+                                                    rental_rate
+                                                    FROM
+                                                    film AS F
+                                                    JOIN language AS L ON F.language_id = L.language_id
+                                                    WHERE title LIKE '%$search%'
+                                                    ORDER BY $order $sort";
                                                   }
                                                   $result = $connection->query($query);
                                                   if (mysqli_num_rows($result) == 0)
