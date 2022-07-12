@@ -88,8 +88,7 @@
                                                     FROM
                                                     film AS F
                                                     JOIN language AS L ON F.language_id = L.language_id
-                                                    WHERE title LIKE '%$search%'
-                                                    ORDER BY $order $sort";
+                                                    WHERE title LIKE '%$search%'";
                                                     $_SESSION['search'] = $search;
                                                   }
 
