@@ -95,6 +95,7 @@
 
                                                   if ((isset($_SESSION['search'])) && (isset($_GET['films'])))
                                                   {
+                                                    $search = $_SESSION['search'];
                                                     $query = "SELECT
                                                     film_id,
                                                     title,
