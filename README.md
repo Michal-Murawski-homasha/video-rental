@@ -11,7 +11,7 @@ Structure of the employee table.
 ![video-rental_employee - web app](./screenshots/video-rental_employee-structure.png)
 
 To add a table with employees to the standard Sakila database import the employee.sql file in the database/ folder. Two sample accounts are created in the table:
-Luke Skywalker skywalker@mail.com (password: Abcd1234)
-Dart Vader vader@mail.com (password: Abcd1234).
+- Luke Skywalker skywalker@mail.com (password: Abcd1234)
+- Dart Vader vader@mail.com (password: Abcd1234).
 
 ![video-rental_employee - web app](./screenshots/video-rental_employee.png)
