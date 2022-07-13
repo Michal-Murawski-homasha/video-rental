@@ -77,8 +77,8 @@
                                                     $sort = 'ASC';
                                                   }
 
-                                                  if (isset($search))
-                                                  {
+                                                  // if (isset($search))
+                                                  // {
                                                     $query = "SELECT
                                                     film_id,
                                                     title,
@@ -90,8 +90,8 @@
                                                     film AS F
                                                     JOIN language AS L ON F.language_id = L.language_id
                                                     WHERE title LIKE '%$search%'";
-                                                    $_SESSION['search'] = $search;
-                                                  }
+                                                    // $_SESSION['search'] = $search;
+                                                  // }
 
                                                   $result = $connection->query($query);
                                                   if (mysqli_num_rows($result) == 0)
@@ -100,6 +100,8 @@
                                                   }
                                                   else
                                                   {
+                                                    $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
+
                                                     echo  "<table class='table'>
                                                     <thead class='table-dark'>
                                                     <tr>
