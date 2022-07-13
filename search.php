@@ -121,12 +121,12 @@
                                                     echo  "<table class='table'>
                                                     <thead class='table-dark'>
                                                     <tr>
-                                                    <th><a href='?search=$search&&order=film_id&&sort=$sort' class='text-light' name='sortFilms'>ID</a></th>
-                                                    <th><a href='?search=$search&&order=title&&sort=$sort' class='text-light' name='sortFilms'>Tytuł</a></th>
-                                                    <th><a href='?search=$search&&order=release_year&&sort=$sort' class='text-light' name='sortFilms'>Data produkcji</a></th>
-                                                    <th><a href='?search=$search&&order=name&&sort=$sort' class='text-light' name='sortFilms'>Jęyk</a></th>
-                                                    <th><a href='?search=$search&&order=length&&sort=$sort' class='text-light' name='sortFilms'>Czas</a></th>
-                                                    <th><a href='?search=$search&&order=rantal_rate&&sort=$sort' class='text-light' name='sortFilms'>Cena</a></th>
+                                                    <th><a href='search.php?search=$search&&order=film_id&&sort=$sort' class='text-light' name='sortFilms'>ID</a></th>
+                                                    <th><a href='search.php?search=$search&&order=title&&sort=$sort' class='text-light' name='sortFilms'>Tytuł</a></th>
+                                                    <th><a href='search.php?search=$search&&order=release_year&&sort=$sort' class='text-light' name='sortFilms'>Data produkcji</a></th>
+                                                    <th><a href='search.php?search=$search&&order=name&&sort=$sort' class='text-light' name='sortFilms'>Jęyk</a></th>
+                                                    <th><a href='search.php?search=$search&&order=length&&sort=$sort' class='text-light' name='sortFilms'>Czas</a></th>
+                                                    <th><a href='search.php?search=$search&&order=rantal_rate&&sort=$sort' class='text-light' name='sortFilms'>Cena</a></th>
                                                     </tr>
                                                     </thead>";
                                                     while ($row = $result->fetch_assoc())
