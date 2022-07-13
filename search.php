@@ -77,8 +77,8 @@
                                                     $sort = 'ASC';
                                                   }
 
-                                                  // if (isset($search))
-                                                  // {
+                                                  if (isset($_GET['films']) && !isset($_GET['films']))
+                                                  {
                                                     $query = "SELECT
                                                     film_id,
                                                     title,
@@ -90,8 +90,24 @@
                                                     film AS F
                                                     JOIN language AS L ON F.language_id = L.language_id
                                                     WHERE title LIKE '%$search%'";
-                                                    // $_SESSION['search'] = $search;
-                                                  // }
+                                                    $_SESSION['search'] = $search;
+                                                  }
+                                                  else
+                                                  {
+                                                    $sortSearch = $_SESSION['search'];
+                                                    $query = "SELECT
+                                                    film_id,
+                                                    title,
+                                                    release_year,
+                                                    name,
+                                                    length,
+                                                    rental_rate
+                                                    FROM
+                                                    film AS F
+                                                    JOIN language AS L ON F.language_id = L.language_id
+                                                    WHERE title LIKE '%$sortSearch%'
+                                                    ORDER BY $order $sort";
+                                                  }
 
                                                   $result = $connection->query($query);
                                                   if (mysqli_num_rows($result) == 0)
@@ -105,7 +121,7 @@
                                                     echo  "<table class='table'>
                                                     <thead class='table-dark'>
                                                     <tr>
-                                                    <th><a href='?search=$search&&order=film_id&&sort=$sort' class='text-light'>ID</a></th>
+                                                    <th><a href='?search=$search&&order=film_id&&sort=$sort' class='text-light' name='films'>ID</a></th>
                                                     <th><a href='?search=$search&&order=title&&sort=$sort' class='text-light'>Tytuł</a></th>
                                                     <th><a href='?search=$search&&order=release_year&&sort=$sort' class='text-light'>Data produkcji</a></th>
                                                     <th><a href='?search=$search&&order=name&&sort=$sort' class='text-light'>Jęyk</a></th>
