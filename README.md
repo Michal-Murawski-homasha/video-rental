@@ -5,6 +5,10 @@
 
 The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is created in PHP 8.1.6.
 
+The structure of the home page and subpages was divided into smallet files (head, sidebar, footer etc.) and uploaded to the addons folder.
+The config directory contains the connnection file for the MySQL database connection.
+The login directory contines files containing logic for registration and validation and login.
+
 ## Adding an employee table.
 
 Structure of the employee table.
