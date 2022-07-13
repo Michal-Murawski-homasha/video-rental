@@ -48,8 +48,8 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              $search = $_GET['search'];
-                                              $_SESSION['search'] = $search;
+                                              $_SESSION['search'] = $_GET['search'];
+                                              $search = $_SESSION['search'];
 
                                               echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$search.'"</h2><br>';
 
@@ -78,7 +78,7 @@
                                                     $sort = 'ASC';
                                                   }
 
-                                                  if (isset($_GET['films']) && !isset($_GET['sortFilms']))
+                                                  if (isset($_GET['films']))
                                                   {
                                                     $query = "SELECT
                                                     film_id,
@@ -92,7 +92,8 @@
                                                     JOIN language AS L ON F.language_id = L.language_id
                                                     WHERE title LIKE '%$search%'";
                                                   }
-                                                  else
+
+                                                  if (isset($_GET['sortFilmId']))
                                                   {
                                                     $sortSearch = $_SESSION['search'];
                                                     $query = "SELECT
