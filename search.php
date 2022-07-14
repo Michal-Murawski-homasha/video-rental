@@ -142,12 +142,12 @@
                                                     echo  "<table class='table'>
                                                     <thead class='table-dark'>
                                                     <tr>
-                                                    <th><a href='?search=$search&&order=film_id&&sort=$sort' class='text-light' name='sortFilmId'>ID</a></th>
-                                                    <th><a href='?search=$search&&order=title&&sort=$sort' class='text-light' name='sortTitle'>Tytuł</a></th>
-                                                    <th><a href='?search=$search&&order=release_year&&sort=$sort' class='text-light' name='sortReleaseYear'>Data produkcji</a></th>
-                                                    <th><a href='?search=$search&&order=name&&sort=$sort' class='text-light' name='sortName'>Jęyk</a></th>
-                                                    <th><a href='?search=$search&&order=length&&sort=$sort' class='text-light' name='sortLength'>Czas</a></th>
-                                                    <th><a href='?search=$search&&order=rantal_rate&&sort=$sort' class='text-light' name='sortRentalRate'>Cena</a></th>
+                                                    <th><a href='?sort=film_id' class='text-light' name='sortFilmId'>ID</a></th>
+                                                    <th><a href='?sort=title' class='text-light' name='sortTitle'>Tytuł</a></th>
+                                                    <th><a href='?sort=release_year' class='text-light' name='sortReleaseYear'>Data produkcji</a></th>
+                                                    <th><a href='?sort=name' class='text-light' name='sortName'>Jęyk</a></th>
+                                                    <th><a href='?sort=length' class='text-light' name='sortLength'>Czas</a></th>
+                                                    <th><a href='?sort=rantal_rate' class='text-light' name='sortRentalRate'>Cena</a></th>
                                                     </tr>
                                                     </thead>";
                                                     while ($row = $result->fetch_assoc())
