@@ -29,4 +29,4 @@ To add a table with employees to the standard Sakila database import the employe
 The registration form has build in validation that checks the correctness of all filled fiedls (including checking that passwords are identical).<br>
 After logging in, the status (name and surname and avatar logged in person) is diplayed.<br>
 Data on movies and customers and rental history and employees can be sorted.<br>
-The search engine allows you to search by any phrase in one of four categories.
+The search engine allows you to search by any phrase in one of four categories (sorting does't work here yet).
