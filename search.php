@@ -114,9 +114,9 @@
                                                     }
                                                   }
 
-                                                  if (isset($_GET['sortFilmId']))
+                                                  if (isset($_GET['sort']) && strlen($_GET['sort']) > 0)
                                                   {
-                                                    $sortSearch = $_SESSION['search'];
+                                                    $sort = addslashes(trim($_GET['sort']));
                                                     $query = "SELECT
                                                     film_id,
                                                     title,
@@ -127,8 +127,7 @@
                                                     FROM
                                                     film AS F
                                                     JOIN language AS L ON F.language_id = L.language_id
-                                                    WHERE title LIKE '%$sortSearch%'
-                                                    ORDER BY $order $sort";
+                                                    ORDER BY $sort";
                                                   }
 
                                                   $result = $connection->query($query);
