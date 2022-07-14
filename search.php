@@ -130,14 +130,15 @@
                                                     ORDER BY $sort";
                                                   }
 
-                                                  $result = $connection->query($query);
-                                                  if (mysqli_num_rows($result) == 0)
+                                                  $result = $connection->prepare($query);
+                                                  $result->execute($parametrs);
+                                                  if ($query->rowCount() == 0)
                                                   {
                                                     echo 'Brak danych';
                                                   }
                                                   else
                                                   {
-                                                    $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
+                                                    // $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
 
                                                     echo  "<table class='table'>
                                                     <thead class='table-dark'>
