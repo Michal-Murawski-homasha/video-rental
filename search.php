@@ -1,88 +1,83 @@
 <?php
-  if (session_status() == PHP_SESSION_NONE)
-  {
-    session_start();
-  }
-  require_once('config/connection.php');
-  // unset($_SESSION['films']);
-  // unset($_SESSION['customer']);
-  // unset($_SESSION['rental']);
-  // unset($_SESSION['employee']);
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+require_once('config/connection.php');
+// unset($_SESSION['films']);
+// unset($_SESSION['customer']);
+// unset($_SESSION['rental']);
+// unset($_SESSION['employee']);
 ?>
 
 <html lang="pl">
-  <body id="page-top">
 
-      <!-- Page Wrapper -->
-      <div id="wrapper">
+<body id="page-top" class="<?= $sort ?? '' ?>">
 
-          <!-- Sidebar -->
-          <?php include('addons/sidebar.php'); ?>
-          <!-- End of Sidebar -->
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-          <!-- Content Wrapper -->
-          <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Sidebar -->
+    <?php include('addons/sidebar.php'); ?>
+    <!-- End of Sidebar -->
 
-              <!-- Main Content -->
-              <div id="content">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
-                  <!-- Topbar -->
-                  <?php include('addons/topbar.php');  ?>
-                  <!-- End of Topbar -->
+      <!-- Main Content -->
+      <div id="content">
 
-                  <!-- Begin Page Content -->
-                  <div class="container-fluid">
+        <!-- Topbar -->
+        <?php include('addons/topbar.php');  ?>
+        <!-- End of Topbar -->
 
-                      <!-- Page Heading -->
-                      <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                          <h1 class="h3 mb-0 text-gray-800">Wyszukiwarka</h1>
-                      </div>
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-                      <div class="row">
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Wyszukiwarka</h1>
+          </div>
 
-                          <!-- Loops area -->
-                          <div class="col-xl-12 col-lg-12">
-                              <div class="card shadow mb-4">
-                                  <!-- Card Body -->
-                                  <div class="card-body">
-                                      <div class="row">
-                                          <div class = "col-md-12">
-                                            <?php
-                                              // $_SESSION['search'] = $_GET['search'];
-                                              $search = trim($_GET['search']);
+          <div class="row">
 
-                                              echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$search.'"</h2><br>';
+            <!-- Loops area -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <?php
+                      // $_SESSION['search'] = $_GET['search'];
+                      $search = trim($_GET['search']);
 
-                                              if (!isset($_SESSION['loginStatus']))
-                                              {
-                                                echo 'Zaloguj się';
-                                              }
-                                              else
-                                              {
+                      echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "' . $search . '"</h2><br>';
 
-                                                if (isset($_GET['films']))
-                                                {
-                                                  // if (isset($_GET['order']))
-                                                  // {
-                                                  //   $order = $_GET['order'];
-                                                  // }
-                                                  // else {
-                                                  //   $order = 'film_id';
-                                                  // }
+                      if (!isset($_SESSION['loginStatus'])) {
+                        echo 'Zaloguj się';
+                      } else {
 
-                                                  // if (isset($_GET['sort']))
-                                                  // {
-                                                  //   $sort = $_GET['sort'];
-                                                  // }
-                                                  // else {
-                                                  //   $sort = 'ASC';
-                                                  // }
-                                                    $parametrs = array();
+                        if (isset($_GET['films'])) {
+                          // if (isset($_GET['order']))
+                          // {
+                          //   $order = $_GET['order'];
+                          // }
+                          // else {
+                          //   $order = 'film_id';
+                          // }
 
-                                                  if (isset($_GET['films']))
-                                                  {
-                                                    // $search = trim($_GET['search']);
-                                                    $query = "SELECT
+                          // if (isset($_GET['sort']))
+                          // {
+                          //   $sort = $_GET['sort'];
+                          // }
+                          // else {
+                          //   $sort = 'ASC';
+                          // }
+                          $parametrs = array();
+
+                          if (isset($_GET['films'])) {
+                            // $search = trim($_GET['search']);
+                            $query = "SELECT
                                                     film_id,
                                                     title,
                                                     release_year,
@@ -93,13 +88,12 @@
                                                     film AS F
                                                     JOIN language AS L ON F.language_id = L.language_id
                                                     WHERE title LIKE ?";
-                                                    $parametrs[] = "'%$search%'";
-                                                    $_SESSION['search'] = $search;
-                                                  }
-                                                  else {
-                                                    if (isset($_GET['search']) && strlen($_GET['search']) > 0) {
-                                                      $search = $_SESSION['search'];
-                                                      $query = "SELECT
+                            $parametrs[] = "'%$search%'";
+                            $_SESSION['search'] = $search;
+                          } else {
+                            if (isset($_GET['search']) && strlen($_GET['search']) > 0) {
+                              $search = $_SESSION['search'];
+                              $query = "SELECT
                                                       film_id,
                                                       title,
                                                       release_year,
@@ -110,14 +104,13 @@
                                                       film AS F
                                                       JOIN language AS L ON F.language_id = L.language_id
                                                       WHERE title LIKE ?";
-                                                      $parametrs[] = "'%$search%'";
-                                                    }
-                                                  }
+                              $parametrs[] = "'%$search%'";
+                            }
+                          }
 
-                                                  if (isset($_GET['sort']) && strlen($_GET['sort']) > 0)
-                                                  {
-                                                    $sort = addslashes(trim($_GET['sort']));
-                                                    $query = "SELECT
+                          if (isset($_GET['sort']) && strlen($_GET['sort']) > 0) {
+                            $sort = addslashes(trim($_GET['sort']));
+                            $query = "SELECT
                                                     film_id,
                                                     title,
                                                     release_year,
@@ -128,20 +121,17 @@
                                                     film AS F
                                                     JOIN language AS L ON F.language_id = L.language_id
                                                     ORDER BY $sort";
-                                                  }
+                          }
 
-                                                  $result = $connection->prepare($query);
-                                                  $result->execute($parametrs);
+                          $result = $connection->prepare($query);
+                          $result->execute($parametrs);
 
-                                                  if ($result->num_rows() == 0)
-                                                  {
-                                                    echo 'Brak danych';
-                                                  }
-                                                  else
-                                                  {
-                                                    // $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
+                          if ($result->num_rows() == 0) {
+                            echo 'Brak danych';
+                          } else {
+                            // $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
 
-                                                    echo  "<table class='table'>
+                            echo  "<table class='table'>
                                                     <thead class='table-dark'>
                                                     <tr>
                                                     <th><a href='?sort=film_id' class='text-light' name='sortFilmId'>ID</a></th>
@@ -153,38 +143,32 @@
                                                     </tr>
                                                     </thead>";
 
-                                                    while ($row = $result->fetch())
-                                                    {
-                                                      // $filmId = $row['film_id'];
-                                                      // $title = $row['title'];
-                                                      // $releaseYear = $row['release_year'];
-                                                      // $name = $row['name'];
-                                                      // $length = $row['length'];
-                                                      // $rentalRate = $row['rental_rate'];
+                            while ($row = $result->fetch()) {
+                              // $filmId = $row['film_id'];
+                              // $title = $row['title'];
+                              // $releaseYear = $row['release_year'];
+                              // $name = $row['name'];
+                              // $length = $row['length'];
+                              // $rentalRate = $row['rental_rate'];
 
-                                                      echo '<tbody>
-                                                      <td>'.$row['film_id'].'</td>
-                                                      <td>'.$row['title'].'</td>
-                                                      <td>'.$row['release_year'].'</td>
-                                                      <td>'.$row['name'].'</td>
-                                                      <td>'.$row['length'].'</td>
-                                                      <td>'.$row['rental_rate'].'</td>
+                              echo '<tbody>
+                                                      <td>' . $row['film_id'] . '</td>
+                                                      <td>' . $row['title'] . '</td>
+                                                      <td>' . $row['release_year'] . '</td>
+                                                      <td>' . $row['name'] . '</td>
+                                                      <td>' . $row['length'] . '</td>
+                                                      <td>' . $row['rental_rate'] . '</td>
                                                       </tbody>';
-                                                    }
-                                                    echo  '</table>';
-                                                  }
-                                                }
-                                                elseif (isset($_GET['customer']))
-                                                {
-                                                  $query = "SELECT * FROM customer WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR email LIKE '%$search%'";
-                                                  $result = $connection->query($query);
-                                                  if (mysqli_num_rows($result) == 0)
-                                                  {
-                                                    echo 'Brak danych';
-                                                  }
-                                                  else
-                                                  {
-                                                    echo  '<table class="table">
+                            }
+                            echo  '</table>';
+                          }
+                        } elseif (isset($_GET['customer'])) {
+                          $query = "SELECT * FROM customer WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR email LIKE '%$search%'";
+                          $result = $connection->query($query);
+                          if (mysqli_num_rows($result) == 0) {
+                            echo 'Brak danych';
+                          } else {
+                            echo  '<table class="table">
                                                     <thead class="table-dark">
                                                     <tr>
                                                     <th>Wyniki wyszuliwań</th>
@@ -192,20 +176,17 @@
                                                     <th></th>
                                                     </tr>
                                                     </thead>';
-                                                    while ($row = $result->fetch_assoc())
-                                                    {
-                                                      echo '<tbody>
-                                                      <td>'.$row['first_name'].'</td>
-                                                      <td>'.$row['last_name'].'</td>
-                                                      <td>'.$row['email'].'</td>
+                            while ($row = $result->fetch_assoc()) {
+                              echo '<tbody>
+                                                      <td>' . $row['first_name'] . '</td>
+                                                      <td>' . $row['last_name'] . '</td>
+                                                      <td>' . $row['email'] . '</td>
                                                       </tbody>';
-                                                    }
-                                                      echo  '</table>';
-                                                    }
-                                                  }
-                                                  elseif (isset($_GET['rental']))
-                                                  {
-                                                    $query = "SELECT
+                            }
+                            echo  '</table>';
+                          }
+                        } elseif (isset($_GET['rental'])) {
+                          $query = "SELECT
                                                     rental_date,
                                                     return_date,
                                                     inventory_id,
@@ -217,15 +198,12 @@
                                                     WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%'
                                                     ORDER BY rental_date DESC
                                                     LIMIT 10";
-                                                    $result = $connection->query($query);
-                                                    if (mysqli_num_rows($result) == 0)
-                                                    {
-                                                      echo 'Brak danych';
-                                                    }
-                                                    else
-                                                    {
-                                                      echo
-                                                      '<table class="table">
+                          $result = $connection->query($query);
+                          if (mysqli_num_rows($result) == 0) {
+                            echo 'Brak danych';
+                          } else {
+                            echo
+                            '<table class="table">
                                                       <thead class="table-dark">
                                                       <tr>
                                                       <th>Data wypożyczenia</th>
@@ -234,31 +212,25 @@
                                                       <th>Data zwrotu</th>
                                                       </tr>
                                                       </thead>';
-                                                      while ($row = $result->fetch_assoc())
-                                                      {
-                                                        echo
-                                                        '<tbody>
-                                                        <td>'.$row['rental_date'].'</td>
-                                                        <td>'.$row['first_name'].'</td>
-                                                        <td>'.$row['last_name'].'</td>
-                                                        <td>'.$row['return_date'].'</td>
+                            while ($row = $result->fetch_assoc()) {
+                              echo
+                              '<tbody>
+                                                        <td>' . $row['rental_date'] . '</td>
+                                                        <td>' . $row['first_name'] . '</td>
+                                                        <td>' . $row['last_name'] . '</td>
+                                                        <td>' . $row['return_date'] . '</td>
                                                         </tbody>';
-                                                      }
-                                                        echo  '</table>';
-                                                      }
-                                                    }
-                                                  elseif (isset($_GET['employee']))
-                                                  {
-                                                    $query = "SELECT * FROM employee
+                            }
+                            echo  '</table>';
+                          }
+                        } elseif (isset($_GET['employee'])) {
+                          $query = "SELECT * FROM employee
                                                     WHERE firstNameUser LIKE '%$search%' OR lastNameUser LIKE '%$search%' OR emailUser LIKE '%$search%'";
-                                                    $result = $connection->query($query);
-                                                    if (mysqli_num_rows($result) == 0)
-                                                    {
-                                                      echo 'Brak danych';
-                                                    }
-                                                    else
-                                                    {
-                                                      echo  '<table class="table">
+                          $result = $connection->query($query);
+                          if (mysqli_num_rows($result) == 0) {
+                            echo 'Brak danych';
+                          } else {
+                            echo  '<table class="table">
                                                       <thead class="table-dark">
                                                       <tr>
                                                       <th>Imię</th>
@@ -266,49 +238,49 @@
                                                       <th>Adres e-mail</th>
                                                       </tr>
                                                       </thead>';
-                                                      while ($row = $result->fetch_assoc())
-                                                      {
-                                                        echo '<tbody>
-                                                        <td>'.$row['firstNameUser'].'</td>
-                                                        <td>'.$row['lastNameUser'].'</td>
-                                                        <td>'.$row['emailUser'].'</td>
+                            while ($row = $result->fetch_assoc()) {
+                              echo '<tbody>
+                                                        <td>' . $row['firstNameUser'] . '</td>
+                                                        <td>' . $row['lastNameUser'] . '</td>
+                                                        <td>' . $row['emailUser'] . '</td>
                                                         </tbody>';
-                                                      }
-                                                        echo  '</table>';
-                                                      }
-                                                    }
-                                                  }
-                                            ?>
-                                          </div>
-                                        </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                            }
+                            echo  '</table>';
+                          }
+                        }
+                      }
+                      ?>
+                    </div>
                   </div>
-                  <!-- /.container-fluid -->
-
+                </div>
               </div>
-              <!-- End of Main Content -->
-
-              <!-- Footer -->
-              <?php include('addons/footer.php'); ?>
-              <!-- End of Footer -->
-
+            </div>
           </div>
-          <!-- End of Content Wrapper -->
+        </div>
+        <!-- /.container-fluid -->
 
       </div>
-      <!-- End of Page Wrapper -->
+      <!-- End of Main Content -->
 
-      <!-- Scroll to Top Button-->
-      <?php include('addons/scroll.php'); ?>
+      <!-- Footer -->
+      <?php include('addons/footer.php'); ?>
+      <!-- End of Footer -->
 
-      <!-- Logout Modal-->
-      <?php include('addons/logoutmodal.php'); ?>
+    </div>
+    <!-- End of Content Wrapper -->
 
-      <!-- Bootstrap core JavaScript-->
-      <?php include('addons/js.php'); ?>
+  </div>
+  <!-- End of Page Wrapper -->
 
-  </body>
+  <!-- Scroll to Top Button-->
+  <?php include('addons/scroll.php'); ?>
+
+  <!-- Logout Modal-->
+  <?php include('addons/logoutmodal.php'); ?>
+
+  <!-- Bootstrap core JavaScript-->
+  <?php include('addons/js.php'); ?>
+
+</body>
+
 </html>
