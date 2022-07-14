@@ -18,8 +18,6 @@ To add a table with employees to the standard Sakila database import the employe
 |First Name|Last Name|E-amil|Password|
 |:--------:|:-------:|:----:|:------:|
 |Luke|Skywalker|skywalker@mail.com|(password: Abcd1234)|
-|:--:|:-------:|:----------------:|:------------------:|
 |Dart|Vader|vader@mail.com|(password: Abcd1234)|
-|:--:|:---:|:------------:|:------------------:|
 
 ![video-rental_employee - web app](./screenshots/video-rental_employee.png)
