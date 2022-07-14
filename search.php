@@ -48,8 +48,8 @@
                                       <div class="row">
                                           <div class = "col-md-12">
                                             <?php
-                                              $_SESSION['search'] = $_GET['search'];
-                                              $search = $_SESSION['search'];
+                                              // $_SESSION['search'] = $_GET['search'];
+                                              // $search = $_SESSION['search'];
 
                                               echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$search.'"</h2><br>';
 
@@ -62,24 +62,26 @@
 
                                                 if (isset($_GET['films']))
                                                 {
-                                                  if (isset($_GET['order']))
-                                                  {
-                                                    $order = $_GET['order'];
-                                                  }
-                                                  else {
-                                                    $order = 'film_id';
-                                                  }
+                                                  // if (isset($_GET['order']))
+                                                  // {
+                                                  //   $order = $_GET['order'];
+                                                  // }
+                                                  // else {
+                                                  //   $order = 'film_id';
+                                                  // }
 
-                                                  if (isset($_GET['sort']))
-                                                  {
-                                                    $sort = $_GET['sort'];
-                                                  }
-                                                  else {
-                                                    $sort = 'ASC';
-                                                  }
+                                                  // if (isset($_GET['sort']))
+                                                  // {
+                                                  //   $sort = $_GET['sort'];
+                                                  // }
+                                                  // else {
+                                                  //   $sort = 'ASC';
+                                                  // }
+                                                    $parametrs = array();
 
                                                   if (isset($_GET['films']))
                                                   {
+                                                    $search = trim($_GET['search']);
                                                     $query = "SELECT
                                                     film_id,
                                                     title,
@@ -90,7 +92,9 @@
                                                     FROM
                                                     film AS F
                                                     JOIN language AS L ON F.language_id = L.language_id
-                                                    WHERE title LIKE '%$search%'";
+                                                    WHERE title LIKE ?";
+                                                    $parametrs[] = "'%$search%'";
+                                                    $_SESSION['search'] = $search;
                                                   }
 
                                                   if (isset($_GET['sortFilmId']))
@@ -122,12 +126,12 @@
                                                     echo  "<table class='table'>
                                                     <thead class='table-dark'>
                                                     <tr>
-                                                    <th><a href='search.php?search=$search&&order=film_id&&sort=$sort' class='text-light' name='sortFilmId'>ID</a></th>
-                                                    <th><a href='search.php?search=$search&&order=title&&sort=$sort' class='text-light' name='sortTitle'>Tytuł</a></th>
-                                                    <th><a href='search.php?search=$search&&order=release_year&&sort=$sort' class='text-light' name='sortReleaseYear'>Data produkcji</a></th>
-                                                    <th><a href='search.php?search=$search&&order=name&&sort=$sort' class='text-light' name='sortName'>Jęyk</a></th>
-                                                    <th><a href='search.php?search=$search&&order=length&&sort=$sort' class='text-light' name='sortLength'>Czas</a></th>
-                                                    <th><a href='search.php?search=$search&&order=rantal_rate&&sort=$sort' class='text-light' name='sortRentalRate'>Cena</a></th>
+                                                    <th><a href='?search=$search&&order=film_id&&sort=$sort' class='text-light' name='sortFilmId'>ID</a></th>
+                                                    <th><a href='?search=$search&&order=title&&sort=$sort' class='text-light' name='sortTitle'>Tytuł</a></th>
+                                                    <th><a href='?search=$search&&order=release_year&&sort=$sort' class='text-light' name='sortReleaseYear'>Data produkcji</a></th>
+                                                    <th><a href='?search=$search&&order=name&&sort=$sort' class='text-light' name='sortName'>Jęyk</a></th>
+                                                    <th><a href='?search=$search&&order=length&&sort=$sort' class='text-light' name='sortLength'>Czas</a></th>
+                                                    <th><a href='?search=$search&&order=rantal_rate&&sort=$sort' class='text-light' name='sortRentalRate'>Cena</a></th>
                                                     </tr>
                                                     </thead>";
                                                     while ($row = $result->fetch_assoc())
