@@ -155,20 +155,20 @@
 
                                                     while ($row = $result->fetch())
                                                     {
-                                                      $filmId = $row['film_id'];
-                                                      $title = $row['title'];
-                                                      $releaseYear = $row['release_year'];
-                                                      $name = $row['name'];
-                                                      $length = $row['length'];
-                                                      $rentalRate = $row['rental_rate'];
+                                                      // $filmId = $row['film_id'];
+                                                      // $title = $row['title'];
+                                                      // $releaseYear = $row['release_year'];
+                                                      // $name = $row['name'];
+                                                      // $length = $row['length'];
+                                                      // $rentalRate = $row['rental_rate'];
 
                                                       echo '<tbody>
-                                                      <td>'.$filmId.'</td>
-                                                      <td>'.$title.'</td>
-                                                      <td>'.$releaseYear.'</td>
-                                                      <td>'.$name.'</td>
-                                                      <td>'.$length.'</td>
-                                                      <td>'.$rentalRate.'</td>
+                                                      <td>'.$row['film_id'].'</td>
+                                                      <td>'.$row['title'].'</td>
+                                                      <td>'.$row['release_year'].'</td>
+                                                      <td>'.$row['name'].'</td>
+                                                      <td>'.$row['length'].'</td>
+                                                      <td>'.$row['rental_rate'].'</td>
                                                       </tbody>';
                                                     }
                                                     echo  '</table>';
