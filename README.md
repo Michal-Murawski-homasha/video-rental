@@ -27,4 +27,5 @@ To add a table with employees to the standard Sakila database import the employe
 ![video-rental_employee - web app](./screenshots/video-rental_employee.png)
 
 The registration form has build in validation that checks the correctness of all filled fiedls (including checking that passwords are identical).<br>
-After logging in, the status (name and surname and avatar logged in person) is diplayed.
+After logging in, the status (name and surname and avatar logged in person) is diplayed.<br>
+Data on movies and customers and rental history and employees can be sorted.
