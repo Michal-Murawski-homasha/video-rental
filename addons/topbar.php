@@ -32,10 +32,10 @@
                       <span class="caret"></span> -->
                       <!-- <i class="fas fa-search fa-sm"></i> -->
                         <ul class="dropdown-menu dropdown-menu-end" role="menu">
-                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="films" value="<?= $search ?? '' ?>"></li>
-                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="customer" value="<?= $search ?? '' ?>"></li>
-                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="rental" value="<?= $search ?? '' ?>"></li>
-                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="employee" value="<?= $search ?? '' ?>"></li>
+                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="films" value="Filmy<?= $search ?? '' ?>"></li>
+                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="customer" value="Klienci<?= $search ?? '' ?>"></li>
+                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="rental" value="Historia wypożyczeń<?= $search ?? '' ?>"></li>
+                          <li class=""><input type="submit" role="submit" class="dropdown-item" name="employee" value="Karta pracowników<?= $search ?? '' ?>"></li>
                         </ul>
                     <!-- </button> -->
                   </div>
