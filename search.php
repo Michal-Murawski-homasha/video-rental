@@ -49,7 +49,7 @@
                                           <div class = "col-md-12">
                                             <?php
                                               // $_SESSION['search'] = $_GET['search'];
-                                              // $search = $_SESSION['search'];
+                                              $search = trim($_GET['search']);
 
                                               echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "'.$search.'"</h2><br>';
 
@@ -81,7 +81,7 @@
 
                                                   if (isset($_GET['films']))
                                                   {
-                                                    $search = trim($_GET['search']);
+                                                    // $search = trim($_GET['search']);
                                                     $query = "SELECT
                                                     film_id,
                                                     title,
@@ -132,7 +132,7 @@
 
                                                   $result = $connection->prepare($query);
                                                   $result->execute($parametrs);
-                                                  if ($query->rowCount() == 0)
+                                                  if ($result->num_rows() == 0)
                                                   {
                                                     echo 'Brak danych';
                                                   }
@@ -151,7 +151,7 @@
                                                     <th><a href='?sort=rantal_rate' class='text-light' name='sortRentalRate'>Cena</a></th>
                                                     </tr>
                                                     </thead>";
-                                                    while ($row = $result->fetch_assoc())
+                                                    while ($row = $result->fetch())
                                                     {
                                                       $filmId = $row['film_id'];
                                                       $title = $row['title'];
