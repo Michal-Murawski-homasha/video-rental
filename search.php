@@ -96,6 +96,23 @@
                                                     $parametrs[] = "'%$search%'";
                                                     $_SESSION['search'] = $search;
                                                   }
+                                                  else {
+                                                    if (isset($_GET['search']) && strlen($_GET['search']) > 0) {
+                                                      $search = $_SESSION['search'];
+                                                      $query = "SELECT
+                                                      film_id,
+                                                      title,
+                                                      release_year,
+                                                      name,
+                                                      lenght,
+                                                      rental_rate
+                                                      FROM
+                                                      film AS F
+                                                      JOIN language AS L ON F.language_id = L.language_id
+                                                      WHERE title LIKE ?";
+                                                      $parametrs[] = "'%$search%'";
+                                                    }
+                                                  }
 
                                                   if (isset($_GET['sortFilmId']))
                                                   {
