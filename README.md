@@ -25,3 +25,5 @@ To add a table with employees to the standard Sakila database import the employe
 | Dart       | Vader     | vader@mail.com     | `(password: Abcd1234)` |
 
 ![video-rental_employee - web app](./screenshots/video-rental_employee.png)
+
+The registration form has build in validation that checks the correctness of all filled fiedls (including checking that passwords are identical).
