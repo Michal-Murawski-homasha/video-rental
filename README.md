@@ -1,6 +1,5 @@
 # video-rental - Web App
 ## The project is being created as part of the INF 04 course.
-
 ![video-rental - web app](./screenshots/video-rental.png)
 
 The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is created in PHP 8.1.6.
@@ -14,7 +13,6 @@ The config directory contains the connnection file for the MySQL database connec
 The login directory contines files containing logic for registration and validation and login.
 
 ## Adding an employee table.
-
 ![video-rental_employee - web app](./screenshots/video-rental_employee-structure.png)
 Structure of the employee table.
 
@@ -26,6 +24,7 @@ To add a table with employees to the standard Sakila database import the employe
 
 ![video-rental_employee - web app](./screenshots/video-rental_employee.png)
 
+## Key features of the program.
 The registration form has build in validation that checks the correctness of all filled fiedls (including checking that passwords are identical).<br>
 After logging in, the status (name and surname and avatar logged in person) is diplayed.<br>
 Data on movies and customers and rental history and employees can be sorted.<br>
