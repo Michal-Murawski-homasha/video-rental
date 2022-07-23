@@ -57,7 +57,7 @@ require_once('config/connection.php');
                         echo 'Zaloguj się';
                       } else {
 
-                        if (isset($_GET['films'])) {
+                        if (isset($_POST['films'])) {
                           // if (isset($_GET['order']))
                           // {
                           //   $order = $_GET['order'];
@@ -75,7 +75,7 @@ require_once('config/connection.php');
                           // }
                           $parametrs = array();
 
-                          if (isset($_GET['films'])) {
+                          if (isset($_POST['films'])) {
                             // $search = trim($_GET['search']);
                             $query = "SELECT
                                                     film_id,
@@ -91,7 +91,7 @@ require_once('config/connection.php');
                             $parametrs[] = "'%$search%'";
                             $_SESSION['search'] = $search;
                           } else {
-                            if (isset($_GET['search']) && strlen($_GET['search']) > 0) {
+                            if (isset($_POST['search']) && strlen($_POST['search']) > 0) {
                               $search = $_SESSION['search'];
                               $query = "SELECT
                                                       film_id,
@@ -108,7 +108,7 @@ require_once('config/connection.php');
                             }
                           }
 
-                          if (isset($_GET['sort']) && strlen($_GET['sort']) > 0) {
+                          if (isset($_POST['sort']) && strlen($_POST['sort']) > 0) {
                             $sort = addslashes(trim($_GET['sort']));
                             $query = "SELECT
                                                     film_id,
@@ -162,7 +162,7 @@ require_once('config/connection.php');
                             }
                             echo  '</table>';
                           }
-                        } elseif (isset($_GET['customer'])) {
+                        } elseif (isset($_POST['customer'])) {
                           $query = "SELECT * FROM customer WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR email LIKE '%$search%'";
                           $result = $connection->query($query);
                           if (mysqli_num_rows($result) == 0) {
@@ -185,7 +185,7 @@ require_once('config/connection.php');
                             }
                             echo  '</table>';
                           }
-                        } elseif (isset($_GET['rental'])) {
+                        } elseif (isset($_POST['rental'])) {
                           $query = "SELECT
                                                     rental_date,
                                                     return_date,
@@ -223,7 +223,7 @@ require_once('config/connection.php');
                             }
                             echo  '</table>';
                           }
-                        } elseif (isset($_GET['employee'])) {
+                        } elseif (isset($_POST['employee'])) {
                           $query = "SELECT * FROM employee
                                                     WHERE firstNameUser LIKE '%$search%' OR lastNameUser LIKE '%$search%' OR emailUser LIKE '%$search%'";
                           $result = $connection->query($query);

@@ -21,7 +21,7 @@
         <!-- Topbar Search -->
         <form
             class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search btn-group"
-            action="search.php" method="get">
+            action="search.php" method="post">
             <div class="input-group">
                 <input class="form-control bg-light border-0 small" type="text" placeholder="Szukaj ..."
                     aria-label="Search" aria-describedby="basic-addon2" name="search">
