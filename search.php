@@ -11,7 +11,7 @@ require_once('config/connection.php');
 
 <html lang="pl">
 
-<body id="page-top" class="<?= $sort ?? '' ?>">
+<body id="page-top">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -48,109 +48,40 @@ require_once('config/connection.php');
                   <div class="row">
                     <div class="col-md-12">
                       <?php
-                      // $_SESSION['search'] = $_GET['search'];
-                      $search = trim($_GET['search']);
-
+                      $search = $_POST['search'];
                       echo '<h2 class="h5 mb-0 text-gray-700">Wyniki dla frazy: "' . $search . '"</h2><br>';
 
                       if (!isset($_SESSION['loginStatus'])) {
                         echo 'Zaloguj się';
                       } else {
-
                         if (isset($_POST['films'])) {
-                          // if (isset($_GET['order']))
-                          // {
-                          //   $order = $_GET['order'];
-                          // }
-                          // else {
-                          //   $order = 'film_id';
-                          // }
-
-                          // if (isset($_GET['sort']))
-                          // {
-                          //   $sort = $_GET['sort'];
-                          // }
-                          // else {
-                          //   $sort = 'ASC';
-                          // }
-                          $parametrs = array();
-
-                          if (isset($_POST['films'])) {
-                            // $search = trim($_GET['search']);
-                            $query = "SELECT
-                                                    film_id,
-                                                    title,
-                                                    release_year,
-                                                    name,
-                                                    length,
-                                                    rental_rate
-                                                    FROM
-                                                    film AS F
-                                                    JOIN language AS L ON F.language_id = L.language_id
-                                                    WHERE title LIKE ?";
-                            $parametrs[] = "'%$search%'";
-                            $_SESSION['search'] = $search;
-                          } else {
-                            if (isset($_POST['search']) && strlen($_POST['search']) > 0) {
-                              $search = $_SESSION['search'];
-                              $query = "SELECT
-                                                      film_id,
-                                                      title,
-                                                      release_year,
-                                                      name,
-                                                      lenght,
-                                                      rental_rate
-                                                      FROM
-                                                      film AS F
-                                                      JOIN language AS L ON F.language_id = L.language_id
-                                                      WHERE title LIKE ?";
-                              $parametrs[] = "'%$search%'";
-                            }
-                          }
-
-                          if (isset($_POST['sort']) && strlen($_POST['sort']) > 0) {
-                            $sort = addslashes(trim($_GET['sort']));
-                            $query = "SELECT
-                                                    film_id,
-                                                    title,
-                                                    release_year,
-                                                    name,
-                                                    length,
-                                                    rental_rate
-                                                    FROM
-                                                    film AS F
-                                                    JOIN language AS L ON F.language_id = L.language_id
-                                                    ORDER BY $sort";
-                          }
-
-                          $result = $connection->prepare($query);
-                          $result->execute($parametrs);
-
-                          if ($result->num_rows() == 0) {
+                          $query = "SELECT
+                                                  film_id,
+                                                  title,
+                                                  release_year,
+                                                  name,
+                                                  length,
+                                                  rental_rate
+                                                  FROM
+                                                  film AS F
+                                                  JOIN language AS L ON F.language_id = L.language_id
+                                                  WHERE title LIKE '%$search%'";
+                          $result = $connection->query($query);
+                          if (mysqli_num_rows($result) == 0) {
                             echo 'Brak danych';
                           } else {
-                            // $sort == "DESC" ? $sort = "ASC" : $sort = "DESC";
-
-                            echo  "<table class='table'>
-                                                    <thead class='table-dark'>
+                            echo  '<table class="table">
+                                                    <thead class="table-dark">
                                                     <tr>
-                                                    <th><a href='?sort=film_id' class='text-light' name='sortFilmId'>ID</a></th>
-                                                    <th><a href='?sort=title' class='text-light' name='sortTitle'>Tytuł</a></th>
-                                                    <th><a href='?sort=release_year' class='text-light' name='sortReleaseYear'>Data produkcji</a></th>
-                                                    <th><a href='?sort=name' class='text-light' name='sortName'>Jęyk</a></th>
-                                                    <th><a href='?sort=length' class='text-light' name='sortLength'>Czas</a></th>
-                                                    <th><a href='?sort=rantal_rate' class='text-light' name='sortRentalRate'>Cena</a></th>
+                                                    <th>ID</th>
+                                                    <th>Tytuł</th>
+                                                    <th>Data produkcji</th>
+                                                    <th>Jęyk</th>
+                                                    <th>Czas</th>
+                                                    <th>Cena</th>
                                                     </tr>
-                                                    </thead>";
-
-                            while ($row = $result->fetch()) {
-                              // $filmId = $row['film_id'];
-                              // $title = $row['title'];
-                              // $releaseYear = $row['release_year'];
-                              // $name = $row['name'];
-                              // $length = $row['length'];
-                              // $rentalRate = $row['rental_rate'];
-
+                                                    </thead>';
+                            while ($row = $result->fetch_assoc()) {
                               echo '<tbody>
                                                       <td>' . $row['film_id'] . '</td>
                                                       <td>' . $row['title'] . '</td>
