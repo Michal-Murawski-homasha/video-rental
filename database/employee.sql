@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 05 Lip 2022, 11:49
+-- Czas generowania: 16 Wrz 2022, 22:44
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -39,6 +39,14 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Zrzut danych tabeli `employee`
+--
+
+INSERT INTO `employee` (`idUser`, `keyUser`, `firstNameUser`, `lastNameUser`, `emailUser`, `noPhoneUser`, `idJobPositionUser`, `passwordUser`) VALUES
+(1, '', 'Luke', 'Skywalker', 'skywalker@mail.com', '', 0, '325a2cc052914ceeb8c19016c091d2ac'),
+(2, '', 'Dart', 'Vader', 'vader@mail.com', '', 0, '325a2cc052914ceeb8c19016c091d2ac');
+
+--
 -- Indeksy dla zrzutów tabel
 --
 
@@ -56,7 +64,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT dla tabeli `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
