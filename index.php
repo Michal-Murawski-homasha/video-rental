@@ -3,14 +3,15 @@
   {
     session_start();
   }
-  require_once('config/connection.php');
+  // require_once('config/connection.php');
+  require_once('config/UniversalConnect.php')
 
-  unset($_SESSION['accountExists']);
-  unset($_SESSION['errorFirstName']);
-  unset($_SESSION['errorLastName']);
-  unset($_SESSION['errorEmailAddress']);
-  unset($_SESSION['errorPassword']);
-  unset($_SESSION['errorRepeatPassword']);
+  // unset($_SESSION['accountExists']);
+  // unset($_SESSION['errorFirstName']);
+  // unset($_SESSION['errorLastName']);
+  // unset($_SESSION['errorEmailAddress']);
+  // unset($_SESSION['errorPassword']);
+  // unset($_SESSION['errorRepeatPassword']);
 ?>
 
 <html lang="pl">
