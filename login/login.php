@@ -5,7 +5,7 @@
     }
     // session_start();
     //   require_once('../config/connection.php');
-    include_once('config/IConnenctInfo.php');
+    include_once('../config/ConnectionClient.php');
 
     unset($_SESSION['accountExists']);
     unset($_SESSION['errorFirstName']);
@@ -57,7 +57,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Logowanie</h1>
                                         <?php
-                                        echo $connectionInfo;
+//                                        echo self::$connectInfo;
                                         ?><br>
                                         <?php
                                         if (!isset($_SESSION['loginStatus']))

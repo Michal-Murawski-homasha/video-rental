@@ -9,7 +9,11 @@ class UniversalConnect
 
     public function doConnect()
     {
-        self::$connect = mysqli_connect(self::HOSTNAME, self::USERNAME, self::PASSWORD, self::DATABASE);
+        self::$connectInfo = mysqli_connect(self::HOSTNAME, self::USERNAME, self::PASSWORD, self::DATABASE);
+
+//        function __construct() {
+//            $this->doConnect();
+//        }
 //            if (self::$hookup)
 //            {
 //            	echo "Połączono z bazą danych ".self::$currentDB;
@@ -17,7 +21,7 @@ class UniversalConnect
 //            elseif (mysqli_connect_error(self::$hookup)) {
 //            	echo "Przyczyną błędu połączenia z bazą jest: ".mysqli_connect_error();
 //            }
-//            return self::$hookup;
+            return self::$connectInfo;
     }
 }
 

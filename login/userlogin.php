@@ -4,12 +4,12 @@
 		session_start();
 	}
 	// require_once('../config/connection.php');
-	include_once('config/IConnenctInfo.php');
+	include_once('../config/UniversalConnect.php');
 
 	$emailLogin = $_POST['emailLogin'];
 	$passwordLogin = md5($_POST['passwordLogin']);
 
-	$resultLogin = mysqli_query($connection, "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
+	$resultLogin = mysqli_query(self::$connectInfo, "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
 
 	if (mysqli_num_rows($resultLogin) == 0)
 	{

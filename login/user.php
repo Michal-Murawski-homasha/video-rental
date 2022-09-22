@@ -7,7 +7,7 @@
 
 <?php
 	// require_once('../config/connection.php');
-	include_once('config/IConnenctInfo.php');
+	include_once('../config/ConnectionClient.php');
 
 	$fName = $_POST['firstName'];
 	$lName = $_POST['lastName'];
@@ -25,7 +25,7 @@
 	// Register new user
 	// $queryUsers = mysqli_query($connection, "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'");
 	$query = "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'";
-	$select = $connection->query($query);
+	$select = self::$connectInfo->query($query);
 
 	while ($row = mysqli_fetch_array($select))
 	{
@@ -39,7 +39,7 @@
 	else
 	{
 		$insert = "INSERT INTO users (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
-		$add = $connection->query($insert);
+		$add = self::$connectInfo->query($insert);
 		$_SESSION['info'] = "Utworzono nowe konto";
 		header('Location:login.php');
 	}

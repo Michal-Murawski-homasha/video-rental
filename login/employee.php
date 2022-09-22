@@ -5,7 +5,7 @@
 	}
 
 	//   require_once('../config/connection.php');
-	include_once('config/IConnenctInfo.php');
+	include_once('../config/ConnectionClient.php');
 
 	unset($_SESSION['accountExists']);
 	unset($_SESSION['errorFirstName']);
@@ -101,7 +101,7 @@
 	if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['errorEmailAddress'] && !$_SESSION['errorRepeatPassword'])
 	{
 	$query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$emailAddress'";
-	$select = $connection->query($query);
+	$select = self::$connectInfo->query($query);
 
 	while ($row = mysqli_fetch_array($select))
 	{
@@ -115,7 +115,7 @@
 		else
 		{
 		$insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$firstName', '$lastName', '$emailAddress', '$password')";
-		$add = $connection->query($insert);
+		$add = self::$connectInfo->query($insert);
 		$_SESSION['accountNotExists'];
 		unset($_SESSION['accountExists']);
 		unset($_SESSION['errorFirstName']);

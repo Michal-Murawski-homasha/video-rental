@@ -4,7 +4,7 @@
 		session_start();
 	}
 	// require_once('../config/connection.php');
-	include_once('config/IConnenctInfo.php');
+    include_once('../config/ConnectionClient.php');
  ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -59,7 +59,7 @@
 							<div class="text-center">
 							  <h1 class="h4 text-gray-900 mb-4">Nowe Konto</h1>
 								<?php
-								  echo $connectionInfo;
+//								  echo self::$connectInfo;
 								?><br>
 							</div>
 							<form class="user" action="employee.php" method="post">

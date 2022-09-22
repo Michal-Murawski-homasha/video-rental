@@ -4,7 +4,7 @@
 	$_SESSION['customer'] = 1;
 	}
 	// require_once('config/connection.php');
-	include_once('config/IConnenctInfo.php');
+    include_once('config/ConnectionClient.php');
 ?>
 
 <html lang="pl">
