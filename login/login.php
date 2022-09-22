@@ -1,18 +1,19 @@
 <?php
-  if (session_status() == PHP_SESSION_NONE)
-  {
-    session_start();
-  }
-  // session_start();
-  require_once('../config/connection.php');
+    if (session_status() == PHP_SESSION_NONE)
+    {
+        session_start();
+    }
+    // session_start();
+    //   require_once('../config/connection.php');
+    include_once('config/IConnenctInfo.php');
 
-  unset($_SESSION['accountExists']);
-  unset($_SESSION['errorFirstName']);
-  unset($_SESSION['errorLastName']);
-  unset($_SESSION['errorEmailAddress']);
-  unset($_SESSION['errorPassword']);
-  unset($_SESSION['errorRepeatPassword']);
- ?>
+    unset($_SESSION['accountExists']);
+    unset($_SESSION['errorFirstName']);
+    unset($_SESSION['errorLastName']);
+    unset($_SESSION['errorEmailAddress']);
+    unset($_SESSION['errorPassword']);
+    unset($_SESSION['errorRepeatPassword']);
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
