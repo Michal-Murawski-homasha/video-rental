@@ -9,6 +9,6 @@
         public function __construct()
         {
             $this->connectInfo = (new UniversalConnect)->doConnect();
+
         }
     }
-?>

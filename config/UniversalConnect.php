@@ -6,10 +6,14 @@ class UniversalConnect
     const USERNAME = "root";
     const PASSWORD = "";
     const DATABASE = "sakila";
+    /**
+     * @var false|mysqli
+     */
+    protected static $connectInfo;
 
     public function doConnect()
     {
-        self::$connectInfo = mysqli_connect(self::HOSTNAME, self::USERNAME, self::PASSWORD, self::DATABASE);
+        self::$connectInfo = new mysqli(self::HOSTNAME, self::USERNAME, self::PASSWORD, self::DATABASE);
 
 //        function __construct() {
 //            $this->doConnect();
@@ -21,8 +25,8 @@ class UniversalConnect
 //            elseif (mysqli_connect_error(self::$hookup)) {
 //            	echo "Przyczyną błędu połączenia z bazą jest: ".mysqli_connect_error();
 //            }
-            return self::$connectInfo;
+//            return self::$connectInfo;
     }
 }
 
-?>
+

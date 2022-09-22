@@ -4,14 +4,15 @@
 		session_start();
 	}
 	// require_once('../config/connection.php');
-	include_once('../config/UniversalConnect.php');
+	include_once('../config/ConnectionClient.php');
 
 	$emailLogin = $_POST['emailLogin'];
 	$passwordLogin = md5($_POST['passwordLogin']);
 
-	$resultLogin = mysqli_query(self::$connectInfo, "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
+    $connected = (new ConnectClient())->connectInfo;
+	$resultLogin = $connected->query("SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
 
-	if (mysqli_num_rows($resultLogin) == 0)
+	if (($resultLogin->num_rows) == 0)
 	{
 		$_SESSION['loginStatus'] = 0;
 		$_SESSION['loginInfo'] = "Błąd logowania";
@@ -74,4 +75,3 @@
 	//       }
 	//    }
 
-?>
