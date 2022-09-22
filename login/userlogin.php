@@ -10,7 +10,8 @@
 	$passwordLogin = md5($_POST['passwordLogin']);
 
     $connected = (new ConnectClient())->connectInfo;
-	$resultLogin = $connected->query("SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
+    $query = "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'";
+	$resultLogin = $connected->query($query);
 
 	if (($resultLogin->num_rows) == 0)
 	{
@@ -24,7 +25,7 @@
 		$_SESSION['loginStatus'] = 1;
 		$_SESSION['loginInfo'] = "Jesteś zalogowany";
 		$_SESSION['transactionId'] = md5(time() + rand(1000,9999));
-		$row = mysqli_fetch_array($resultLogin);
+		$row = ($resultLogin->fetch_array);
 		$_SESSION['infoUser'] = $row['firstNameUser']." ".$row['lastNameUser'];
 		$_SESSION['email'] = $row['emailUser'];
 		header('Location:../index.php');
