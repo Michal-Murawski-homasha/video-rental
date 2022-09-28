@@ -4,7 +4,7 @@
 		session_start();
 	}
 	// require_once('config/connection.php');
-	include_once('config/ConnectionClient.php');
+	include_once('config/connection.php');
 
 	unset($_SESSION['accountExists']);
 	unset($_SESSION['errorFirstName']);

@@ -3,7 +3,7 @@
 		session_start();
 	}
 	// require_once('config/connection.php');
-    include_once('config/ConnectionClient.php');
+    include_once('config/connection.php');
 ?>
 
 <html lang="pl">
@@ -81,7 +81,7 @@
 												film AS F
 												JOIN language AS L ON F.language_id = L.language_id
 												ORDER BY $order $sort";
-												$result = self::$connectInfo->query($query);
+												$result = $connection->query($query);
 												if (mysqli_num_rows($result) == 0)
 												{
 												  echo 'NIE';

@@ -5,7 +5,7 @@
 		// isset($_SESSION['emlpoyee-card']);
 	}
 	// require_once('config/connection.php');
-    include_once('config/ConnectionClient.php');
+    include_once('config/connection.php');
 ?>
 
 <html lang="pl">
@@ -70,7 +70,7 @@
 
 												$query = "SELECT * FROM employee
 												ORDER BY $order $sort";
-												$result = self::$connectInfo->query($query);
+												$result = $connection->query($query);
 												if (mysqli_num_rows($result) == 0)
 												{
 												  echo 'NIE';
