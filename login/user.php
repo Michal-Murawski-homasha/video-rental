@@ -6,8 +6,7 @@
 ?>
 
 <?php
-	// require_once('../config/connection.php');
-	include_once('../config/ConnectionClient.php');
+  require_once('../config/connection.php');
 
 	$fName = $_POST['firstName'];
 	$lName = $_POST['lastName'];
@@ -22,28 +21,28 @@
 	// echo '<p>e-mail: '.$eAddress.'</p>';
 	// echo '<p>Hasło: '.$passw.'</p>';
 
-	// Register new user
-	// $queryUsers = mysqli_query($connection, "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'");
-	$query = "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'";
-	$select = self::$connectInfo->query($query);
+  // Register new user
+  // $queryUsers = mysqli_query($connection, "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'");
+  $query = "SELECT count(1) AS ilosc FROM users WHERE emailUser = '$eAddress'";
+  $select = $connection->query($query);
 
-	while ($row = mysqli_fetch_array($select))
-	{
-	$ilosc = $row['ilosc'];
-	if ($ilosc>0)
-	{
-		$_SESSION['info'] = "Konto z takim emialem już istnieje!";
-		header('Location:register.php');
-		exit();
-	}
-	else
-	{
-		$insert = "INSERT INTO users (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
-		$add = self::$connectInfo->query($insert);
-		$_SESSION['info'] = "Utworzono nowe konto";
-		header('Location:login.php');
-	}
-	}
+  while ($row = mysqli_fetch_array($select))
+  {
+    $ilosc = $row['ilosc'];
+    if ($ilosc>0)
+    {
+      $_SESSION['info'] = "Konto z takim emialem już istnieje!";
+      header('Location:register.php');
+      exit();
+    }
+    else
+    {
+      $insert = "INSERT INTO users (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$fName', '$lName', '$eAddress', '$passw')";
+      $add = $connection->query($insert);
+      $_SESSION['info'] = "Utworzono nowe konto";
+      header('Location:login.php');
+    }
+  }
 
 	if (preg_match('@^[A-Z][a-z]{2,10}$@', $_POST['firstName']))
 	{

@@ -1,10 +1,9 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE)
-	{
-		session_start();
-	}
-	// require_once('../config/connection.php');
-    include_once('../config/ConnectionClient.php');
+  if (session_status() == PHP_SESSION_NONE)
+  {
+    session_start();
+  }
+  require_once('../config/connection.php');
  ?>
 <!DOCTYPE html>
 <html lang="pl">

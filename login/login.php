@@ -1,11 +1,10 @@
 <?php
-    if (session_status() == PHP_SESSION_NONE)
-    {
-        session_start();
-    }
-    // session_start();
-    //   require_once('../config/connection.php');
-    include_once('../config/ConnectionClient.php');
+  if (session_status() == PHP_SESSION_NONE)
+  {
+    session_start();
+  }
+  // session_start();
+  require_once('../config/connection.php');
 
     unset($_SESSION['accountExists']);
     unset($_SESSION['errorFirstName']);
@@ -57,7 +56,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Logowanie</h1>
                                         <?php
-//                                        echo self::$connectInfo;
+                                        echo $connectionInfo;
                                         ?><br>
                                         <?php
                                         if (!isset($_SESSION['loginStatus']))

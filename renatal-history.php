@@ -1,8 +1,9 @@
 <?php
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-    include_once('config/ConnectionClient.php');
+  if (session_status() == PHP_SESSION_NONE)
+  {
+    session_start();
+  }
+  require_once('config/connection.php');
 ?>
 
 <html lang="pl">
@@ -69,11 +70,14 @@
                                                 JOIN customer AS L ON F.customer_id = L.customer_id
                                                 ORDER BY $order $sort
                                                 LIMIT 10";
-                                            $result = self::$connectInfo->query($query);
-                                            if (mysqli_num_rows($result) == 0) {
-                                                echo 'Brak danych';
-                                            } else {
-                                                $sort == 'ASC' ? $sort = 'DESC' : $sort = 'ASC';
+                                                $result = $connection->query($query);
+                                                if (mysqli_num_rows($result) == 0)
+                                                {
+                                                  echo 'Brak danych';
+                                                }
+                                                else
+                                                {
+                                                  $sort == 'ASC' ? $sort = 'DESC' : $sort = 'ASC';
 
                                                 echo
                                                 "<table class='table'>

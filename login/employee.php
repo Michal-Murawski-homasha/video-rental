@@ -4,8 +4,7 @@
 		session_start();
 	}
 
-	//   require_once('../config/connection.php');
-	include_once('../config/ConnectionClient.php');
+  require_once('../config/connection.php');
 
 	unset($_SESSION['accountExists']);
 	unset($_SESSION['errorFirstName']);
@@ -95,42 +94,42 @@
 	header('Location:register.php');
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////
-	// Checking if an account exists
-	// $queryUsers = mysqli_query($connection, "SELECT COUNT(1) AS ilosc FROM users WHERE emailUsers = '$eAddress'");
-	if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['errorEmailAddress'] && !$_SESSION['errorRepeatPassword'])
-	{
-	$query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$emailAddress'";
-	$select = self::$connectInfo->query($query);
+///////////////////////////////////////////////////////////////////////////////////
+// Checking if an account exists
+  // $queryUsers = mysqli_query($connection, "SELECT COUNT(1) AS ilosc FROM users WHERE emailUsers = '$eAddress'");
+  if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['errorEmailAddress'] && !$_SESSION['errorRepeatPassword'])
+  {
+    $query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$emailAddress'";
+    $select = $connection->query($query);
 
-	while ($row = mysqli_fetch_array($select))
-	{
-		$ilosc = $row['ilosc'];
-		if ($ilosc>0)
-		{
-		$_SESSION['accountExists'] = "Konto z takim emailem już istnieje!";
-		header('Location:register.php');
-		exit();
-		}
-		else
-		{
-		$insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$firstName', '$lastName', '$emailAddress', '$password')";
-		$add = self::$connectInfo->query($insert);
-		$_SESSION['accountNotExists'];
-		unset($_SESSION['accountExists']);
-		unset($_SESSION['errorFirstName']);
-		unset($_SESSION['errorLastName']);
-		unset($_SESSION['errorEmailAddress']);
-		unset($_SESSION['errorPassword']);
-		unset($_SESSION['errorRepeatPassword']);
-		header('Location:login.php');
-		}
-	}
-	}
-	else
-	{
-	header('Location:register.php');
-	}
+    while ($row = mysqli_fetch_array($select))
+    {
+      $ilosc = $row['ilosc'];
+      if ($ilosc>0)
+      {
+        $_SESSION['accountExists'] = "Konto z takim emailem już istnieje!";
+        header('Location:register.php');
+        exit();
+      }
+      else
+      {
+        $insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$firstName', '$lastName', '$emailAddress', '$password')";
+        $add = $connection->query($insert);
+        $_SESSION['accountNotExists'];
+        unset($_SESSION['accountExists']);
+        unset($_SESSION['errorFirstName']);
+        unset($_SESSION['errorLastName']);
+        unset($_SESSION['errorEmailAddress']);
+        unset($_SESSION['errorPassword']);
+        unset($_SESSION['errorRepeatPassword']);
+        header('Location:login.php');
+      }
+    }
+  }
+  else
+  {
+    header('Location:register.php');
+  }
 
 	/////////////////////////////////////////////////////////////////////////////////
 	// Login user

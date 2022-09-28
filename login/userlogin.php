@@ -1,19 +1,17 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE)
-	{
-		session_start();
-	}
-	// require_once('../config/connection.php');
-	include_once('../config/ConnectionClient.php');
+  if (session_status() == PHP_SESSION_NONE)
+  {
+    session_start();
+  }
+  require_once('../config/connection.php');
 
 	$emailLogin = $_POST['emailLogin'];
 	$passwordLogin = md5($_POST['passwordLogin']);
 
-    $connected = (new ConnectClient())->connectInfo;
-    $query = "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'";
-	$resultLogin = $connected->query($query);
+  $resultLogin = mysqli_query($connection, "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'");
 
-	if (($resultLogin->num_rows) == 0)
+
+	if (mysqli_num_rows($resultLogin) == 0)
 	{
 		$_SESSION['loginStatus'] = 0;
 		$_SESSION['loginInfo'] = "Błąd logowania";
@@ -25,7 +23,7 @@
 		$_SESSION['loginStatus'] = 1;
 		$_SESSION['loginInfo'] = "Jesteś zalogowany";
 		$_SESSION['transactionId'] = md5(time() + rand(1000,9999));
-		$row = ($resultLogin->fetch_array);
+        $row = mysqli_fetch_array($resultLogin);
 		$_SESSION['infoUser'] = $row['firstNameUser']." ".$row['lastNameUser'];
 		$_SESSION['email'] = $row['emailUser'];
 		header('Location:../index.php');
