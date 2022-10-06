@@ -4,7 +4,7 @@
 
 The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is created in PHP 8.1.6.
 
-- PHP 8.1.6
+- PHP 8.1
 - Bootstrap 4
 - SB Admin 2
 
