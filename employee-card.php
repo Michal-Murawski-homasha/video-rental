@@ -71,8 +71,8 @@
 
 												$query = "SELECT * FROM employee
 												ORDER BY $order $sort";
-												$result = $worker->query($query);
-												if (mysqli_num_rows($result) == 0)
+												$result = $worker->doConnect()->query($query);
+												if ($result->num_rows == 0)
 												{
 												  echo 'NIE';
 												}
