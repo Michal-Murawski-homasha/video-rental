@@ -1,5 +1,5 @@
 <?php
-interface IConnectInfo
+interface IConnectionInfo
 {
 	const HOST = "localhost";
 	const USERNAME = "root";
