@@ -9,9 +9,9 @@ $emailLogin = $_POST['emailLogin'];
 $passwordLogin = md5($_POST['passwordLogin']);
 
 $query = "SELECT * FROM employee WHERE emailUser = '$emailLogin' AND passwordUser = '$passwordLogin'";
-$resultLogin = $worker->doConnect($query);
+$resultLogin = $worker->doConnect()->query($query);
 
-if ($resultLogin->mysqli_num_rows == 0) {
+if ($resultLogin->num_rows == 0) {
 	$_SESSION['loginStatus'] = 0;
 	$_SESSION['loginInfo'] = "Błąd logowania";
 	header('Location:login.php');
