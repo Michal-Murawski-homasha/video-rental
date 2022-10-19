@@ -25,4 +25,5 @@ class UniversalConnect implements IConnectionInfo
 		return self::$hookup;
 	}
 }
+
 ?>

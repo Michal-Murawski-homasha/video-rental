@@ -1,4 +1,5 @@
 <?php
+
 interface IConnectionInfo
 {
 	const HOST = "localhost";
@@ -8,4 +9,5 @@ interface IConnectionInfo
 
 	public function doConnect();
 }
+
 ?>
