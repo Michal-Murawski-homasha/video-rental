@@ -11,6 +11,7 @@ The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is create
 The structure of the home page and subpages was divided into smallet files (head, sidebar, footer etc.) and uploaded to the addons folder.
 The config directory contains the connnection file for the MySQL database connection.
 The login directory contines files containing logic for registration and validation and login.
+The program has now been converted from a procedural to an object-oriented version.
 
 ## Adding an employee table.
 ![video-rental_employee - web app](./screenshots/video-rental_employee-structure.png)
@@ -28,4 +29,4 @@ To add a table with employees to the standard Sakila database import the employe
 The registration form has build in validation that checks the correctness of all filled fiedls (including checking that passwords are identical).<br>
 After logging in, the status (name and surname and avatar logged in person) is diplayed.<br>
 Data on movies and customers and rental history and employees can be sorted.<br>
-The search engine allows you to search by any phrase in one of four categories (sorting does't work here yet).
+The search engine allows you to search by any phrase in one of four categories (sorting doesn't work here yet).
