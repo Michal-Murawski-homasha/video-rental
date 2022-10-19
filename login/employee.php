@@ -85,9 +85,9 @@ if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['e
 	$query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$emailAddress'";
 	$worker = new UniversalConnect();
 	$worker->doConnect();
-	$select = $worker->query($query);
+	$select = $worker->doConnect()->query($query);
 
-	while ($row = mysqli_fetch_array($select)) {
+	while ($row = $select->fetch_array()) {
 		$ilosc = $row['ilosc'];
 		if ($ilosc > 0) {
 			$_SESSION['accountExists'] = "Konto z takim emailem już istnieje!";
@@ -95,7 +95,7 @@ if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['e
 			exit();
 		} else {
 			$insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$firstName', '$lastName', '$emailAddress', '$password')";
-			$add = $worker->query($insert);
+			$add = $worker->doConnect()->query($insert);
 			$_SESSION['accountNotExists'];
 			unset($_SESSION['accountExists']);
 			unset($_SESSION['errorFirstName']);
