@@ -6,7 +6,7 @@
 ?>
 
 <?php
-  require_once('../config/connection.php');
+  require_once '../config/UniversalConnect.php';
   // $_SESSION = array();
   unset($_SESSION['loginStatus']);
   unset($_SESSION['accountExists']);
