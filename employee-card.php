@@ -4,8 +4,7 @@
 		session_start();
 		// isset($_SESSION['emlpoyee-card']);
 	}
-	// require_once('config/connection.php');
-    include_once('config/connection.php');
+    include_once 'config/UniversalConnect.php';
 ?>
 
 <html lang="pl">
@@ -46,6 +45,8 @@
 									  <div class="row">
 										  <div class = "col-md-12">
 											<?php
+											$worker = new UniversalConnect();
+											$worker->doConnect();
 											  if (!isset($_SESSION['loginStatus']))
 											  {
 												echo 'Zaloguj się';
@@ -70,7 +71,7 @@
 
 												$query = "SELECT * FROM employee
 												ORDER BY $order $sort";
-												$result = $connection->query($query);
+												$result = $worker->query($query);
 												if (mysqli_num_rows($result) == 0)
 												{
 												  echo 'NIE';
