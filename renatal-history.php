@@ -3,7 +3,7 @@
   {
     session_start();
   }
-  require_once('config/connection.php');
+  require_once 'config/UniversalConnect.php';
 ?>
 
 <html lang="pl">
@@ -44,6 +44,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <?php
+										$worker = new UniversalConnect();
+										$worker->doConnect();
                                         if (!isset($_SESSION['loginStatus'])) {
                                             echo 'Zaloguj się';
                                         } else {
@@ -70,7 +72,7 @@
                                                 JOIN customer AS L ON F.customer_id = L.customer_id
                                                 ORDER BY $order $sort
                                                 LIMIT 10";
-                                                $result = $connection->query($query);
+                                                $result = $worker->query($query);
                                                 if (mysqli_num_rows($result) == 0)
                                                 {
                                                   echo 'Brak danych';
