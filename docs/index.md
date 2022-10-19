@@ -2,7 +2,7 @@
 ## The project is being created as part of the INF 04 course.
 ![video-rental - web app](screenshots/video-rental.png)
 
-The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is created in PHP 8.1.6.
+The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is created in PHP 8.1.
 
 - PHP 8.1.6
 - Bootstrap 4
