@@ -72,8 +72,8 @@
                                                 JOIN customer AS L ON F.customer_id = L.customer_id
                                                 ORDER BY $order $sort
                                                 LIMIT 10";
-                                                $result = $worker->query($query);
-                                                if (mysqli_num_rows($result) == 0)
+                                                $result = $worker->doConnect()->query($query);
+                                                if ($result->num_rows == 0)
                                                 {
                                                   echo 'Brak danych';
                                                 }
