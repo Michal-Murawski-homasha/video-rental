@@ -5,6 +5,7 @@ interface IConnectionInfo
 	const USERNAME = "root";
 	const PASSWORD = "";
 	const DBNAME = "sakila";
+
 	public function doConnect();
 }
 ?>

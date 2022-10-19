@@ -3,10 +3,10 @@ include_once "IConnectionInfo.php";
 
 class UniversalConnect implements IConnectionInfo
 {
-	private static string $server = IConnectionInfo::HOST;
-	private static string $currentDB = IConnectionInfo::DBNAME;
-	private static string $user = IConnectionInfo::USERNAME;
-	private static string $password = IConnectionInfo::PASSWORD;
+	private static $server = IConnectionInfo::HOST;
+	private static $currentDB = IConnectionInfo::DBNAME;
+	private static $user = IConnectionInfo::USERNAME;
+	private static $password = IConnectionInfo::PASSWORD;
 	private static $hookup;
 
 	public function doConnect()
