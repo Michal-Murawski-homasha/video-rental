@@ -10,7 +10,7 @@ The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is create
 
 The structure of the home page and subpages was divided into smallet files (head, sidebar, footer etc.) and uploaded to the addons folder.
 The config directory contains the connnection file for the MySQL database connection.
-The login directory contines files containing logic for registration and validation and login.
+The login directory contines files containing logic for registration and validation and login. The program has now been converted from a procedural to an object-oriented version.
 
 ## Adding an employee table.
 ![video-rental_employee - web app](screenshots/video-rental_employee-structure.png)
