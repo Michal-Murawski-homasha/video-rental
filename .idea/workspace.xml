@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f517790f-8c61-4e4b-9e1e-686ec55b0b5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_10_2022_13_30_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_10_2022_13_30__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/addons/footer.php" afterDir="false" />
-    </list>
+    <list default="true" id="f517790f-8c61-4e4b-9e1e-686ec55b0b5c" name="Changes" comment="Deletes typo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,8 +56,16 @@
       <workItem from="1665696988173" duration="24000" />
       <workItem from="1665824821272" duration="92000" />
       <workItem from="1666178625562" duration="738000" />
-      <workItem from="1666219879024" duration="90000" />
+      <workItem from="1666219879024" duration="184000" />
     </task>
+    <task id="LOCAL-00001" summary="Deletes typo">
+      <created>1666220043037</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666220043037</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,5 +81,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Deletes typo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deletes typo" />
   </component>
 </project>
