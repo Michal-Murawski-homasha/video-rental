@@ -15,22 +15,13 @@ unset($_SESSION['errorRepeatPassword']);
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $emailAddress = $_POST['emailAddress'];
-//$passw = $_POST['password'];
-//$passw = new passwordHash();
 $password = md5($_POST['password']);
 $repeatPassword = md5($_POST['repeatPassword']);
-
-// echo '<p>Imię: '.$fName.'</p>';
-// echo '<p>Nazwisko: '.$lName.'</p>';
-// echo '<p>e-mail: '.$eAddress.'</p>';
-// echo '<p>Hasło: '.$passw.'</p>';
-
 
 //////////////////////////////////////////////////////////////////////////////////
 // Validation
 if (preg_match('@^[A-Z][a-z]{2,10}$@', $firstName)) {
 	$_SESSION['infoValidation'] = 0;
-	// $_SESSION['errorFirstName'] = "";
 } else {
 	$_SESSION['infoValidation'] = 1;
 	$_SESSION['errorFirstName'] = "Wpisz poprawnie imię";

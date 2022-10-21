@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f517790f-8c61-4e4b-9e1e-686ec55b0b5c" name="Changes" comment="Cleans code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/login/user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/userlogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/login/userlogin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/login/employee.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +60,7 @@
       <workItem from="1665824821272" duration="92000" />
       <workItem from="1666178625562" duration="738000" />
       <workItem from="1666219879024" duration="184000" />
-      <workItem from="1666352754538" duration="1178000" />
+      <workItem from="1666352754538" duration="1884000" />
     </task>
     <task id="LOCAL-00001" summary="Deletes typo">
       <created>1666220043037</created>
@@ -84,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666353757266</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Cleans code">
+      <created>1666354025653</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666354025653</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
