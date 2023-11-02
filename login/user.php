@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 ?>
 
 <?php
-require_once('../config/connection.php');
+require_once('../config/UniversalConnect.php');
 
 $fName = $_POST['firstName'];
 $lName = $_POST['lastName'];
