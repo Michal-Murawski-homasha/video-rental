@@ -56,28 +56,6 @@
 								  <div class="card-body">
 									  <div class="row">
 										  <div class = "col-md-12">
-											<?php
-											  // echo '<table class="table">';
-											  // if (isset($_SESSION['filmConnect']))
-											  // {
-											  //   echo $_SESSION['filmsInfo2'];
-											  //   echo $_SESSION['filmsInfo3'];
-											  // }
-											  // elseif (isset($_SESSION['userConnect']))
-											  // {
-											  //   echo $_SESSION['userInfo'];
-											  // }
-											  // elseif (isset($_SESSION['rentalConnect']))
-											  // {
-											  // //   echo $_SESSION['rentalInfo1'];
-											  //   echo $_SESSION['rentalInfo2'];
-											  //   echo $_SESSION['rentalInfo3'];
-											  // //   echo $_SESSION['rentalInfo4'];
-											  // }
-											  // // } else {
-											  // //   echo 'Brak danych';
-											  // echo '</table>';
-											?>
 										  </div>
 										</div>
 								  </div>

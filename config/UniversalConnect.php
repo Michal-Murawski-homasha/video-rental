@@ -18,7 +18,6 @@ class UniversalConnect implements IConnectionInfo
 			self::$currentDB
 		);
 		if (self::$hookup) {
-//			echo "Połączono z bazą danych " . self::$currentDB . ". ";
 		} elseif (mysqli_connect_error(self::$hookup)) {
 			echo "Przyczyną błędu połączenia z bazą jest: " . mysqli_connect_error() . ". ";
 		}
