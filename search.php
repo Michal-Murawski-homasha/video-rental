@@ -3,10 +3,6 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 require_once 'config/UniversalConnect.php';
-// unset($_SESSION['films']);
-// unset($_SESSION['customer']);
-// unset($_SESSION['rental']);
-// unset($_SESSION['employee']);
 ?>
 
 <html lang="pl">

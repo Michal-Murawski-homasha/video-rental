@@ -18,7 +18,6 @@ $emailAddress = $_POST['emailAddress'];
 $password = md5($_POST['password']);
 $repeatPassword = md5($_POST['repeatPassword']);
 
-//////////////////////////////////////////////////////////////////////////////////
 // Validation
 if (preg_match('@^[A-Z][a-z]{2,10}$@', $firstName)) {
 	$_SESSION['infoValidation'] = 0;
@@ -69,9 +68,7 @@ if ($repeatPassword == $password) {
 	header('Location:register.php');
 }
 
-///////////////////////////////////////////////////////////////////////////////////
 // Checking if an account exists
-// $queryUsers = mysqli_query($connection, "SELECT COUNT(1) AS ilosc FROM users WHERE emailUsers = '$eAddress'");
 if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['errorEmailAddress'] && !$_SESSION['errorRepeatPassword']) {
 	$query = "SELECT count(1) AS ilosc FROM employee WHERE emailUser = '$emailAddress'";
 	$worker = new UniversalConnect();
