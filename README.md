@@ -1,6 +1,6 @@
 # video-rental - Web App
 ## The project is being created as part of the INF 04 course.
-[(Project site: video-rental.michalmurawski.pl)](https://video-rental.michalmurawski.pl/?target=_blank){:target="_blank"}
+[(Project site: video-rental.michalmurawski.pl)](https://video-rental.michalmurawski.pl/?target=_blank)
 
 ![video-rental - web app](./screenshots/video-rental.png)
 
