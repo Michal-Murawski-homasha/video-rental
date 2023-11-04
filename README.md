@@ -1,5 +1,7 @@
 # video-rental - Web App
 ## The project is being created as part of the INF 04 course.
+[(Project site: video-rental.michalmurawski.pl)](https://video-rental.michalmurawski.pl/index.php)
+
 ![video-rental - web app](./screenshots/video-rental.png)
 
 The project is based on Bootstrap 4 and SB Admin 2 theme and all logic is created in PHP 8.1.
