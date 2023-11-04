@@ -25,7 +25,7 @@ if (preg_match('@^[A-Z][a-z]{2,10}$@', $firstName)) {
 	$_SESSION['infoValidation'] = 1;
 	$_SESSION['errorFirstName'] = "Wpisz poprawnie imię";
 	// $errorFirstName = "Wpisz poprawnie imię";
-	header('Location:register.php');
+	header('Location:registration-form.php');
 }
 
 if (preg_match('@^[A-Z][a-z]{2,10}$@', $lastName)) {
@@ -35,7 +35,7 @@ if (preg_match('@^[A-Z][a-z]{2,10}$@', $lastName)) {
 	$_SESSION['infoValidation'] = 1;
 	$_SESSION['errorLastName'] = "Wpisz poprawnie nazwisko";
 	// $errorLastName = "Wpisz poprawnie nazwisko";
-	header('Location:register.php');
+	header('Location:registration-form.php');
 }
 
 if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', $emailAddress)) {
@@ -45,7 +45,7 @@ if (preg_match('@^[a-z]+[\@]{1}[a-z]{2,}[\.]{1}[a-z]{2,5}[\.]{0,1}[a-z]{0,}$@', 
 	$_SESSION['infoValidation'] = 1;
 	$_SESSION['errorEmailAddress'] = "Wpisz poprawnie e-mail";
 	// $errorEmailAddress = "Wpisz poprawnie e-mail";
-	header('Location:register.php');
+	header('Location:registration-form.php');
 }
 
 if (preg_match('@^[A-Za-z0-9]{8,16}$@', $password)) {
@@ -55,7 +55,7 @@ if (preg_match('@^[A-Za-z0-9]{8,16}$@', $password)) {
 	$_SESSION['infoValidation'] = 1;
 	$_SESSION['errorPassword'] = '<abbr class="" title="... zawierające od 8 do 16 dużych i małych liter oraz cyfr"><i class="fas fa-question fa-sm"></i></abbr>';
 	// $errorPassword = "Wpisz hasło zawierające od 8 do 16 dużych i małych liter oraz cyfr";
-	header('Location:register.php');
+	header('Location:registration-form.php');
 }
 
 if ($repeatPassword == $password) {
@@ -65,7 +65,7 @@ if ($repeatPassword == $password) {
 	$_SESSION['infoValidation'] = 1;
 	$_SESSION['errorRepeatPassword'] = "Powtórzone hasło się różni";
 	// $errorRepeatPassword = "Powtórz hasło";
-	header('Location:register.php');
+	header('Location:registration-form.php');
 }
 
 // Checking if an account exists
@@ -79,7 +79,7 @@ if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['e
 		$ilosc = $row['ilosc'];
 		if ($ilosc > 0) {
 			$_SESSION['accountExists'] = "Konto z takim emailem już istnieje!";
-			header('Location:register.php');
+			header('Location:registration-form.php');
 			exit();
 		} else {
 			$insert = "INSERT INTO employee (firstNameUser, lastNameUser, emailUser, passwordUser) VALUES ('$firstName', '$lastName', '$emailAddress', '$password')";
@@ -95,6 +95,6 @@ if (!$_SESSION['errorFirstName'] && !$_SESSION['errorLastName'] && !$_SESSION['e
 		}
 	}
 } else {
-	header('Location:register.php');
+	header('Location:registration-form.php');
 }
 ?>

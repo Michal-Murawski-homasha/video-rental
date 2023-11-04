@@ -59,7 +59,7 @@ require_once '../config/UniversalConnect.php';
                             //								  echo self::$connectInfo;
                             ?><br>
                         </div>
-                        <form class="user" action="employee.php" method="post">
+                        <form class="user" action="validation-of-registration.php" method="post">
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" id="exampleFirstName"

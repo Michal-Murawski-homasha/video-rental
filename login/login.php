@@ -76,7 +76,7 @@ unset($_SESSION['errorRepeatPassword']);
 										}
 									}
 									?>
-									<form class="user" action="userlogin.php" method="post">
+									<form class="user" action="validation-login.php" method="post">
 										<div class="form-group">
 											<input type="email" class="form-control form-control-user"
 												   id="exampleInputEmail" aria-describedby="emailHelp"
@@ -103,7 +103,7 @@ unset($_SESSION['errorRepeatPassword']);
 										<a class="small" href="../index.php">Strona główna</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="register.php">Utwórz konto</a>
+										<a class="small" href="registration-form.php">Utwórz konto</a>
 									</div>
 								</div>
 							</div>

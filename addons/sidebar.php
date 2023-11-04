@@ -32,7 +32,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Ekrany logowania:</h6>
                 <a class="collapse-item" href="login/login.php">Login</a>
-                <a class="collapse-item" href="login/register.php">Rejestracja</a>
+                <a class="collapse-item" href="login/registration-form.php">Rejestracja</a>
                 <a class="collapse-item" href="forgot-password.php">Zapomniałem hasła</a>
                 <a class="collapse-item" href="login/logout.php">Wyloguj</a>
                 <div class="collapse-divider"></div>
